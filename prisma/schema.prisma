@@ -1,306 +1,59 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider          = "postgresql"
-  url               = env("DATABASE_URL")
-  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
-model Category {
-  id String @id(map: "category_pkey") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+model Account {
+  id                 String  @id @default(cuid())
+  userId             String
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String? @db.Text
+  access_token       String? @db.Text
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String? @db.Text
+  session_state      String?
+  oauth_token_secret String?
+  oauth_token        String?
 
-  key  String @unique
-  name String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  created_at DateTime @default(now()) @db.Timestamptz(6)
-  updated_at DateTime @default(now()) @db.Timestamptz(6)
-
-  project Project[]
-  uses    Use[]
-
-  @@map("categories")
+  @@unique([provider, providerAccountId])
 }
 
-model Repository {
-  id String @id(map: "repository_pkey") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-
-  name       String   @unique
-  url        String?
-  created_at DateTime @default(now()) @db.Timestamptz(6)
-  updated_at DateTime @default(now()) @db.Timestamptz(6)
-
-  project Project[]
-
-  @@map("repositories")
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
-model Project {
-  id            String  @id(map: "project_pkey") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  repository_id String? @db.Uuid
-  category_id   String? @db.Uuid
-
-  name            String   @unique
-  development_url String?
-  production_url  String?
-  created_at      DateTime @default(now()) @db.Timestamptz(6)
-  updated_at      DateTime @default(now()) @db.Timestamptz(6)
-
-  repository Repository? @relation(fields: [repository_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  category   Category?   @relation(fields: [category_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-
-  @@map("projects")
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  password      String?
+  accounts      Account[]
+  sessions      Session[]
 }
 
-model Social {
-  id          String  @id(map: "social_pkey") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  employee_id String? @db.Uuid
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
 
-  name   String  @unique
-  url    String?
-  mailto String?
-
-  created_at DateTime @default(now()) @db.Timestamptz(6)
-  updated_at DateTime @default(now()) @db.Timestamptz(6)
-
-  employee Employee? @relation(fields: [employee_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-
-  @@map("socials")
-}
-
-model Use {
-  id          String  @id(map: "use_pkey") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  category_id String? @db.Uuid
-  employee_id String? @db.Uuid
-
-  name        String  @unique
-  description String?
-  link        Boolean @default(false)
-  link_label  String?
-  link_url    String?
-
-  created_at DateTime @default(now()) @db.Timestamptz(6)
-  updated_at DateTime @default(now()) @db.Timestamptz(6)
-
-  category Category? @relation(fields: [category_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  employee Employee? @relation(fields: [employee_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-
-  @@map("uses")
-}
-
-model Company {
-  id          String  @id(map: "company_pkey") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  employee_id String? @db.Uuid
-
-  name         String   @unique
-  logotype     String?
-  address      String?
-  phone        String?
-  regon        String?
-  nip          String?
-  isContractor Boolean? @default(false)
-  isClient     Boolean? @default(false)
-
-  workplace Workplace[]
-  Employee  Employee?   @relation(fields: [employee_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-
-  @@map("companies")
-}
-
-model Workplace {
-  id          String  @id(map: "workplace_pkey") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  employee_id String? @db.Uuid
-  company_id  String? @db.Uuid
-
-  title       String
-  description String?
-  present     Boolean @default(false)
-  start       String?
-  start_full  String?
-  end         String?
-  end_full    String?
-
-  created_at DateTime @default(now()) @db.Timestamptz(6)
-  updated_at DateTime @default(now()) @db.Timestamptz(6)
-
-  company  Company?  @relation(fields: [company_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  employee Employee? @relation(fields: [employee_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-
-  @@map("workplaces")
-}
-
-model Page {
-  id          String  @id(map: "page_pkey") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  employee_id String? @db.Uuid
-  route_id    String? @unique @db.Uuid
-
-  title      String   @unique
-  subheading Json?
-  heading    Json?
-  content    Json?
-  fullscreen Boolean? @default(false)
-  active     Boolean? @default(false)
-
-  created_at DateTime @default(now()) @db.Timestamptz(6)
-  updated_at DateTime @default(now()) @db.Timestamptz(6)
-
-  employee Employee? @relation(fields: [employee_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  route    Route?    @relation(fields: [route_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-
-  @@map("pages")
-}
-
-model Route {
-  id          String  @id(map: "navigation_pkey") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  employee_id String? @db.Uuid
-
-  label  String  @unique
-  href   String
-  hidden Boolean @default(false)
-  page   Page?
-
-  created_at DateTime @default(now()) @db.Timestamptz(6)
-  updated_at DateTime @default(now()) @db.Timestamptz(6)
-
-  employee Employee? @relation(fields: [employee_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-
-  @@map("routes")
-}
-
-model Setting {
-  id          String  @id(map: "setting_pkey") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  employee_id String? @unique @db.Uuid
-
-  description String?
-  image       String?
-  title       String?
-  phone       String?
-  email       String?
-  postcode    String?
-  address     String?
-  city        String?
-  country     String?
-
-  created_at DateTime @default(now()) @db.Timestamptz(6)
-  updated_at DateTime @default(now()) @db.Timestamptz(6)
-
-  employee Employee? @relation(fields: [employee_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-
-  @@map("settings")
-}
-
-model Meta {
-  id          String  @id(map: "meta_pkey") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  employee_id String? @db.Uuid
-
-  name    String @unique
-  content String
-
-  created_at DateTime @default(now()) @db.Timestamptz(6)
-  updated_at DateTime @default(now()) @db.Timestamptz(6)
-
-  employee Employee? @relation(fields: [employee_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-
-  @@map("metas")
-}
-
-model Availability {
-  id          String  @id(map: "availability_pkey") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  employee_id String? @db.Uuid
-
-  description String?  @unique
-  label       String?  @unique
-  active      Boolean? @default(false)
-
-  created_at DateTime @default(now()) @db.Timestamptz(6)
-  updated_at DateTime @default(now()) @db.Timestamptz(6)
-
-  employee Employee? @relation(fields: [employee_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-
-  @@map("availabilities")
-}
-
-model Relocation {
-  id          String  @id(map: "relocation_pkey") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  employee_id String? @db.Uuid
-
-  description String?  @unique
-  label       String?  @unique
-  active      Boolean? @default(false)
-
-  created_at DateTime @default(now()) @db.Timestamptz(6)
-  updated_at DateTime @default(now()) @db.Timestamptz(6)
-
-  employee Employee? @relation(fields: [employee_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-
-  @@map("relocations")
-}
-
-model Status {
-  id          String  @id(map: "status_pkey") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  employee_id String? @db.Uuid
-
-  description String?  @unique
-  label       String?  @unique
-  active      Boolean? @default(false)
-
-  created_at DateTime @default(now()) @db.Timestamptz(6)
-  updated_at DateTime @default(now()) @db.Timestamptz(6)
-
-  employee Employee? @relation(fields: [employee_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-
-  @@map("statuses")
-}
-
-model Skill {
-  id          String  @id(map: "skill_pkey") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  employee_id String? @db.Uuid
-
-  level  String?
-  name   String?  @unique
-  active Boolean? @default(false)
-
-  created_at DateTime @default(now()) @db.Timestamptz(6)
-  updated_at DateTime @default(now()) @db.Timestamptz(6)
-
-  employee Employee? @relation(fields: [employee_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-
-  @@map("skills")
-}
-
-model Employee {
-  id String @id(map: "employee_pkey") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-
-  pesel_number String? @unique
-  email        String? @unique
-  phone        String? @unique
-  name         String?
-  title        String?
-  avatar       String?
-  portrait     String?
-  city         String?
-  address      String?
-  postcode     String?
-  location     String?
-  birthday     String?
-  about        String?
-
-  created_at DateTime @default(now()) @db.Timestamptz(6)
-  updated_at DateTime @default(now()) @db.Timestamptz(6)
-
-  availability Availability[]
-  relocation   Relocation[]
-  workplace    Workplace[]
-  company      Company[]
-  setting      Setting[]
-  social       Social[]
-  status       Status[]
-  route        Route[]
-  skill        Skill[]
-  page         Page[]
-  meta         Meta[]
-  use          Use[]
-
-  @@map("employees")
+  @@unique([identifier, token])
 }

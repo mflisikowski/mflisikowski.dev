@@ -1,8 +1,0 @@
-@import 'cal-sans';
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-
-.font-cal {
-  font-family: Cal Sans, sans-serif;
-}

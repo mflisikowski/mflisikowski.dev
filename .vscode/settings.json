@@ -1,9 +1,0 @@
-{
-    "commitizen.autoSync": true,
-    "commitizen.showOutputChannel": "always",
-    "commitizen.useGitRoot": true,
-    "editor.formatOnSaveMode": "file",
-    "editor.linkedEditing": true,
-    "explorer.confirmDragAndDrop": true,
-    "explorer.confirmDelete": false,
-}

@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  postgres-main:
+    container_name: postgres-main
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: prisma
+      POSTGRES_PASSWORD: prisma
+      POSTGRES_DB: prisma
+    volumes:
+      - postgres-main:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres-main:
