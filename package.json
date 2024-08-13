@@ -20,8 +20,31 @@
     "babel-plugin-react-compiler": "0.0.0-experimental-334f00b-20240725",
     "eslint": "^8",
     "eslint-config-next": "15.0.0-rc.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-react-compiler": "0.0.0-experimental-9ed098e-20240725",
     "postcss": "^8",
+    "prettier": "3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.6",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
+  },
+  "pnpm": {
+    "overrides": {
+      "eslint": "8",
+      "@types/react": "npm:types-react@19.0.0-rc.1",
+      "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1"
+    },
+    "peerDependencyRules": {
+      "allowedVersions": {
+        "next": "15.0.0-rc.0",
+        "react": "19.0.0-rc-f994737d14-20240522",
+        "react-dom": "19.0.0-rc-f994737d14-20240522"
+      },
+      "allowAny": [
+        "@types/react",
+        "@types/react-dom"
+      ]
+    }
   }
 }
