@@ -1,0 +1,31 @@
+{
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#ffe603",
+    "titleBar.activeForeground": "#000000",
+    "activityBarBadge.background": "#000000",
+    "activityBarBadge.foreground": "#ffffff"
+  },
+
+  "workbench.colorTheme": "GitHub Dark",
+  "editor.formatOnSaveMode": "file",
+  "autoimport.autoComplete": true,
+  "editor.formatOnSave": true,
+
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/.git": true
+  }
+}
