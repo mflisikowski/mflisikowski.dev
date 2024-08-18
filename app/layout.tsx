@@ -51,6 +51,17 @@ export default function RootLayout({
 				<main className="flex-grow">
 					<>{children}</>
 				</main>
+
+				<Container as="footer" className="w-full">
+					<div className="flex items-center justify-between">
+						<p className="text-md font-cal tracking-wider">
+							With a passion for creating innovative solutions.
+						</p>
+						<p className="text-md font-mono tracking-wide">
+							<>&copy; {new Date().getFullYear()}</>
+						</p>
+					</div>
+				</Container>
 			</body>
 		</html>
 	);
