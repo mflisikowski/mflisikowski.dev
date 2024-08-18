@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 body {
-	@apply font-inter;
-	@apply text-zinc-900;
+  @apply font-inter;
+  @apply text-zinc-900;
 }
