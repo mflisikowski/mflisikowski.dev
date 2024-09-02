@@ -58,10 +58,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="h-full">
       <body
         className={cn(
-          "flex min-h-screen flex-col space-y-16 py-8 antialiased",
+          "relative flex min-h-full flex-col text-gray-900 antialiased",
           CalSans.variable,
           Inter.variable,
         )}
