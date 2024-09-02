@@ -44,7 +44,7 @@ export const metadata: Metadata = {
 const CalSans = localFont({
   variable: "--font-cal",
   display: "swap",
-  src: "./fonts/CalSans-SemiBold.woff2",
+  src: "../public/fonts/CalSans-SemiBold.woff2",
 });
 
 const Inter = Font({
