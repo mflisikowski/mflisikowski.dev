@@ -21,11 +21,12 @@ export function Logo() {
           aria-label="Mission Focused Developer"
           role="marquee"
           className="font-cal text-2xl uppercase"
-          sequence={["MFD", 750, "Mission", 550, "Focused", 550, "Developer", 550, "MFD"]}
+          sequence={["MFD", 10000, "Mission", 550, "Focused", 550, "Developer", 550, "MFD", 10000]}
           deletionSpeed={70}
           cursor={false}
           speed={40}
           preRenderFirstString
+          repeat={Infinity}
         />
       </div>
 
