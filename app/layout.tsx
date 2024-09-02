@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Inter as Font } from "next/font/google";
 import localFont from "next/font/local";
 
-import { Container } from "@/components/container";
+import { Footer } from "@/components/footer";
 import { Logo } from "@/components/logo";
-import { Navigation } from "@/components/navigation";
+import { Header } from "@/components/header";
 
 import { cn } from "@/utils/cn";
 
@@ -66,30 +66,11 @@ export default function RootLayout({
           Inter.variable,
         )}
       >
-        <Container
-          className="sticky top-0 z-50 w-full bg-white/95 backdrop-saturate-150 backdrop:blur"
-          as="header"
-        >
-          <div className="flex min-h-24 items-center justify-between font-inter">
-            <Logo />
-            <Navigation />
-          </div>
-        </Container>
-
-        <main className="flex-grow">
+        <Header />
+        <main className="flex flex-grow flex-col">
           <>{children}</>
         </main>
-
-        <Container as="footer" className="w-full">
-          <div className="flex items-center justify-between">
-            <p className="text-md font-cal tracking-wider">
-              With a passion for creating innovative solutions.
-            </p>
-            <p className="text-md font-mono tracking-wide">
-              <>&copy; {new Date().getFullYear()}</>
-            </p>
-          </div>
-        </Container>
+        <Footer />
       </body>
     </html>
   );
