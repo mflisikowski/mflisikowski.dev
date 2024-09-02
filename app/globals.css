@@ -2,7 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply font-inter;
-  @apply text-zinc-900;
+@layer base {
+  html,
+  body {
+    @apply font-inter;
+    @apply text-zinc-900;
+    @apply overflow-hidden;
+  }
 }
