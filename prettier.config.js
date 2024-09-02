@@ -10,6 +10,7 @@ module.exports = {
   importOrder: [
     "^@/types/(.*)$",
     "^@types/(.*)$",
+    "^@/public/(.*)$",
     "^@/components/(.*)$",
     "^@/utils/(.*)$",
     "^[./]",
