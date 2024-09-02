@@ -3,7 +3,7 @@ import { Inter as Font } from "next/font/google";
 import localFont from "next/font/local";
 
 import { Footer } from "@/components/footer";
-import { Logo } from "@/components/logo";
+import { RadialGradient } from "@/components/framer-motion/radial-gradient";
 import { Header } from "@/components/header";
 
 import { cn } from "@/utils/cn";
@@ -71,6 +71,7 @@ export default function RootLayout({
           <>{children}</>
         </main>
         <Footer />
+        <RadialGradient />
       </body>
     </html>
   );
