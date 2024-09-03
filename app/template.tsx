@@ -7,7 +7,7 @@ import { AnimatedPageLayout } from "@/components/framer-motion/animated-page-lay
 function Template({ children }: { children: React.ReactNode }) {
   return (
     <ReactLenis root className="relative">
-      <AnimatedPageLayout className="w-full">
+      <AnimatedPageLayout>
         <>{children}</>
       </AnimatedPageLayout>
     </ReactLenis>

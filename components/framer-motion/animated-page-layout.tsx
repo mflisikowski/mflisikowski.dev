@@ -37,10 +37,14 @@ export const AnimatedPageLayout: React.FC<AnimatedPageLayoutProps> = ({
   };
 
   return (
-    <div className={cn("mx-auto", className)}>
-      <motion.main variants={variants} initial="initial" animate="visible">
-        {children}
-      </motion.main>
-    </div>
+    <motion.div
+      // @ts-ignore
+      className={cn("", className)}
+      variants={variants}
+      initial="initial"
+      animate="visible"
+    >
+      {children}
+    </motion.div>
   );
 };
