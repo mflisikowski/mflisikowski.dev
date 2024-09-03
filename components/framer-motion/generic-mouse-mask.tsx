@@ -1,5 +1,9 @@
-import { motion, useSpring } from "framer-motion";
-import React, { type ReactNode, useCallback, useEffect, useMemo, useRef, useState } from "react";
+"use client";
+
+import { useMousePosition } from "@/hooks/use-mouse-position";
+import { useMouseProximity } from "@/hooks/use-mouse-proximity";
+import { motion } from "framer-motion";
+import React, { type ReactNode, useRef } from "react";
 
 import { getTailwindColor } from "@/utils/colors";
 
@@ -22,43 +26,21 @@ export const GenericMouseMask: React.FC<GenericMouseMaskProps> = ({
   offset = 0,
   children,
 }) => {
-  const [isColliding, setIsColliding] = useState(false);
-  const $ref = useRef<HTMLDivElement>(null);
-
-  const springConfig = useMemo(() => ({ damping: 25, stiffness: 120 }), []);
-  const x = useSpring(0, springConfig);
-  const y = useSpring(0, springConfig);
-
-  const handleMouseMove = useCallback(
-    (e: MouseEvent) => {
-      const offsetX = size / 2;
-      const offsetY = size / 2;
-
-      x.set(e.clientX - offsetX);
-      y.set(e.clientY - offsetY);
-
-      if ($ref.current) {
-        const contentRect = $ref.current.getBoundingClientRect();
-        const isInside =
-          e.clientX >= contentRect.left - offset &&
-          e.clientX <= contentRect.right + offset &&
-          e.clientY >= contentRect.top - offset &&
-          e.clientY <= contentRect.bottom + offset;
-
-        setIsColliding(isInside);
-      }
-    },
-    [offset, x, y, size],
-  );
-
-  useEffect(() => {
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [handleMouseMove]);
+  const ref = useRef<HTMLElement>(null);
+  const { x, y } = useMousePosition({
+    stiffness: 120,
+    damping: 25,
+  });
+  const isProximate = useMouseProximity({
+    offset,
+    ref,
+    x,
+    y,
+  });
 
   return (
     <div>
-      <span ref={$ref}>
+      <span ref={ref}>
         <>{children}</>
       </span>
 
@@ -66,17 +48,15 @@ export const GenericMouseMask: React.FC<GenericMouseMaskProps> = ({
         aria-hidden="true"
         // @ts-ignore
         className="pointer-events-none absolute left-4 top-4 rounded-full"
-        style={
-          {
-            backgroundColor: color,
-            height: size,
-            width: size,
-            left: x,
-            top: y,
-          } as const
-        }
+        style={{
+          backgroundColor: color,
+          height: size,
+          width: size,
+          left: x,
+          top: y,
+        }}
         animate={{
-          scale: isColliding ? 10 : 1,
+          scale: isProximate ? 10 : 1,
         }}
         transition={{
           stiffness: 300,
