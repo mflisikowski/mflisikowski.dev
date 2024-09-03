@@ -26,7 +26,7 @@ export const GenericMouseMask: React.FC<GenericMouseMaskProps> = ({
   size = 16,
   children,
 }) => {
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const { x, y } = useMousePosition({
     stiffness: 120,
     damping: 25,
@@ -39,10 +39,10 @@ export const GenericMouseMask: React.FC<GenericMouseMaskProps> = ({
   });
 
   return (
-    <div>
-      <span ref={ref}>
-        <>{children}</>
-      </span>
+    <main className="flex flex-grow flex-col">
+      <div ref={ref} className="relative z-10">
+        {children}
+      </div>
 
       <motion.div
         aria-hidden="true"
@@ -65,6 +65,6 @@ export const GenericMouseMask: React.FC<GenericMouseMaskProps> = ({
           type: "spring",
         }}
       />
-    </div>
+    </main>
   );
 };

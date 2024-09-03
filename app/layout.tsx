@@ -70,7 +70,7 @@ export default function RootLayout({
         <Header />
 
         <GenericMouseMask offset={10}>
-          <main className="relative z-10 flex flex-grow flex-col">{children}</main>
+          <>{children}</>
         </GenericMouseMask>
 
         <Footer />
