@@ -3,6 +3,7 @@ import { Inter as Font } from "next/font/google";
 import localFont from "next/font/local";
 
 import { Footer } from "@/components/footer";
+import { GenericMouseMask } from "@/components/framer-motion/generic-mouse-mask";
 import { RadialGradient } from "@/components/framer-motion/radial-gradient";
 import { Header } from "@/components/header";
 
@@ -67,9 +68,11 @@ export default function RootLayout({
         )}
       >
         <Header />
-        <main className="flex flex-grow flex-col">
-          <>{children}</>
-        </main>
+
+        <GenericMouseMask offset={10}>
+          <main className="relative z-10 flex flex-grow flex-col">{children}</main>
+        </GenericMouseMask>
+
         <Footer />
         <RadialGradient />
       </body>

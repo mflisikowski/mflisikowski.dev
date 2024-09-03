@@ -2,10 +2,14 @@
 
 import { ReactLenis } from "lenis/react";
 
+import { AnimatedPageLayout } from "@/components/framer-motion/animated-page-layout";
+
 function Template({ children }: { children: React.ReactNode }) {
   return (
     <ReactLenis root className="relative">
-      <>{children}</>
+      <AnimatedPageLayout className="w-full">
+        <>{children}</>
+      </AnimatedPageLayout>
     </ReactLenis>
   );
 }

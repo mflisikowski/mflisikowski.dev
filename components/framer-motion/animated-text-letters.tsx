@@ -1,3 +1,5 @@
+"use client";
+
 import { type Variants, motion } from "framer-motion";
 import React from "react";
 
@@ -45,7 +47,7 @@ export const AnimatedTextLetters: React.FC<AnimatedTextLettersProps> = ({
       opacity: 1,
       y: finalY,
       transition: {
-        delay: startDelay + i * delay, // Add startDelay to the delay calculation
+        delay: startDelay + i * delay,
         duration: duration,
         repeat: infinite ? Infinity : 0,
         repeatType: infinite ? "reverse" : undefined,

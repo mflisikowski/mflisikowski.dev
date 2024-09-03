@@ -22,8 +22,8 @@ const defaultColor = getTailwindColor({
 
 export const GenericMouseMask: React.FC<GenericMouseMaskProps> = ({
   color = defaultColor,
-  size = 16,
   offset = 0,
+  size = 16,
   children,
 }) => {
   const ref = useRef<HTMLElement>(null);
@@ -47,7 +47,7 @@ export const GenericMouseMask: React.FC<GenericMouseMaskProps> = ({
       <motion.div
         aria-hidden="true"
         // @ts-ignore
-        className="pointer-events-none absolute left-4 top-4 rounded-full"
+        className="pointer-events-none absolute left-4 top-4 z-0 rounded-full"
         style={{
           backgroundColor: color,
           height: size,
