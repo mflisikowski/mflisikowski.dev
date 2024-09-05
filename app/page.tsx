@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { Container } from "@/components/container";
 import { AnimatedTechStack } from "@/components/framer-motion/animated-tech-stack";
 import { AnimatedTextLetters } from "@/components/framer-motion/animated-text-letters";
@@ -8,8 +10,8 @@ export default function Home() {
   return (
     <Container>
       {/* Hero Section */}
-      <div className="group grid grid-cols-2 items-center">
-        <div className={cn("relative z-20 col-span-full space-y-4 lg:col-auto lg:space-y-8")}>
+      <div className="group grid grid-cols-3 gap-10">
+        <div className="relative z-20 order-2 col-span-full h-full space-y-4 lg:order-none lg:col-span-2 lg:space-y-8">
           <AnimatedTextLetters
             className={cn(
               "selection:bg-purple-500 selection:tracking-widest selection:text-white",
@@ -30,13 +32,20 @@ export default function Home() {
           />
         </div>
 
-        <div className="col-span-full mt-16 lg:col-auto lg:mt-0">
-          <AnimatedTechStack
-            className={cn(
-              "flex lg:relative lg:z-10 lg:aspect-square lg:rounded-e-full lg:rounded-s-full",
-              "backdrop-blur-2xl",
-            )}
-          />
+        <div className="relative z-10 col-span-full flex-grow lg:col-auto">
+          <div className="aspect-square h-full lg:-translate-x-24 lg:translate-y-36 lg:scale-125 xl:scale-100">
+            <Image
+              className="h-full w-full rounded-full object-cover"
+              height={570}
+              width={570}
+              src="/mateusz-flisikowski-570x570.jpeg"
+              alt="Mateusz Flisikowski"
+            />
+
+            <div className="absolute bottom-4 right-8 z-20 flex h-24 w-24 items-center justify-center rounded-full backdrop-blur-2xl md:h-32 md:w-32 lg:-left-8 lg:bottom-4 xl:h-40 xl:w-40">
+              <AnimatedTechStack className="relative h-full w-full overflow-hidden rounded-full bg-white/80 p-8" />
+            </div>
+          </div>
         </div>
       </div>
     </Container>
