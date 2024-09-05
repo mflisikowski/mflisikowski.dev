@@ -100,7 +100,12 @@ const IconElement: React.FC<IconElementProps> = ({ icon, index, currentIndex, to
 
   return (
     <motion.div
-      transition={{ stiffness: 200, duration: 0.4, damping: 20, type: "tween" }}
+      transition={{
+        stiffness: 200,
+        duration: 0.4,
+        damping: 20,
+        type: "tween",
+      }}
       animate={{
         zIndex: isCurrent ? 10 : 1,
         x: isCurrent ? 0 : x,
@@ -109,9 +114,9 @@ const IconElement: React.FC<IconElementProps> = ({ icon, index, currentIndex, to
       initial={{ x, y }}
       // @ts-ignore
       className={cn(
-        "absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform",
+        "absolute left-1/3 top-1/4 -translate-x-1/3 -translate-y-1/4 transform lg:left-1/2 lg:top-1/2",
         isCurrent ? "opacity-100" : "opacity-5",
-        isCurrent ? "h-64 w-64" : "h-12 w-12",
+        isCurrent ? "h-32 w-32 lg:h-64 lg:w-64" : "h-12 w-12",
       )}
     >
       <div aria-label={icon.name} aria-hidden={!isCurrent} className="relative">
