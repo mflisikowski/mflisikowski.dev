@@ -8,14 +8,14 @@ export default function AboutPage() {
   return (
     <section className="py-16">
       <div className="grid grid-cols-3 gap-x-4 gap-y-4 text-center font-mono">
-        <div className="col-span-3 space-y-16 text-left drop-shadow-xl lg:col-span-2">
+        <div className="col-span-3 mb-8 space-y-16 text-left drop-shadow-xl lg:col-span-2 lg:mb-0">
           <div>
             <AnimatedTextLetters
               animationConfig={{
                 delay: 0.03,
               }}
               className={cn(
-                "text-nowrap font-cal text-[4rem] leading-none sm:text-[6rem] md:text-[8rem] xl:text-8xl 2xl:text-[10rem]",
+                "text-nowrap font-cal text-[4.5rem] leading-none sm:text-[6rem] md:text-[8rem] xl:text-8xl 2xl:text-[10rem]",
               )}
               text={"Flisikowski"}
             />
@@ -26,7 +26,7 @@ export default function AboutPage() {
                 delay: 0.03,
               }}
               className={cn(
-                "text-nowrap font-cal text-[4rem] leading-none sm:text-[6rem] md:text-[8rem] xl:text-8xl 2xl:text-[10rem]",
+                "text-nowrap font-cal text-[4.5rem] leading-none sm:text-[6rem] md:text-[8rem] xl:text-8xl 2xl:text-[10rem]",
               )}
               text={"Mateusz"}
             />
