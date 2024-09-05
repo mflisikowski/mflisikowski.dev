@@ -33,7 +33,7 @@ type ColorShade =
   | "950";
 type ColorName = keyof DefaultColors;
 
-interface ColorOptions {
+export interface ColorOptions {
   color?: ColorName;
   shade?: ColorShade;
   alpha?: number;

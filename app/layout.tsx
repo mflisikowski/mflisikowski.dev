@@ -2,14 +2,13 @@ import type { Metadata } from "next";
 import { Inter as Font } from "next/font/google";
 import localFont from "next/font/local";
 
+import { Background } from "@/components/background";
 import { Footer } from "@/components/footer";
-import { GenericMouseMask } from "@/components/framer-motion/generic-mouse-mask";
-import { RadialGradient } from "@/components/framer-motion/radial-gradient";
 import { Header } from "@/components/header";
 
 import { cn } from "@/utils/cn";
 
-import "./globals.css";
+import "../app/globals.css";
 
 export const metadata: Metadata = {
   title: {
@@ -68,13 +67,12 @@ export default function RootLayout({
         )}
       >
         <Header />
-
-        <GenericMouseMask offset={10}>
+        <main className="relative z-20 flex flex-grow flex-col">
           <>{children}</>
-        </GenericMouseMask>
-
+        </main>
         <Footer />
-        <RadialGradient />
+
+        <Background />
       </body>
     </html>
   );
