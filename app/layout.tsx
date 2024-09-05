@@ -67,7 +67,7 @@ export default function RootLayout({
         )}
       >
         <Header />
-        <main className="relative z-20 flex flex-grow flex-col">
+        <main className="relative z-20 flex flex-grow flex-col py-4 lg:py-16">
           <>{children}</>
         </main>
         <Footer />
