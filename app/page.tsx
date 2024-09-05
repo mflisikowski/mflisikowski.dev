@@ -30,6 +30,17 @@ export default function Home() {
             )}
             text={"with Precision\n& Passion"}
           />
+
+          <div className="max-w-lg">
+            <AnimatedTextLetters
+              animationConfig={{
+                startDelay: 0.8,
+              }}
+              className="text-wrap font-mono text-2xl font-light"
+              text={"Turning innovative ideas into powerful, user-centric digital solutions"}
+              animated
+            />
+          </div>
         </div>
 
         <div className="relative z-10 col-span-full flex-grow lg:col-auto">
