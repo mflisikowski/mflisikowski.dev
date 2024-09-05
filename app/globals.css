@@ -3,10 +3,26 @@
 @tailwind utilities;
 
 @layer base {
+
   html,
   body {
     @apply font-inter;
     @apply text-zinc-900;
-    @apply overflow-hidden;
   }
+}
+
+::-webkit-scrollbar {
+  @apply hidden;
+}
+
+::-webkit-scrollbar-track {
+  @apply hidden;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply hidden;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply hidden;
 }
