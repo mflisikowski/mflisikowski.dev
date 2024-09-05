@@ -8,7 +8,7 @@ export default function AboutPage() {
   return (
     <section className="py-16">
       <div className="grid grid-cols-3 gap-x-4 gap-y-4 text-center font-mono">
-        <div className="col-span-3 mb-8 space-y-16 text-left drop-shadow-xl lg:col-span-2 lg:mb-0">
+        <div className="col-span-3 mb-8 space-y-16 text-left lg:col-span-2 lg:mb-0">
           <div>
             <AnimatedTextLetters
               animationConfig={{
