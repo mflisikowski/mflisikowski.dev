@@ -41,7 +41,7 @@ export default function Home() {
               <FadeIn>
                 <div className="mt-14 max-w-lg">
                   <AnimatedTextLetters
-                    className="text-wrap text-center font-mono text-2xl font-light lg:text-left"
+                    className="text-wrap font-mono text-2xl font-light"
                     text={"Turning innovative ideas into powerful, user-centric digital solutions"}
                     animated
                   />
@@ -49,17 +49,19 @@ export default function Home() {
               </FadeIn>
             </div>
 
-            <div className="relative z-10 col-span-full flex-grow lg:col-auto">
-              <Image
-                className={cn(
-                  "aspect-video h-full w-full rounded-full object-cover lg:aspect-square lg:-translate-x-12 lg:translate-y-14 lg:rotate-45",
-                  "shadow-[4px_-4px_0_1px_rgba(0,0,0,0.8)]",
-                )}
-                height={570}
-                width={570}
-                src="wireframe.svg"
-                alt="wireframe"
-              />
+            <div className="relative z-10 col-span-full flex-grow py-12 lg:col-auto">
+              <div className="aspect-video h-full w-full lg:aspect-square lg:scale-110 2xl:scale-100">
+                <Image
+                  className={cn(
+                    "h-full w-full rotate-12 rounded-full object-cover lg:-translate-x-12 lg:translate-y-14 lg:rotate-45",
+                    "shadow-[4px_-4px_0_1px_rgba(0,0,0,0.8)]",
+                  )}
+                  height={570}
+                  width={570}
+                  src="wireframe.svg"
+                  alt="wireframe"
+                />
+              </div>
             </div>
 
             <div className="order-2 col-span-full">
