@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { Inter as Font } from "next/font/google";
 import localFont from "next/font/local";
 
+import { Providers } from "@/components/analytics/analytics-providers";
 import { Background } from "@/components/background";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
@@ -52,6 +54,10 @@ const Inter = Font({
   subsets: ["latin"],
 });
 
+const AnalyticsPageView = dynamic(() => import("@/components/analytics/analytics-page-view"), {
+  ssr: false,
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -59,21 +65,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full">
-      <body
-        className={cn(
-          "relative flex min-h-full flex-col text-gray-900 antialiased",
-          CalSans.variable,
-          Inter.variable,
-        )}
-      >
-        <Header />
-        <main className="relative z-20 flex flex-grow flex-col py-4 lg:py-16">
-          <>{children}</>
-        </main>
-        <Footer />
+      <Providers>
+        <body
+          className={cn(
+            "relative flex min-h-full flex-col text-gray-900 antialiased",
+            CalSans.variable,
+            Inter.variable,
+          )}
+        >
+          <AnalyticsPageView />
 
-        <Background />
-      </body>
+          <Header />
+          <main className="relative z-20 flex flex-grow flex-col py-4 lg:py-16">
+            <>{children}</>
+          </main>
+          <Footer />
+
+          <Background />
+        </body>
+      </Providers>
     </html>
   );
 }
