@@ -5,19 +5,20 @@ import { cookies } from "next/headers";
 const COOKIE_NAME = "cookieConsent";
 
 export async function setCookieConsent(accepted: boolean) {
-  if (accepted) {
-    const oneYearFromNow = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000);
+  const oneYearFromNow = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000);
 
-    cookies().set(COOKIE_NAME, "true", {
-      expires: oneYearFromNow,
-      path: "/",
-      sameSite: "strict",
-    });
-  } else {
-    cookies().delete(COOKIE_NAME);
-  }
+  cookies().set(COOKIE_NAME, accepted.toString(), {
+    expires: oneYearFromNow,
+    path: "/",
+    sameSite: "strict",
+  });
 }
 
 export async function getCookieConsent() {
-  return cookies().get(COOKIE_NAME)?.value === "true";
+  const consentCookie = cookies().get(COOKIE_NAME);
+
+  if (consentCookie?.value === "false") return false;
+  if (consentCookie?.value === "true") return true;
+
+  return false;
 }
