@@ -1,6 +1,6 @@
 "use client";
 
-import { useAptabase } from "@aptabase/react";
+import { useConsentAwareAnalytics } from "@/hooks/use-consent-aware-analytics";
 import { ArrowRightIcon } from "lucide-react";
 import Link from "next/link";
 
@@ -9,7 +9,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/utils/cn";
 
 export default function ElevateYourBrandToday() {
-  const { trackEvent } = useAptabase();
+  const { trackEvent } = useConsentAwareAnalytics();
 
   return (
     <Link

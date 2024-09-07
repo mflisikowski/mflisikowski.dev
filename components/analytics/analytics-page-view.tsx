@@ -15,9 +15,7 @@ export default function AnalyticsPageView(): null {
     const url = new URL(pathname, window.origin);
     url.search = searchParams.toString();
 
-    trackEvent("page_view", {
-      url: url.toString(),
-    });
+    trackEvent("page_view", { url: url.toString() });
   }, [pathname, searchParams, trackEvent]);
 
   useEffect(() => {
