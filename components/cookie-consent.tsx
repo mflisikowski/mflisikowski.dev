@@ -18,24 +18,26 @@ interface CookieConsentProps {
 
 export const CookieConsent: FC<CookieConsentProps> = ({ onDeclineCallback, onAcceptCallback }) => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
-  const { accepted } = useConsentCheck();
+  const { accepted, loading } = useConsentCheck();
+
+  useEffect(() => {
+    if (!loading && !accepted) {
+      setIsVisible(true);
+    }
+  }, [accepted, loading]);
 
   const handleConsent = async (accepted: boolean): Promise<void> => {
-    setIsVisible(false);
-
     if (accepted) {
       await setCookieConsent(true);
       onAcceptCallback?.();
     } else {
+      await setCookieConsent(false);
       onDeclineCallback?.();
     }
+    setIsVisible(false);
   };
 
-  useEffect(() => {
-    setIsVisible(!accepted);
-  }, [accepted]);
-
-  if (!isVisible) return null;
+  if (loading || !isVisible) return null;
 
   return (
     <div
