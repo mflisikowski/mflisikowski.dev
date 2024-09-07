@@ -18,6 +18,11 @@ const config = {
       },
     },
     extend: {
+      aspectRatio: {
+        ultrawide: "21 / 9",
+        standard: "4 / 3",
+        photo: "4 / 5",
+      },
       fontFamily: {
         inter: ["var(--font-inter)"],
         cal: ["var(--font-cal)"],

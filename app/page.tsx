@@ -19,7 +19,7 @@ export default function Home() {
                 <AnimatedTextLetters
                   className={cn(
                     "selection:bg-purple-500 selection:tracking-widest selection:text-white",
-                    "text-6xl sm:text-8xl md:text-8xl lg:text-8xl xl:text-9xl 2xl:text-9xl",
+                    "text-6xl sm:text-8xl md:text-8xl lg:text-9xl xl:text-9xl 2xl:text-9xl",
                     "font-cal tracking-wide lg:text-nowrap",
                   )}
                   text={"Crafting Digital\nExperiences"}
@@ -49,13 +49,10 @@ export default function Home() {
               </FadeIn>
             </div>
 
-            <div className="relative z-10 col-span-full flex-grow py-12 lg:col-auto">
-              <div className="aspect-video h-full w-full lg:aspect-square lg:scale-110 2xl:scale-100">
+            <div className="relative z-10 col-span-full flex-grow lg:col-auto">
+              <div className="grid h-full place-items-center lg:place-items-end">
                 <Image
-                  className={cn(
-                    "h-full w-full rotate-12 rounded-full object-cover lg:-translate-x-12 lg:translate-y-14 lg:rotate-45",
-                    "shadow-[4px_-4px_0_1px_rgba(0,0,0,0.8)]",
-                  )}
+                  className="my-6 aspect-video rotate-12 rounded-full object-cover shadow-[4px_-4px_0_1px_rgba(0,0,0,0.8)] lg:my-0 lg:aspect-photo lg:-translate-x-12 lg:translate-y-14 lg:rotate-45 xl:-translate-x-32"
                   height={570}
                   width={570}
                   src="wireframe.svg"
