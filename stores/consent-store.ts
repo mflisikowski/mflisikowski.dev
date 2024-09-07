@@ -1,5 +1,6 @@
-import { getCookieConsent, setCookieConsent } from "@/actions/set-cookie-consent";
 import { create } from "zustand";
+
+import { getCookieConsent, setCookieConsent } from "@/actions/set-cookie-consent";
 
 interface ConsentState {
   isConsentDeclined: boolean;
