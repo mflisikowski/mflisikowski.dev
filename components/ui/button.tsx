@@ -9,6 +9,20 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
+        cookieDecline: `
+          bg-white text-black
+          hover:bg-gray-50
+          shadow-[0_1px_0_1px_rgba(0,0,0,0.1)]
+          hover:shadow-[0_0_0_1px_rgba(0,0,0,0.1)]
+          rounded-lg
+        `,
+        cookieAccept: `
+          bg-black text-white
+          hover:bg-gray-800
+          shadow-[0_1px_0_1px_rgba(255,255,255,0.1)]
+          hover:shadow-[0_0_0_1px_rgba(255,255,255,0.1)]
+          rounded-lg
+        `,
         amber: `
           bg-amber-300 text-black
           hover:bg-amber-400

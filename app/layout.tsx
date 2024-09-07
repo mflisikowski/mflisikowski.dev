@@ -5,6 +5,7 @@ import localFont from "next/font/local";
 
 import { Providers } from "@/components/analytics/analytics-providers";
 import { Background } from "@/components/background";
+import { CookieConsent } from "@/components/cookie-consent";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 
@@ -82,6 +83,7 @@ export default function RootLayout({
           <Footer />
 
           <Background />
+          <CookieConsent />
         </body>
       </Providers>
     </html>
