@@ -1,25 +1,28 @@
 "use client";
 
+import { useAptabase } from "@aptabase/react";
 import { usePathname, useSearchParams } from "next/navigation";
-import { usePostHog } from "posthog-js/react";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 
 export default function AnalyticsPageView(): null {
-  const pathname = usePathname();
+  const { trackEvent } = useAptabase();
   const searchParams = useSearchParams();
-  const posthog = usePostHog();
+  const pathname = usePathname();
+
+  const trackPageView = useCallback(() => {
+    if (!pathname || !trackEvent) return;
+
+    const url = new URL(pathname, window.origin);
+    url.search = searchParams.toString();
+
+    trackEvent("page_view", {
+      url: url.toString(),
+    });
+  }, [pathname, searchParams, trackEvent]);
 
   useEffect(() => {
-    if (pathname && posthog) {
-      let url = window.origin + pathname;
-      if (searchParams.toString()) {
-        url = url + `?${searchParams.toString()}`;
-      }
-      posthog.capture("$pageview", {
-        $current_url: url,
-      });
-    }
-  }, [pathname, searchParams, posthog]);
+    trackPageView();
+  }, [trackPageView]);
 
   return null;
 }
