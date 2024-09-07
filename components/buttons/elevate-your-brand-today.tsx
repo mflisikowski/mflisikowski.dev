@@ -1,20 +1,20 @@
 "use client";
 
+import { useAptabase } from "@aptabase/react";
 import { ArrowRightIcon } from "lucide-react";
 import Link from "next/link";
-import posthog from "posthog-js";
 
 import { buttonVariants } from "@/components/ui/button";
 
 import { cn } from "@/utils/cn";
 
 export default function ElevateYourBrandToday() {
+  const { trackEvent } = useAptabase();
+
   return (
     <Link
       className={cn(buttonVariants({ variant: "amber", size: "lg" }))}
-      onClick={() => {
-        posthog.capture("elevate-your-brand-today-button-click");
-      }}
+      onClick={() => trackEvent("elevate-your-brand-today-button-click")}
       href="/digital-needs-assessment"
     >
       <span className="text-lg font-semibold">Elevate Your Brand Today</span>
