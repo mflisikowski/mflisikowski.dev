@@ -25,9 +25,10 @@ export const PostHogProvider: FC<PropsWithChildren> = ({ children }) => {
     }
   }, [isConsentGiven]);
 
-  if (!isConsentGiven) {
-    return <>{children}</>;
-  }
-
-  return <Provider client={posthog}>{children}</Provider>;
+  return (
+    <>
+      {isConsentGiven && <Provider client={posthog}>{children}</Provider>}
+      {!isConsentGiven && children}
+    </>
+  );
 };
