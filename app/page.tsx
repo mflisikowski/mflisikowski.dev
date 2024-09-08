@@ -4,6 +4,7 @@ import ElevateYourBrandToday from "@/components/buttons/elevate-your-brand-today
 import { Container } from "@/components/container";
 import { AnimatedTextLetters } from "@/components/framer-motion/animated-text-letters";
 import { FadeIn, FadeInStagger } from "@/components/framer-motion/fade-in";
+import { ScribbleDecoration } from "@/components/scribble-decoration";
 
 import { cn } from "@/utils/cn";
 
@@ -13,7 +14,7 @@ export default function Home() {
       <FadeInStagger>
         <div className="space-y-44">
           {/* Hero */}
-          <div className="group grid grid-cols-3 gap-10">
+          <div className="grid grid-cols-3 gap-10">
             <div className="relative z-20 col-span-full h-full space-y-4 lg:col-span-2 lg:space-y-8">
               <FadeIn>
                 <AnimatedTextLetters
@@ -64,7 +65,9 @@ export default function Home() {
             <div className="order-2 col-span-full">
               <div className="flex items-center justify-center space-y-3 lg:justify-start">
                 <FadeIn>
-                  <ElevateYourBrandToday />
+                  <ScribbleDecoration variant={1} svgClassName="-right-7 -top-7 h-12 w-12">
+                    <ElevateYourBrandToday />
+                  </ScribbleDecoration>
                 </FadeIn>
               </div>
             </div>
