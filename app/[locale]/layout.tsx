@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { unstable_setRequestLocale } from "next-intl/server";
 import dynamic from "next/dynamic";
 import { Inter as Font } from "next/font/google";
 import localFont from "next/font/local";
@@ -74,6 +75,8 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: { locale: string };
 }>) {
+  unstable_setRequestLocale(locale);
+
   return (
     <html lang={locale} className="h-full">
       <Providers>
