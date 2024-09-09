@@ -4,7 +4,13 @@ import { AnimatedTextLetters } from "@/components/framer-motion/animated-text-le
 
 import { cn } from "@/utils/cn";
 
-export default function AboutPage() {
+interface AboutPageProps {
+  params: {
+    locale: string;
+  };
+}
+
+export default function AboutPage({ params: { locale } }: AboutPageProps) {
   return (
     <div className="grid grid-cols-3 gap-x-4 gap-y-4 text-center font-mono">
       <div className="col-span-3 mb-8 space-y-16 text-left lg:col-span-2 lg:mb-0">
