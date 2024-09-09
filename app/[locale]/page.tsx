@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 import ElevateYourBrandToday from "@/components/buttons/elevate-your-brand-today";
@@ -9,6 +10,8 @@ import { ScribbleDecoration } from "@/components/scribble-decoration";
 import { cn } from "@/utils/cn";
 
 export default function Home() {
+  const t = useTranslations("HomePage");
+
   return (
     <Container>
       <FadeInStagger>
@@ -23,7 +26,7 @@ export default function Home() {
                     "text-6xl sm:text-8xl md:text-8xl lg:text-9xl xl:text-9xl 2xl:text-9xl",
                     "font-cal tracking-wide lg:text-nowrap",
                   )}
-                  text={"Crafting Digital\nExperiences"}
+                  text={t("hero.titleMain")}
                 />
               </FadeIn>
 
@@ -35,7 +38,7 @@ export default function Home() {
                     "text-5xl sm:text-7xl md:text-7xl lg:text-7xl xl:text-8xl 2xl:text-8xl",
                     "text-nowrap font-cal tracking-wide",
                   )}
-                  text={"with Precision\n& Passion"}
+                  text={t("hero.titleAccent")}
                 />
               </FadeIn>
 
@@ -43,7 +46,7 @@ export default function Home() {
                 <div className="mt-14 max-w-lg">
                   <AnimatedTextLetters
                     className="text-wrap font-mono text-2xl font-light"
-                    text={"Turning innovative ideas into powerful, user-centric digital solutions"}
+                    text={t("hero.subtitle")}
                     animated
                   />
                 </div>

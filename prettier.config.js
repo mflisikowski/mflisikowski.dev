@@ -17,6 +17,7 @@ module.exports = {
     "^@/stores/(.*)$",
     "^@/providers/(.*)$",
     "^@/actions/(.*)$",
+    "^@/i18n/(.*)$",
     "^[./]",
   ],
   attributeGroups: ["^(id|name)$", "^class$", "$DEFAULT", "^aria-"],

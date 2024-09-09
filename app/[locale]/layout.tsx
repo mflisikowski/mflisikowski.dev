@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { Inter as Font } from "next/font/google";
 import localFont from "next/font/local";
+import React from "react";
 
 import { Background } from "@/components/background";
 import { CookieConsent } from "@/components/cookie-consent";
@@ -10,10 +11,11 @@ import { Header } from "@/components/header";
 
 import { cn } from "@/utils/cn";
 
-import { AptabaseProvider } from "@/providers/aptabase-provider";
-import { PostHogProvider } from "@/providers/post-hog-provider";
+import { Providers } from "@/providers/index";
 
-import "../app/globals.css";
+import { routing } from "@/i18n/routing";
+
+import "../globals.css";
 
 export const metadata: Metadata = {
   title: {
@@ -49,7 +51,7 @@ export const metadata: Metadata = {
 const CalSans = localFont({
   variable: "--font-cal",
   display: "swap",
-  src: "../public/fonts/CalSans-SemiBold.woff2",
+  src: "../../public/fonts/CalSans-SemiBold.woff2",
 });
 
 const Inter = Font({
@@ -61,35 +63,39 @@ const AnalyticsPageView = dynamic(() => import("@/components/analytics/analytics
   ssr: false,
 });
 
-export default function RootLayout({
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+export default async function RootLayout({
   children,
+  params: { locale },
 }: Readonly<{
   children: React.ReactNode;
+  params: { locale: string };
 }>) {
   return (
-    <html lang="en" className="h-full">
-      <AptabaseProvider>
-        <PostHogProvider>
-          <body
-            className={cn(
-              "relative flex min-h-full flex-col text-gray-900 antialiased",
-              CalSans.variable,
-              Inter.variable,
-            )}
-          >
-            <AnalyticsPageView />
+    <html lang={locale} className="h-full">
+      <Providers>
+        <body
+          className={cn(
+            "relative flex min-h-full flex-col text-gray-900 antialiased",
+            CalSans.variable,
+            Inter.variable,
+          )}
+        >
+          <AnalyticsPageView />
 
-            <Header />
-            <main className="relative z-20 flex flex-grow flex-col py-4 lg:py-16">
-              <>{children}</>
-            </main>
-            <Footer />
+          <Header />
+          <main className="relative z-20 flex flex-grow flex-col py-4 lg:py-16">
+            <>{children}</>
+          </main>
+          <Footer />
 
-            <Background />
-            <CookieConsent />
-          </body>
-        </PostHogProvider>
-      </AptabaseProvider>
+          <Background />
+          <CookieConsent />
+        </body>
+      </Providers>
     </html>
   );
 }

@@ -1,0 +1,15 @@
+{
+  "HomePage": {
+    "hero": {
+      "titleMain": "Tworzymy Cyfrowe\nDoświadczenia",
+      "titleAccent": "z Precyzją\ni Pasją",
+      "subtitle": "Przekształcamy innowacyjne pomysły w potężne, zorientowane na użytkownika rozwiązania cyfrowe",
+      "cta": "Wzmocnij swoją markę już dziś"
+    }
+  },
+  "language": {
+    "select": "Wybierz język",
+    "english": "Angielski",
+    "polish": "Polski"
+  }
+}

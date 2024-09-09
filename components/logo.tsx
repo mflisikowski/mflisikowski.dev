@@ -1,9 +1,10 @@
 "use client";
 
 import { BinaryIcon } from "lucide-react";
-import Link from "next/link";
 import React from "react";
 import { TypeAnimation } from "react-type-animation";
+
+import { Link } from "@/i18n/routing";
 
 export function Logo() {
   return (

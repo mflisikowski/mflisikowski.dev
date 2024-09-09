@@ -1,0 +1,15 @@
+{
+  "HomePage": {
+    "hero": {
+      "titleMain": "Crafting Digital\nExperiences",
+      "titleAccent": "with Precision\n& Passion",
+      "subtitle": "Turning innovative ideas into powerful, user-centric digital solutions",
+      "cta": "Elevate your brand today"
+    }
+  },
+  "language": {
+    "select": "Select language",
+    "english": "English",
+    "polish": "Polish"
+  }
+}

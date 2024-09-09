@@ -1,16 +1,19 @@
 "use client";
 
-import { useMediaQuery } from "@/hooks/use-media-query";
 import { fetchNavigationData } from "@/repositories/navigation-respository";
 import { PanelRightOpen } from "lucide-react";
-import Link from "next/link";
 import React, { Fragment } from "react";
 
+import { LanguageSwitcher } from "@/components/language-switcher";
 import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 // prettier-ignore
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 
 import { cn } from "@/utils/cn";
+
+import { useMediaQuery } from "@/hooks/use-media-query";
+
+import { Link } from "@/i18n/routing";
 
 export function Navigation() {
   const navigationItems = fetchNavigationData();
@@ -51,6 +54,8 @@ export function Navigation() {
             )}
           </NavigationMenuItem>
         ))}
+
+        <LanguageSwitcher />
       </NavigationMenuList>
     </NavigationMenu>
   ) : (
@@ -84,6 +89,8 @@ export function Navigation() {
               </Fragment>
             );
           })}
+
+          <LanguageSwitcher />
         </div>
       </DrawerContent>
     </Drawer>
