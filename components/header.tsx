@@ -1,4 +1,5 @@
 import { Container } from "@/components/container";
+import { LanguageSwitcher } from "@/components/language-switcher";
 import { Logo } from "@/components/logo";
 import { Navigation } from "@/components/navigation";
 
@@ -14,7 +15,11 @@ export function Header() {
     >
       <div className="flex min-h-24 items-center justify-between font-inter">
         <Logo />
-        <Navigation />
+
+        <div className="flex items-center gap-4">
+          <LanguageSwitcher />
+          <Navigation />
+        </div>
       </div>
     </Container>
   );

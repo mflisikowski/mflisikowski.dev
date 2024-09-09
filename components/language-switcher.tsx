@@ -1,3 +1,5 @@
+"use client";
+
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
@@ -10,7 +12,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-export const LanguageSwitcher = () => {
+import { cn } from "@/utils/cn";
+
+export const LanguageSwitcher = ({ className }: { className?: string }) => {
   const pathname = usePathname();
   const router = useRouter();
   const locale = useLocale();
@@ -23,15 +27,17 @@ export const LanguageSwitcher = () => {
   };
 
   return (
-    <Select onValueChange={changeLanguage} defaultValue={locale}>
-      <SelectTrigger className="w-[180px]">
-        <SelectValue placeholder={t("select")} />
-      </SelectTrigger>
+    <div className={cn("lg:order-2", className)}>
+      <Select onValueChange={changeLanguage} defaultValue={locale}>
+        <SelectTrigger className="w-[180px]">
+          <SelectValue placeholder={t("select")} />
+        </SelectTrigger>
 
-      <SelectContent>
-        <SelectItem value="pl">{t("polish")}</SelectItem>
-        <SelectItem value="en">{t("english")}</SelectItem>
-      </SelectContent>
-    </Select>
+        <SelectContent>
+          <SelectItem value="pl">{t("polish")}</SelectItem>
+          <SelectItem value="en">{t("english")}</SelectItem>
+        </SelectContent>
+      </Select>
+    </div>
   );
 };
