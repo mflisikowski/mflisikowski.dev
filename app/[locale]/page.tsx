@@ -2,7 +2,7 @@ import { useTranslations } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 
-import ElevateYourBrandToday from "@/components/buttons/elevate-your-brand-today";
+import { ElevateYourBrandTodayButton } from "@/components/buttons/elevate-your-brand-today";
 import { Container } from "@/components/container";
 import { AnimatedTextLetters } from "@/components/framer-motion/animated-text-letters";
 import { FadeIn, FadeInStagger } from "@/components/framer-motion/fade-in";
@@ -71,7 +71,7 @@ export default function Home({ params: { locale } }: { params: { locale: string 
               <div className="flex items-center justify-center space-y-3 lg:justify-start">
                 <FadeIn>
                   <ScribbleDecoration variant={1} svgClassName="-right-7 -top-7 h-12 w-12">
-                    <ElevateYourBrandToday />
+                    <ElevateYourBrandTodayButton />
                   </ScribbleDecoration>
                 </FadeIn>
               </div>

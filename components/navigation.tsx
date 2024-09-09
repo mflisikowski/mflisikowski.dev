@@ -2,6 +2,7 @@
 
 import { fetchNavigationData } from "@/repositories/navigation-respository";
 import { PanelRightOpen } from "lucide-react";
+import Link from "next/link";
 import React, { Fragment } from "react";
 
 import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
@@ -11,8 +12,6 @@ import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMe
 import { cn } from "@/utils/cn";
 
 import { useMediaQuery } from "@/hooks/use-media-query";
-
-import { Link } from "@/i18n/routing";
 
 export function Navigation() {
   const navigationItems = fetchNavigationData();

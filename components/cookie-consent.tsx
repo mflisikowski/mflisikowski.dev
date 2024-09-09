@@ -1,6 +1,7 @@
 "use client";
 
 import { CookieIcon } from "lucide-react";
+import Link from "next/link";
 import React, { type FC, useEffect } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -8,8 +9,6 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/utils/cn";
 
 import { useConsentStore } from "@/stores/consent-store";
-
-import { Link } from "@/i18n/routing";
 
 export const CookieConsent: FC = () => {
   const { isVisible, checkConsent, setConsent } = useConsentStore();

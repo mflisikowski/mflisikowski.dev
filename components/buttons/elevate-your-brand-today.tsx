@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 import { buttonVariants } from "@/components/ui/button";
 
@@ -8,11 +9,10 @@ import { cn } from "@/utils/cn";
 
 import { useConsentAwareAnalytics } from "@/hooks/use-consent-aware-analytics";
 
-import { Link } from "@/i18n/routing";
-
-export default function ElevateYourBrandToday() {
+export const ElevateYourBrandTodayButton = () => {
   const { trackEvent } = useConsentAwareAnalytics();
   const t = useTranslations("HomePage");
+
   return (
     <Link
       className={cn(buttonVariants({ variant: "amber", size: "lg" }))}
@@ -24,4 +24,4 @@ export default function ElevateYourBrandToday() {
       </span>
     </Link>
   );
-}
+};
