@@ -7,7 +7,7 @@
       "cta": "Elevate your brand today"
     }
   },
-  "language": {
+  "languageSwitcher": {
     "select": "Select language",
     "english": "English",
     "polish": "Polish"

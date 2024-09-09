@@ -19,7 +19,7 @@ export const LanguageSwitcher = ({ className }: { className?: string }) => {
   const router = useRouter();
   const locale = useLocale();
 
-  const t = useTranslations("language");
+  const t = useTranslations("languageSwitcher");
 
   const changeLanguage = (newLocale: string) => {
     const newPathname = pathname.replace(`/${locale}`, "");
