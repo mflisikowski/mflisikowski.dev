@@ -1,6 +1,7 @@
 "use client";
 
 import { CookieIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import React, { type FC, useEffect } from "react";
 
@@ -12,6 +13,7 @@ import { useConsentStore } from "@/stores/consent-store";
 
 export const CookieConsent: FC = () => {
   const { isVisible, checkConsent, setConsent } = useConsentStore();
+  const t = useTranslations("cookieConsent");
 
   useEffect(() => {
     checkConsent();
@@ -28,20 +30,17 @@ export const CookieConsent: FC = () => {
         <div className="m-3 rounded-md border bg-white shadow-lg">
           <div className="grid gap-2">
             <div className="flex h-14 items-center justify-between border-b p-4">
-              <p className="text-lg font-medium">We use cookies</p>
+              <p className="text-lg font-medium">{t("title")}</p>
               <CookieIcon className="h-5 w-5" />
             </div>
             <div className="space-y-2 text-balance p-4">
-              <p className="text-left text-sm text-gray-700">
-                We use cookies to enhance your browsing experience, analyze site traffic, and
-                personalize content. By clicking &ldquo;Accept,&rdquo; you consent to our use of
-                cookies. We respect your privacy and you can change your preferences at any time.
-                For more information, please read our{" "}
+              <p className="text-left text-sm leading-relaxed text-gray-700">
+                {t("description")}{" "}
                 <Link
                   className="text-sm text-blue-600 underline hover:text-blue-800"
                   href="/cookie-policy"
                 >
-                  cookie policy
+                  {t("privacyPolicy")}
                 </Link>
               </p>
             </div>
@@ -52,7 +51,7 @@ export const CookieConsent: FC = () => {
                 variant="cookieDecline"
                 onClick={() => setConsent(false)}
               >
-                Decline
+                {t("decline")}
               </Button>
               <Button
                 data-consent-type="accepted"
@@ -60,7 +59,7 @@ export const CookieConsent: FC = () => {
                 variant="cookieAccept"
                 onClick={() => setConsent(true)}
               >
-                Accept
+                {t("accept")}
               </Button>
             </div>
           </div>

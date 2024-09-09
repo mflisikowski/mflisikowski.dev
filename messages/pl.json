@@ -11,5 +11,12 @@
     "select": "Wybierz język",
     "english": "Angielski",
     "polish": "Polski"
+  },
+  "cookieConsent": {
+    "privacyPolicy": "polityka prywatności",
+    "description": "Używamy plików cookie, aby poprawić komfort przeglądania, analizować ruch w witrynie i personalizować zawartość. Klikając „Zgadzam się”, wyrażasz zgodę na używanie przez nas plików cookie. Szanujemy Twoją prywatność i w każdej chwili możesz zmienić swoje preferencje. Aby uzyskać więcej informacji, przeczytaj naszą",
+    "decline": "Odrzuć",
+    "accept": "Zgadzam się",
+    "title": "Korzystamy z ciasteczek"
   }
 }
