@@ -7,6 +7,19 @@
       "cta": "Elevate your brand today"
     }
   },
+  "AboutPage": {
+    "traits": {
+      "frontEndEngineer": "* Front-End Developer",
+      "selfTaught": "* Self-taught",
+      "techEnthusiast": "* Tech Enthusiast",
+      "protagonist": "* Protagonist (ENFJ-T)"
+    },
+    "name": {
+      "firstName": "Mateusz",
+      "lastName": "Flisikowski"
+    },
+    "description": "I'm a front-end engineer constantly exploring new ways to enhance user experience and create aesthetically pleasing digital interfaces. \n\n My passion lies in pushing boundaries and creating truly special digital experiences."
+  },
   "languageSwitcher": {
     "select": "Select language",
     "english": "English",

@@ -7,6 +7,19 @@
       "cta": "Wzmocnij swoją markę już dziś"
     }
   },
+  "AboutPage": {
+    "traits": {
+      "frontEndEngineer": "* Front-End Developer",
+      "selfTaught": "* Samouk",
+      "techEnthusiast": "* Entuzjasta technologii",
+      "protagonist": "* Protagonista (ENFJ-T)"
+    },
+    "name": {
+      "firstName": "Mateusz",
+      "lastName": "Flisikowski"
+    },
+    "description": "Jestem Front-end deweloperem, nieustannie poszukującym nowych sposobów na poprawę doświadczenia użytkownika i tworzenie estetycznie atrakcyjnych interfejsów cyfrowych. \n\n Moją pasją jest przekraczanie granic i tworzenie naprawdę wyjątkowych doświadczeń cyfrowych."
+  },
   "languageSwitcher": {
     "select": "Wybierz język",
     "english": "Angielski",

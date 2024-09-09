@@ -1,3 +1,5 @@
+import { useTranslations } from "next-intl";
+import { unstable_setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 
 import { AnimatedTextLetters } from "@/components/framer-motion/animated-text-letters";
@@ -11,6 +13,9 @@ interface AboutPageProps {
 }
 
 export default function AboutPage({ params: { locale } }: AboutPageProps) {
+  unstable_setRequestLocale(locale);
+  const t = useTranslations("AboutPage");
+
   return (
     <div className="grid grid-cols-3 gap-x-4 gap-y-4 text-center font-mono">
       <div className="col-span-3 mb-8 space-y-16 text-left lg:col-span-2 lg:mb-0">
@@ -22,7 +27,7 @@ export default function AboutPage({ params: { locale } }: AboutPageProps) {
             className={cn(
               "text-nowrap font-cal text-[4.5rem] leading-none sm:text-[6rem] md:text-[8rem] xl:text-8xl 2xl:text-[10rem]",
             )}
-            text={"Flisikowski"}
+            text={t("name.lastName")}
           />
 
           <AnimatedTextLetters
@@ -33,7 +38,7 @@ export default function AboutPage({ params: { locale } }: AboutPageProps) {
             className={cn(
               "text-nowrap font-cal text-[4.5rem] leading-none sm:text-[6rem] md:text-[8rem] xl:text-8xl 2xl:text-[10rem]",
             )}
-            text={"Mateusz"}
+            text={t("name.firstName")}
           />
         </div>
 
@@ -44,7 +49,7 @@ export default function AboutPage({ params: { locale } }: AboutPageProps) {
             delay: 0.03,
           }}
           className="font-mono text-xl font-semibold"
-          text={"* Front-End Engineer\n* Self-taught\n* Tech Enthusiast\n* Protagonist (ENFJ-T)"}
+          text={`${t("traits.frontEndEngineer")}\n${t("traits.selfTaught")}\n${t("traits.techEnthusiast")}\n${t("traits.protagonist")}`}
         />
       </div>
 
@@ -70,14 +75,13 @@ export default function AboutPage({ params: { locale } }: AboutPageProps) {
 
       <div className="col-span-3 lg:col-span-2 lg:translate-x-4 xl:translate-x-16">
         <div className="font-col space-y-8 text-balance text-left text-xl md:col-span-3 md:text-2xl lg:text-3xl">
-          <p className="font-medium">
-            I&apos;m a front-end engineer constantly exploring new ways to enhance user experience
-            and create aesthetically pleasing digital interfaces.
-          </p>
-
-          <p className="font-light">
-            My passion lies in pushing boundaries and creating truly special digital experiences.
-          </p>
+          {t("description")
+            .split("\n\n")
+            .map((paragraph, index) => (
+              <p key={index} className={index === 0 ? "font-medium" : "font-light"}>
+                {paragraph}
+              </p>
+            ))}
         </div>
       </div>
     </div>
