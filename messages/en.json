@@ -1,4 +1,10 @@
 {
+  "Navigation": {
+    "about": "About",
+    "uses": "Uses",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
   "HomePage": {
     "hero": {
       "titleMain": "Crafting Digital\nExperiences",

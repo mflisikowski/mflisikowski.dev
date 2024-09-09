@@ -2,6 +2,7 @@
 
 import { fetchNavigationData } from "@/repositories/navigation-respository";
 import { PanelRightOpen } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import React, { Fragment } from "react";
 
@@ -17,6 +18,7 @@ export function Navigation() {
   const navigationItems = fetchNavigationData();
   const isDesktop = useMediaQuery("(min-width: 1024px)");
   const [open, setOpen] = React.useState(false);
+  const t = useTranslations("Navigation");
 
   return isDesktop ? (
     <NavigationMenu className="hidden lg:flex">
@@ -26,7 +28,7 @@ export function Navigation() {
             {item.href ? (
               <Link href={item.href} legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  {item.title}
+                  {t(item.title)}
                 </NavigationMenuLink>
               </Link>
             ) : (
@@ -41,7 +43,7 @@ export function Navigation() {
                             className="underline-offset-4 hover:underline"
                             href={subItem.href as string}
                           >
-                            {subItem.title}
+                            {t(subItem.title)}
                           </Link>
                         </NavigationMenuLink>
                       </li>
@@ -68,7 +70,7 @@ export function Navigation() {
               <Fragment key={item.title}>
                 {item.href ? (
                   <Link href={item.href} className={linkClassNames} onClick={() => setOpen(false)}>
-                    {item.title}
+                    {t(item.title)}
                   </Link>
                 ) : (
                   item.subItems?.map((subItem) => (
@@ -78,7 +80,7 @@ export function Navigation() {
                       href={subItem.href as string}
                       key={subItem.title}
                     >
-                      {subItem.title}
+                      {t(subItem.title)}
                     </Link>
                   ))
                 )}

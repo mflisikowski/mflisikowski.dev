@@ -1,4 +1,10 @@
 {
+  "Navigation": {
+    "about": "O mnie",
+    "uses": "Narzędzia",
+    "projects": "Projekty",
+    "contact": "Kontakt"
+  },
   "HomePage": {
     "hero": {
       "titleMain": "Tworzymy Cyfrowe\nDoświadczenia",
