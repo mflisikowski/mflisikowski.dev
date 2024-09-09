@@ -67,7 +67,7 @@ export default function Home({ params: { locale } }: HomePageProps) {
                   className="my-6 aspect-video rotate-12 rounded-full object-cover shadow-[4px_-4px_0_1px_rgba(0,0,0,0.8)] lg:my-0 lg:aspect-photo lg:-translate-x-12 lg:translate-y-14 lg:rotate-45 xl:-translate-x-32"
                   height={570}
                   width={570}
-                  src="./wireframe.svg"
+                  src="/wireframe.svg"
                   alt="wireframe"
                 />
               </div>
