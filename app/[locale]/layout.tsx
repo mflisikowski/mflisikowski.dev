@@ -90,7 +90,7 @@ export default async function RootLayout({
           <AnalyticsPageView />
 
           <Header />
-          <main className="relative z-20 flex flex-grow flex-col py-4 lg:py-16">
+          <main className="relative z-20 flex flex-grow flex-col overflow-hidden py-4 lg:py-16">
             <>{children}</>
           </main>
           <Footer />

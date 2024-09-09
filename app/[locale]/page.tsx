@@ -25,13 +25,13 @@ export default function Home({ params: { locale } }: HomePageProps) {
       <FadeInStagger>
         <div className="space-y-44">
           {/* Hero */}
-          <div className="grid grid-cols-3 gap-10">
+          <div className="relative grid grid-cols-3 gap-10">
             <div className="relative z-20 col-span-full h-full space-y-4 lg:col-span-2 lg:space-y-8">
               <FadeIn>
                 <AnimatedTextLetters
                   className={cn(
                     "selection:bg-purple-500 selection:tracking-widest selection:text-white",
-                    "text-6xl sm:text-8xl md:text-8xl lg:text-9xl xl:text-9xl 2xl:text-9xl",
+                    "text-5xl sm:text-8xl md:text-8xl lg:text-9xl xl:text-9xl 2xl:text-9xl",
                     "font-cal tracking-wide lg:text-nowrap",
                   )}
                   text={t("hero.titleMain")}
@@ -43,7 +43,7 @@ export default function Home({ params: { locale } }: HomePageProps) {
                   animationConfig={{ startDelay: 0.4 }}
                   className={cn(
                     "selection:bg-zinc-700 selection:decoration-clone selection:text-white",
-                    "text-5xl sm:text-7xl md:text-7xl lg:text-7xl xl:text-8xl 2xl:text-8xl",
+                    "text-4xl sm:text-7xl md:text-7xl lg:text-7xl xl:text-8xl 2xl:text-8xl",
                     "text-nowrap font-cal tracking-wide",
                   )}
                   text={t("hero.titleAccent")}
@@ -51,9 +51,9 @@ export default function Home({ params: { locale } }: HomePageProps) {
               </FadeIn>
 
               <FadeIn>
-                <div className="mt-14 max-w-lg">
+                <div className="max-w-lg xl:mt-14">
                   <AnimatedTextLetters
-                    className="text-wrap font-mono text-2xl font-light"
+                    className="text-wrap font-mono text-xl font-light"
                     text={t("hero.subtitle")}
                     animated
                   />
@@ -61,14 +61,20 @@ export default function Home({ params: { locale } }: HomePageProps) {
               </FadeIn>
             </div>
 
-            <div className="relative z-10 col-span-full flex-grow lg:col-auto">
+            <div
+              className={cn(
+                "-right-52 top-0 h-full w-full opacity-10 lg:right-auto lg:top-auto lg:h-auto lg:w-auto lg:opacity-100",
+                "absolute -z-10 -order-1 col-span-full flex-grow lg:relative lg:order-none lg:col-auto",
+              )}
+            >
               <div className="grid h-full place-items-center lg:place-items-end">
                 <Image
-                  className="my-6 aspect-video rotate-12 rounded-full object-cover shadow-[4px_-4px_0_1px_rgba(0,0,0,0.8)] lg:my-0 lg:aspect-photo lg:-translate-x-12 lg:translate-y-14 lg:rotate-45 xl:-translate-x-32"
+                  className="object-cover lg:my-0 lg:aspect-photo lg:-translate-x-12 lg:translate-y-14 lg:rotate-45 lg:rounded-full lg:shadow-[4px_-4px_0_1px_rgba(0,0,0,0.8)] xl:-translate-x-32"
                   height={570}
                   width={570}
                   src="/wireframe.svg"
                   alt="wireframe"
+                  priority
                 />
               </div>
             </div>
