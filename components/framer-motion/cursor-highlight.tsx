@@ -1,14 +1,15 @@
 "use client";
 
-import { useMousePosition } from "@/hooks/use-mouse-position";
 import { motion } from "framer-motion";
 
-interface GenericMouseMaskProps {
+import { useMousePosition } from "@/hooks/use-mouse-position";
+
+interface CursorHighlightProps {
   color: string;
   size?: number;
 }
 
-export const GenericMouseMask: React.FC<GenericMouseMaskProps> = ({ color, size = 120 }) => {
+export const CursorHighlight: React.FC<CursorHighlightProps> = ({ color, size = 120 }) => {
   const { x, y } = useMousePosition({
     stiffness: 120,
     damping: 25,

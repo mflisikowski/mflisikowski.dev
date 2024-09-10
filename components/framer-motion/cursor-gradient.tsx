@@ -1,13 +1,14 @@
 "use client";
 
-import { useMousePosition } from "@/hooks/use-mouse-position";
 import { motion, useTransform } from "framer-motion";
 
-interface RadialGradientProps {
+import { useMousePosition } from "@/hooks/use-mouse-position";
+
+interface CursorGradientProps {
   color: string;
 }
 
-export const RadialGradient = ({ color }: RadialGradientProps) => {
+export const CursorGradient = ({ color }: CursorGradientProps) => {
   const { x, y } = useMousePosition({
     stiffness: 40,
     damping: 40,
