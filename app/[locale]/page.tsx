@@ -69,7 +69,7 @@ export default function Home({ params: { locale } }: HomePageProps) {
             >
               <div className="grid h-full place-items-center lg:place-items-end">
                 <Image
-                  className="object-cover lg:my-0 lg:aspect-photo lg:-translate-x-12 lg:translate-y-14 lg:rotate-45 lg:rounded-full lg:shadow-[4px_-4px_0_1px_rgba(0,0,0,0.8)] xl:-translate-x-32"
+                  className="object-contain transition-transform duration-1000 will-change-transform lg:my-0 lg:aspect-photo lg:-translate-x-12 lg:translate-y-36 lg:-rotate-12 lg:scale-150 xl:-translate-x-24 xl:rotate-6"
                   height={570}
                   width={570}
                   src="/wireframe.svg"
