@@ -11,7 +11,7 @@ export function Logo() {
       aria-label="Mateusz Flisikowski, I am a mission focused developer with a passion for creating innovative solutions."
       className="group relative min-w-40 overflow-hidden"
     >
-      <div className="flex items-center gap-0">
+      <div className="flex aspect-[160/32] items-center gap-0">
         <div className="flex h-6 w-6 items-center">
           <BinaryIcon className="block h-6 w-6 translate-y-[1px] group-hover:hidden" />
           <BinaryIcon className="hidden h-6 w-6 -translate-x-[1px] translate-y-[1px] rotate-180 group-hover:block" />
