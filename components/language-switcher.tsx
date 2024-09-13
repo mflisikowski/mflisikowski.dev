@@ -27,17 +27,15 @@ export const LanguageSwitcher = ({ className }: { className?: string }) => {
   };
 
   return (
-    <div className={cn("lg:order-2", className)}>
-      <Select onValueChange={changeLanguage} defaultValue={locale}>
-        <SelectTrigger className="w-[180px]">
-          <SelectValue placeholder={t("select")} />
-        </SelectTrigger>
+    <Select onValueChange={changeLanguage} defaultValue={locale}>
+      <SelectTrigger className={cn("w-[180px]", className)}>
+        <SelectValue placeholder={t("select")} />
+      </SelectTrigger>
 
-        <SelectContent>
-          <SelectItem value="pl">{t("polish")}</SelectItem>
-          <SelectItem value="en">{t("english")}</SelectItem>
-        </SelectContent>
-      </Select>
-    </div>
+      <SelectContent>
+        <SelectItem value="pl">{t("polish")}</SelectItem>
+        <SelectItem value="en">{t("english")}</SelectItem>
+      </SelectContent>
+    </Select>
   );
 };

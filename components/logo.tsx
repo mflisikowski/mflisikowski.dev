@@ -5,11 +5,24 @@ import Link from "next/link";
 import React from "react";
 import { TypeAnimation } from "react-type-animation";
 
-export function Logo() {
+import { cn } from "@/utils/cn";
+
+type LogoProps = {
+  className?: string;
+  as?: React.ElementType;
+  href?: string;
+  onOpenChange?: (open: boolean) => void;
+  props?: React.ComponentPropsWithoutRef<React.ElementType>;
+};
+
+export function Logo({ className, as = Link, ...props }: LogoProps) {
+  const Component = as;
+
   return (
-    <div
+    <Component
       aria-label="Mateusz Flisikowski, I am a mission focused developer with a passion for creating innovative solutions."
-      className="group relative min-w-40 overflow-hidden"
+      className={cn("group relative min-w-40 overflow-hidden", className)}
+      {...props}
     >
       <div className="flex aspect-[160/32] items-center gap-0">
         <div className="flex h-6 w-6 items-center">
@@ -29,8 +42,6 @@ export function Logo() {
           repeat={Infinity}
         />
       </div>
-
-      <Link href="/" className="absolute inset-0"></Link>
-    </div>
+    </Component>
   );
 }

@@ -14,10 +14,10 @@ export function Header() {
       as="header"
     >
       <div className="flex min-h-24 items-center justify-between font-inter">
-        <Logo />
+        <Logo href="/" />
 
         <div className="flex items-center gap-4">
-          <LanguageSwitcher />
+          <LanguageSwitcher className="hidden lg:order-2 lg:flex" />
           <Navigation />
         </div>
       </div>

@@ -46,10 +46,8 @@ const buttonVariants = cva(
           transition-all duration-200 ease-in-out
           hover:translate-y-1
         `,
-        ghost: `
+        icon: `
           bg-transparent text-black
-          hover:bg-gray-50
-          rounded-lg
           shadow-none
           hover:shadow-none
           active:shadow-none

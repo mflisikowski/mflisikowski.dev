@@ -1,3 +1,5 @@
+import { SendHorizontal } from "lucide-react";
+
 import { getTailwindColor } from "@/utils/colors";
 
 export const linkedInColor = getTailwindColor({
@@ -49,4 +51,11 @@ export const X = ({ className }: { className?: string }) => {
       />
     </svg>
   );
+};
+
+export const iconMap = {
+  linkedin: Linkedin,
+  github: Github,
+  email: SendHorizontal,
+  x: X,
 };
