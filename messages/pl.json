@@ -5,13 +5,11 @@
     "projects": "Projekty",
     "contact": "Kontakt"
   },
-  "HomePage": {
-    "hero": {
-      "titleMain": "Tworzę Cyfrowe\nDoświadczenia",
-      "titleAccent": "z Precyzją\ni Pasją",
-      "subtitle": "Przekształcam innowacyjne pomysły w potężne, zorientowane na użytkownika rozwiązania cyfrowe",
-      "cta": "Wzmocnij swoją markę już dziś"
-    }
+  "HomePageHero": {
+    "titleMain": "Tworzę Cyfrowe\nDoświadczenia",
+    "titleAccent": "z Precyzją\ni Pasją",
+    "subtitle": "Przekształcam innowacyjne pomysły w potężne, zorientowane na użytkownika rozwiązania cyfrowe",
+    "cta": "Wzmocnij swoją markę już dziś"
   },
   "AboutPage": {
     "traits": {
