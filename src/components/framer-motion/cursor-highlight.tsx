@@ -18,7 +18,6 @@ export const CursorHighlight: React.FC<CursorHighlightProps> = ({ color, size = 
   return (
     <motion.div
       aria-hidden="true"
-      // @ts-ignore
       className="pointer-events-none absolute -left-4 -top-4 -z-10 rounded-full"
       style={{
         backgroundColor: color,

@@ -38,7 +38,6 @@ export const AnimatedPageLayout: React.FC<AnimatedPageLayoutProps> = ({
 
   return (
     <motion.div
-      // @ts-ignore
       className={cn("", className)}
       variants={variants}
       initial="initial"

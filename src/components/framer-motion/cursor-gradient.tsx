@@ -22,7 +22,6 @@ export const CursorGradient = ({ color }: CursorGradientProps) => {
 
   return (
     <motion.div
-      // @ts-ignore
       className="pointer-events-none absolute inset-0 -z-20 h-full w-full"
       style={{ background }}
     />

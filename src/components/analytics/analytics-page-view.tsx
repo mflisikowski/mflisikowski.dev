@@ -2,9 +2,9 @@
 
 import { useConsentAwareAnalytics } from "@/hooks/use-consent-aware-analytics";
 import { usePathname, useSearchParams } from "next/navigation";
-import { useCallback, useEffect } from "react";
+import { Suspense, useCallback, useEffect } from "react";
 
-export default function AnalyticsPageView(): null {
+function AnalyticsPageViewInner(): null {
   const { trackEvent } = useConsentAwareAnalytics();
   const searchParams = useSearchParams();
   const pathname = usePathname();
@@ -23,4 +23,12 @@ export default function AnalyticsPageView(): null {
   }, [trackPageView]);
 
   return null;
+}
+
+export default function AnalyticsPageView(): JSX.Element {
+  return (
+    <Suspense fallback={null}>
+      <AnalyticsPageViewInner />
+    </Suspense>
+  );
 }
