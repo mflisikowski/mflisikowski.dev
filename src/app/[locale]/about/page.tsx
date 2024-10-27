@@ -1,5 +1,5 @@
-import { useTranslations } from "next-intl";
-import { unstable_setRequestLocale } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 
 import { AnimatedTextLetters } from "@/components/framer-motion/animated-text-letters";
@@ -7,14 +7,17 @@ import { AnimatedTextLetters } from "@/components/framer-motion/animated-text-le
 import { cn } from "@/utils/cn";
 
 interface AboutPageProps {
-  params: {
+  params: Promise<{
     locale: string;
-  };
+  }>;
 }
 
-export default function AboutPage({ params: { locale } }: AboutPageProps) {
-  unstable_setRequestLocale(locale);
-  const t = useTranslations("AboutPage");
+export default async function AboutPage({ params }: AboutPageProps) {
+  const { locale } = await params;
+
+  const t = await getTranslations("AboutPage");
+
+  setRequestLocale(locale);
 
   return (
     <div className="grid grid-cols-3 gap-x-4 gap-y-4 text-center font-mono">

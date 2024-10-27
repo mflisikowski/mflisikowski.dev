@@ -1,7 +1,9 @@
-import tailwindConfig from "tailwind.config";
-import { type Config } from "tailwindcss";
-import resolveConfig from "tailwindcss/resolveConfig";
+
 import { type DefaultColors } from "tailwindcss/types/generated/colors";
+import { type Config } from "tailwindcss";
+
+import tailwindConfig from "../../tailwind.config";
+import resolveConfig from "tailwindcss/resolveConfig";
 
 import { rgba } from "@/utils/rgba";
 

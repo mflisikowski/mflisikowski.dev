@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { unstable_setRequestLocale } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
 import dynamic from "next/dynamic";
 import { Inter as Font } from "next/font/google";
 import localFont from "next/font/local";
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
 const CalSans = localFont({
   variable: "--font-cal",
   display: "swap",
-  src: "../../public/fonts/CalSans-SemiBold.woff2",
+  src: "../../../public/fonts/CalSans-SemiBold.woff2",
 });
 
 const Inter = Font({
@@ -60,9 +60,7 @@ const Inter = Font({
   subsets: ["latin"],
 });
 
-const AnalyticsPageView = dynamic(() => import("@/components/analytics/analytics-page-view"), {
-  ssr: false,
-});
+const AnalyticsPageView = dynamic(() => import("@/components/analytics/analytics-page-view"));
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -70,12 +68,16 @@ export function generateStaticParams() {
 
 export default async function RootLayout({
   children,
-  params: { locale },
+  params,
 }: Readonly<{
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{
+    locale: string;
+  }>;
 }>) {
-  unstable_setRequestLocale(locale);
+  const { locale } = await params;
+
+  setRequestLocale(locale);
 
   return (
     <html lang={locale} className="h-full">

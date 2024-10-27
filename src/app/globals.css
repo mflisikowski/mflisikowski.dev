@@ -6,7 +6,7 @@
 
   html,
   body {
-    @apply font-inter;
+    /* @apply font-inter; TODO: Change it later */
     @apply text-zinc-900;
   }
 }

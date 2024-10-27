@@ -11,6 +11,4 @@ export const config = {
   ],
 };
 
-export default createMiddleware(routing, {
-  localeDetection: true,
-});
+export default createMiddleware(routing);
