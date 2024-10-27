@@ -17,6 +17,7 @@
     "@radix-ui/react-slot": "^1.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "eslint-plugin-unused-imports": "^4.1.4",
     "framer-motion": "^11.11.10",
     "lenis": "^1.1.14",
     "lucide-react": "^0.453.0",
