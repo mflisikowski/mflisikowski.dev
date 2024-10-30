@@ -31,9 +31,32 @@
   },
   "cookieConsent": {
     "privacyPolicy": "polityka prywatności",
-    "description": "Używamy plików cookie, aby poprawić komfort przeglądania, analizować ruch w witrynie i personalizować zawartość. Klikając „Zgadzam się”, wyrażasz zgodę na używanie przez nas plików cookie. Szanujemy Twoją prywatność i w każdej chwili możesz zmienić swoje preferencje. Aby uzyskać więcej informacji, przeczytaj naszą",
+    "description": "Stosujemy pliki cookie w celu zapewnienia prawidłowego funkcjonowania serwisu. Możemy również wykorzystywać pliki cookie własne oraz naszych partnerów w celach analitycznych i marketingowych, w szczególności dopasowania treści reklamowych do Twoich preferencji. Korzystanie z analitycznych i marketingowych plików cookie wymaga zgody, którą możesz wyrazić, klikając „Zaakceptuj”. Jeżeli chcesz dostosować swoje zgody dla nas i naszych partnerów, kliknij „Zarządzaj cookies”. Wyrażoną zgodę możesz wycofać w każdym momencie, zmieniając wybrane ustawienia.",
     "decline": "Odrzuć",
     "accept": "Zgadzam się",
-    "title": "Korzystamy z ciasteczek"
+    "title": "Szanujemy Twoją prywatność!",
+    "manage": "Zarządzaj ustawieniami"
+  },
+  "cookieSettings": {
+    "title": "Ustawienia plików cookie",
+    "description": "Dostosuj swoje preferencje dotyczące plików cookie",
+    "necessary": {
+      "title": "Niezbędne pliki cookie",
+      "description": "Te pliki cookie są wymagane do prawidłowego funkcjonowania strony"
+    },
+    "functional": {
+      "title": "Funkcjonalne pliki cookie",
+      "description": "Pomagają w zapewnieniu lepszej funkcjonalności i personalizacji"
+    },
+    "analytics": {
+      "title": "Analityczne pliki cookie",
+      "description": "Pomagają nam zrozumieć, jak użytkownicy korzystają z naszej strony"
+    },
+    "marketing": {
+      "title": "Marketingowe pliki cookie",
+      "description": "Służą do śledzenia użytkowników i wyświetlania spersonalizowanych reklam"
+    },
+    "save": "Zapisz ustawienia",
+    "cancel": "Anuluj"
   }
 }

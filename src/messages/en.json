@@ -31,9 +31,32 @@
   },
   "cookieConsent": {
     "privacyPolicy": "privacy policy",
-    "description": "We use cookies to enhance your browsing experience, analyze site traffic, and personalize content. By clicking „Accept” you consent to our use of cookies. We respect your privacy and you can change your preferences at any time. For more information, please read our",
+    "description": "Welcome! We use cookies to ensure proper site functionality. We may also use our own and third-party cookies for analytical and marketing purposes, including tailoring advertising content to your preferences. Using analytical and marketing cookies requires your consent, which you can express by clicking „Accept”. If you want to adjust your consent for us and our partners, click „Manage cookies”. You can withdraw your consent at any time by changing your selected settings.",
     "decline": "Decline",
     "accept": "Accept",
-    "title": "We use cookies"
+    "manage": "Manage settings",
+    "title": "We respect your privacy!"
+  },
+  "cookieSettings": {
+    "title": "Cookie settings",
+    "description": "Adjust your preferences for cookies",
+    "necessary": {
+      "title": "Necessary cookies",
+      "description": "These cookies are required for the proper functioning of the site"
+    },
+    "functional": {
+      "title": "Functional cookies",
+      "description": "Help ensure better functionality and personalization"
+    },
+    "analytics": {
+      "title": "Analytical cookies",
+      "description": "Help us understand how users interact with our site"
+    },
+    "marketing": {
+      "title": "Marketing cookies",
+      "description": "Used to track users and display personalized ads"
+    },
+    "save": "Save settings",
+    "cancel": "Cancel"
   }
 }
