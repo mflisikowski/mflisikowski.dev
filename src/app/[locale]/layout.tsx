@@ -1,3 +1,4 @@
+import { VercelToolbar } from "@vercel/toolbar/next";
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import dynamic from "next/dynamic";
@@ -5,7 +6,6 @@ import { Inter as Font } from "next/font/google";
 import localFont from "next/font/local";
 import React from "react";
 
-import { VercelToolbar } from '@vercel/toolbar/next';
 import { Background } from "@/components/background";
 import { CookieConsent } from "@/components/cookie-consent";
 import { Footer } from "@/components/footer";
@@ -76,7 +76,7 @@ export default async function RootLayout({
     locale: string;
   }>;
 }>) {
-  const shouldInjectToolbar = process.env.NODE_ENV === 'development';
+  const shouldInjectToolbar = process.env.NODE_ENV === "development";
   const { locale } = await params;
 
   setRequestLocale(locale);
@@ -99,8 +99,8 @@ export default async function RootLayout({
           </main>
           <Footer />
 
-          <Background />
           <CookieConsent />
+          <Background />
 
           {shouldInjectToolbar && <VercelToolbar />}
         </body>

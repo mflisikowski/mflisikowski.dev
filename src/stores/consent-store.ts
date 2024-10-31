@@ -1,36 +1,89 @@
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 import { getCookieConsent, setCookieConsent } from "@/actions/set-cookie-consent";
 
-interface ConsentState {
-  isConsentDeclined: boolean;
-  isConsentGiven: boolean;
-  isVisible: boolean;
-
-  checkConsent: () => Promise<void>;
-  setConsent: (consent: boolean) => Promise<void>;
+interface CookiePreferences {
+  functional: boolean;
+  necessary: boolean;
+  analytics: boolean;
+  marketing: boolean;
 }
 
-export const useConsentStore = create<ConsentState>((set) => ({
-  isConsentDeclined: false,
-  isConsentGiven: false,
-  isVisible: false,
+interface ConsentState {
+  isConsentDeclined: boolean;
+  isSettingsVisible: boolean;
+  isConsentGiven: boolean | null;
+  preferences: CookiePreferences;
 
-  checkConsent: async () => {
-    const consent = await getCookieConsent();
-    set({
-      isConsentDeclined: consent === false,
-      isConsentGiven: consent === true,
-      isVisible: consent === false && true,
-    });
-  },
+  setPreferences: (preferences: Partial<CookiePreferences>) => Promise<void>;
+  checkConsent: () => Promise<void>;
+  setConsent: (consent: boolean) => Promise<void>;
+  hideSettings: () => void;
+  showSettings: () => void;
+}
 
-  setConsent: async (consent: boolean) => {
-    await setCookieConsent(consent);
-    set({
-      isConsentDeclined: !consent,
-      isConsentGiven: consent,
-      isVisible: false,
-    });
-  },
-}));
+export const useConsentStore = create<ConsentState>()(
+  persist(
+    (set) => ({
+      isConsentDeclined: false,
+      isSettingsVisible: false,
+      isConsentGiven: null,
+
+      preferences: {
+        necessary: true,
+        functional: true,
+        analytics: true,
+        marketing: true,
+      },
+
+      checkConsent: async () => {
+        const localConsent = localStorage.getItem("cookie-consent-storage");
+        if (localConsent) {
+          const parsed = JSON.parse(localConsent);
+          if (parsed.state?.isConsentGiven !== null) {
+            set({ isConsentGiven: parsed.state.isConsentGiven });
+            return;
+          }
+        }
+
+        const consent = await getCookieConsent();
+        set({
+          isConsentDeclined: consent === false,
+          isConsentGiven: consent,
+        });
+      },
+
+      setConsent: async (consent: boolean) => {
+        await setCookieConsent(consent);
+
+        set({
+          isConsentDeclined: !consent,
+          isConsentGiven: consent,
+          isSettingsVisible: false,
+        });
+      },
+
+      setPreferences: async (newPreferences: Partial<CookiePreferences>) => {
+        set((state) => ({
+          preferences: {
+            ...state.preferences,
+            ...newPreferences,
+            necessary: true,
+          },
+        }));
+      },
+
+      hideSettings: () => set({ isSettingsVisible: false }),
+      showSettings: () => set({ isSettingsVisible: true }),
+    }),
+    {
+      name: "cookie-consent-storage",
+      partialize: (state) => ({
+        preferences: state.preferences,
+        isConsentGiven: state.isConsentGiven,
+      }),
+      skipHydration: true,
+    },
+  ),
+);

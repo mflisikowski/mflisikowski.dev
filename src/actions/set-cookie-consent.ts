@@ -2,25 +2,56 @@
 
 import { cookies } from "next/headers";
 
-const COOKIE_NAME = "cookieConsent";
+type CookiePreferences = {
+  functional?: boolean;
+  analytics?: boolean;
+  marketing?: boolean;
+};
 
-export async function setCookieConsent(accepted: boolean) {
-  const oneYearFromNow = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000);
-  const consentCookie = await cookies();
+const COOKIE_OPTIONS = {
+  secure: true,
+  sameSite: "lax" as const,
+  maxAge: 365 * 24 * 60 * 60, // 1 year
+  path: "/",
+  httpOnly: true,
+};
 
-  consentCookie.set(COOKIE_NAME, accepted.toString(), {
-    expires: oneYearFromNow,
-    path: "/",
-    sameSite: "strict",
-  });
+export async function setCookieConsent(consent: boolean, preferences?: CookiePreferences) {
+  try {
+    const cookieStore = await cookies();
+
+    cookieStore.set("cookie-consent", consent ? "true" : "false", COOKIE_OPTIONS);
+
+    if (preferences) {
+      cookieStore.set("cookie-preferences", JSON.stringify(preferences), COOKIE_OPTIONS);
+    }
+  } catch (error) {
+    console.error("Failed to set cookie consent:", error);
+    throw new Error("Failed to set cookie preferences");
+  }
 }
 
-export async function getCookieConsent() {
-  const consentCookie = await cookies();
-  const consent = consentCookie.get(COOKIE_NAME);
+export async function getCookieConsent(): Promise<boolean | null> {
+  try {
+    const cookieStore = await cookies();
+    const consent = cookieStore.get("cookie-consent");
+    return consent ? consent.value === "true" : null;
+  } catch (error) {
+    console.error("Failed to get cookie consent:", error);
+    return null;
+  }
+}
 
-  if (consent?.value === "false") return false;
-  if (consent?.value === "true") return true;
+export async function getCookiePreferences(): Promise<CookiePreferences | null> {
+  try {
+    const cookieStore = await cookies();
+    const preferences = cookieStore.get("cookie-preferences");
 
-  return false;
+    if (!preferences?.value) return null;
+
+    return JSON.parse(preferences.value) as CookiePreferences;
+  } catch (error) {
+    console.error("Failed to parse cookie preferences:", error);
+    return null;
+  }
 }

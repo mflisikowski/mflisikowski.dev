@@ -23,6 +23,11 @@ const buttonVariants = cva(
           hover:shadow-[0_0_0_1px_rgba(255,255,255,0.1)]
           rounded-lg
         `,
+        cookieManage: `
+          bg-white text-black
+          hover:bg-gray-50
+          rounded-lg
+        `,
         amber: `
           bg-amber-300 text-black
           hover:bg-amber-400

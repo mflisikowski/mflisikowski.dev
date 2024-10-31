@@ -33,9 +33,9 @@
     "privacyPolicy": "polityka prywatności",
     "description": "Stosujemy pliki cookie w celu zapewnienia prawidłowego funkcjonowania serwisu. Możemy również wykorzystywać pliki cookie własne oraz naszych partnerów w celach analitycznych i marketingowych, w szczególności dopasowania treści reklamowych do Twoich preferencji. Korzystanie z analitycznych i marketingowych plików cookie wymaga zgody, którą możesz wyrazić, klikając „Zaakceptuj”. Jeżeli chcesz dostosować swoje zgody dla nas i naszych partnerów, kliknij „Zarządzaj cookies”. Wyrażoną zgodę możesz wycofać w każdym momencie, zmieniając wybrane ustawienia.",
     "decline": "Odrzuć",
-    "accept": "Zgadzam się",
-    "title": "Szanujemy Twoją prywatność!",
-    "manage": "Zarządzaj ustawieniami"
+    "accept": "Akceptuj wszystkie",
+    "manage": "Zarządzaj ustawieniami",
+    "title": "Szanujemy Twoją prywatność!"
   },
   "cookieSettings": {
     "title": "Ustawienia plików cookie",
