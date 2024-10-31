@@ -10,11 +10,12 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { useConsentStore } from "@/stores/consent-store";
 
 export function CookieSettingsModal() {
-  const { isSettingsVisible, hideSettings, preferences, setPreferences } = useConsentStore();
+  const { isSettingsVisible, hideSettings, preferences, setPreferences, savePreferences } =
+    useConsentStore();
   const t = useTranslations("cookieSettings");
 
-  const handleCookieSettings = async () => {
-    await useConsentStore.getState().setConsent(true);
+  const handleSaveSettings = async () => {
+    await savePreferences();
   };
 
   return (
@@ -56,11 +57,7 @@ export function CookieSettingsModal() {
         </div>
 
         <div className="mt-6 flex justify-end gap-4">
-          <Button variant="cookieDecline" onClick={hideSettings}>
-            {t("cancel")}
-          </Button>
-
-          <Button variant="cookieAccept" onClick={handleCookieSettings}>
+          <Button variant="cookieAccept" onClick={handleSaveSettings}>
             {t("save")}
           </Button>
         </div>

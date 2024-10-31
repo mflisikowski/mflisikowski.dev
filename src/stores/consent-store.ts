@@ -16,7 +16,8 @@ interface ConsentState {
   isConsentGiven: boolean | null;
   preferences: CookiePreferences;
 
-  setPreferences: (preferences: Partial<CookiePreferences>) => Promise<void>;
+  setPreferences: (preferences: Partial<CookiePreferences>) => void;
+  savePreferences: () => Promise<void>;
   getLocalConsent: () => { isConsentGiven: boolean | null; preferences: CookiePreferences } | null;
   checkConsent: () => Promise<void>;
   setConsent: (consent: boolean) => Promise<void>;
@@ -99,23 +100,28 @@ export const useConsentStore = create<ConsentState>()(
         }
       },
 
-      setPreferences: async (newPreferences: Partial<CookiePreferences>) => {
+      setPreferences: (newPreferences: Partial<CookiePreferences>) => {
+        set((state) => ({
+          preferences: {
+            ...state.preferences,
+            ...newPreferences,
+            necessary: true,
+          },
+        }));
+      },
+
+      savePreferences: async () => {
         try {
           await updateCookieConsent(true);
 
-          set((state) => ({
+          set({
             isSettingsVisible: false,
             isConsentDeclined: false,
             isConsentGiven: true,
-            preferences: {
-              ...state.preferences,
-              ...newPreferences,
-              necessary: true,
-            },
-          }));
+          });
         } catch (error) {
-          console.error("Error setting preferences:", error);
-          throw new Error("Failed to set preferences");
+          console.error("Error saving preferences:", error);
+          throw new Error("Failed to save preferences");
         }
       },
 
