@@ -20,7 +20,7 @@ export function CookieSettingsModal() {
 
   return (
     <Dialog open={isSettingsVisible} onOpenChange={hideSettings}>
-      <DialogContent className="sm:max-w-[700px]">
+      <DialogContent className="h-full w-full max-w-full sm:h-auto sm:max-w-[700px]">
         <DialogHeader>
           <DialogTitle>{t("title")}</DialogTitle>
           <DialogDescription>{t("description")}</DialogDescription>
