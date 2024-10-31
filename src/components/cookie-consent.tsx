@@ -52,9 +52,13 @@ export const CookieConsent: FC = () => {
   );
 
   return (
-    <>
+    <div>
+      {!isConsentGiven && (
+        <div className="fixed inset-0 z-50 h-screen w-screen bg-black/45 backdrop-blur-sm duration-200 animate-in fade-in" />
+      )}
+
       <div
-        className="fixed bottom-0 left-0 z-50 transform transition-all duration-300 sm:bottom-4 sm:left-4 sm:max-w-md"
+        className="absolute bottom-0 left-0 z-50 transform transition-all duration-300 sm:bottom-4 sm:left-4 sm:max-w-md"
         aria-labelledby="cookie-consent-title"
         aria-modal="true"
         role="dialog"
@@ -102,6 +106,6 @@ export const CookieConsent: FC = () => {
       </div>
 
       <CookieSettingsModal />
-    </>
+    </div>
   );
 };
