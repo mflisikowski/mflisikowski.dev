@@ -11,7 +11,8 @@ import { Button } from "@/components/ui/button";
 import { useConsentStore } from "@/stores/consent-store";
 
 export const CookieConsent: FC = () => {
-  const { isConsentGiven, setConsent, showSettings, checkConsent } = useConsentStore();
+  // prettier-ignore
+  const { isConsentGiven, setConsent, showSettings, checkConsent, acceptAll } = useConsentStore();
   const [isLoading, setIsLoading] = useState(true);
   const t = useTranslations("cookieConsent");
 
@@ -27,6 +28,12 @@ export const CookieConsent: FC = () => {
 
     return () => clearTimeout(timeoutId);
   }, [checkConsent, setConsent]);
+
+  const handleAcceptAll = () => {
+    acceptAll().catch((error) => {
+      console.error("Error accepting all cookies:", error);
+    });
+  };
 
   if (isLoading) {
     return null;
@@ -83,7 +90,7 @@ export const CookieConsent: FC = () => {
                 <Button
                   className="w-full"
                   variant="cookieAccept"
-                  onClick={() => setConsent(true)}
+                  onClick={handleAcceptAll}
                   aria-label={t("accept")}
                 >
                   {t("accept")}
