@@ -34,13 +34,13 @@ export const CookieConsent: FC = () => {
 
   const ButtonManage = () => (
     <Button
-      className="group flex w-full items-center gap-2"
+      className="flex w-full items-center gap-2"
       variant="cookieManage"
       onClick={showSettings}
       aria-label={t("manage")}
     >
       <CookieIcon className="h-5 w-5 shrink-0" aria-hidden="true" />
-      <p className="hidden group-hover:block group-hover:underline">{t("manage")}</p>
+      <p className="group-hover:underline">{t("manage")}</p>
     </Button>
   );
 
