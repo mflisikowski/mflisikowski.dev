@@ -1,6 +1,7 @@
-import { useConsentStore } from "@/stores/consent-store";
 import { useAptabase } from "@aptabase/react";
 import { useCallback } from "react";
+
+import { useConsentStore } from "@/stores/consent-store";
 
 type AnalyticsData = Record<string, string | number | boolean>;
 
