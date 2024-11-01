@@ -1,6 +1,6 @@
 "use client";
 
-import { BinaryIcon } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { TypeAnimation } from "react-type-animation";
@@ -24,11 +24,14 @@ export function Logo({ className, as = Link, ...props }: LogoProps) {
       className={cn("group relative min-w-40 overflow-hidden", className)}
       {...props}
     >
-      <div className="flex aspect-[160/32] items-center gap-0">
-        <div className="flex h-6 w-6 items-center">
-          <BinaryIcon className="block h-6 w-6 translate-y-[1px] group-hover:hidden" />
-          <BinaryIcon className="hidden h-6 w-6 -translate-x-[1px] translate-y-[1px] rotate-180 group-hover:block" />
-        </div>
+      <div className="flex aspect-[160/32] items-center gap-2">
+        <Image
+          className="flex h-10 w-10"
+          src="/notion-avatar.svg"
+          alt=""
+          width={120}
+          height={120}
+        />
 
         <TypeAnimation
           aria-label="Mission Focused Developer"
