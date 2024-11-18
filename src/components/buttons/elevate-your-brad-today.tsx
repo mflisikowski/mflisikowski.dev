@@ -18,7 +18,7 @@ export const ElevateYourBrandTodayButton = () => {
   return (
     <ScribbleDecoration variant={1} svgClassName="-right-7 -top-7 h-12 w-12">
       <Link
-        className={cn(buttonVariants({ variant: "amber", size: "lg" }))}
+        className={cn(buttonVariants({ variant: "default", size: "lg" }))}
         onClick={() => trackEvent("elevate-your-brand-today-button-click")}
         href="/digital-needs-assessment"
       >

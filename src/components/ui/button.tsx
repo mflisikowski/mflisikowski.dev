@@ -28,24 +28,12 @@ const buttonVariants = cva(
           hover:bg-gray-50
           rounded-lg
         `,
-        amber: `
-          bg-amber-300 text-black
-          hover:bg-amber-400
-          rounded-lg
-          shadow-[0_4px_0_1px_rgba(0,0,0,0.8)]
-          hover:shadow-[0_0_0_4px_rgba(0,0,0,0.8)]
-          active:shadow-none
-          active:translate-y-1
-          transition-all duration-200 ease-in-out
-          hover:translate-y-1
-          dark:bg-amber-300 dark:text-black dark:hover:bg-amber-400
-        `,
         default: `
           bg-white text-black
           hover:bg-gray-50
           rounded-lg
-          shadow-[0_4px_0_1px_rgba(0,0,0,0.8)]
-          hover:shadow-[0_0_0_4px_rgba(0,0,0,0.8)]
+          shadow-[0_4px_0_1px_rgba(0,0,0,0.8),_1px_0_0_1px_rgba(0,0,0,0.8),_-1px_0_0_1px_rgba(0,0,0,0.8),_0_-1px_0_1px_rgba(0,0,0,0.8)]
+          hover:shadow-[0_0_0_2px_rgba(0,0,0,0.8),_0_0_0_2px_rgba(0,0,0,0.8),_0_0_0_2px_rgba(0,0,0,0.8),_0_0_0_2px_rgba(0,0,0,0.8)]
           active:shadow-none
           active:translate-y-1
           transition-all duration-200 ease-in-out
