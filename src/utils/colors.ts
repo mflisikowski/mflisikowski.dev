@@ -1,4 +1,3 @@
-import { useTheme } from "next-themes";
 import { type Config } from "tailwindcss";
 import resolveConfig from "tailwindcss/resolveConfig";
 import { type DefaultColors } from "tailwindcss/types/generated/colors";

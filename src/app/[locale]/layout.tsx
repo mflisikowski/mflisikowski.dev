@@ -81,7 +81,7 @@ export default async function RootLayout({
   setRequestLocale(locale);
 
   return (
-    <html lang={locale} className="h-full" role="document">
+    <html lang={locale} className="h-full">
       <Providers>
         <body
           className={cn(
