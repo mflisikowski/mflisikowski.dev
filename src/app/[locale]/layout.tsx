@@ -6,7 +6,6 @@ import { Inter as Font } from "next/font/google";
 import localFont from "next/font/local";
 import React from "react";
 
-import { Background } from "@/components/background";
 import { CookieConsent } from "@/components/cookie-consent";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
@@ -86,7 +85,7 @@ export default async function RootLayout({
       <Providers>
         <body
           className={cn(
-            "relative flex min-h-full flex-col text-gray-900 antialiased",
+            "relative flex min-h-full flex-col bg-yellow-50 text-gray-900 antialiased",
             CalSans.variable,
             Inter.variable,
           )}
@@ -100,8 +99,6 @@ export default async function RootLayout({
           <Footer />
 
           <CookieConsent />
-          <Background />
-
           {shouldInjectToolbar && <VercelToolbar />}
         </body>
       </Providers>
