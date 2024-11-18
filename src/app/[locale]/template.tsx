@@ -6,12 +6,18 @@ import { AnimatedPageLayout } from "@/components/framer-motion/animated-page-lay
 
 function Template({ children }: { children: React.ReactNode }) {
   return (
-    <ReactLenis root className="relative">
+    <ReactLenis
+      options={{
+        smoothWheel: true,
+        duration: 1.5,
+        lerp: 0.1,
+      }}
+      root
+    >
       <AnimatedPageLayout>
         <>{children}</>
       </AnimatedPageLayout>
     </ReactLenis>
   );
 }
-
 export default Template;

@@ -1,11 +1,11 @@
-
-import { type DefaultColors } from "tailwindcss/types/generated/colors";
+import { useTheme } from "next-themes";
 import { type Config } from "tailwindcss";
-
-import tailwindConfig from "../../tailwind.config";
 import resolveConfig from "tailwindcss/resolveConfig";
+import { type DefaultColors } from "tailwindcss/types/generated/colors";
 
 import { rgba } from "@/utils/rgba";
+
+import tailwindConfig from "../../tailwind.config";
 
 const fullConfig = resolveConfig(tailwindConfig as Config);
 
@@ -21,7 +21,7 @@ const isNestedColor = (value: unknown): value is Record<string | number, string>
   return typeof value === "object" && value !== null;
 };
 
-type ColorShade =
+export type ColorShade =
   | "50"
   | "100"
   | "200"
@@ -67,3 +67,6 @@ export const getTailwindColor = ({
 
   throw new Error(`Unexpected color value for "${color}"`);
 };
+
+export const secondaryColor = getTailwindColor({ color: "red", shade: "600", alpha: 0.6 });
+export const primaryColor = getTailwindColor({ color: "orange", shade: "500", alpha: 0.7 });
