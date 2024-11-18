@@ -1,23 +1,12 @@
 import { getTranslations } from "next-intl/server";
-import { setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 
 import { AnimatedTextLetters } from "@/components/framer-motion/animated-text-letters";
 
 import { cn } from "@/utils/cn";
 
-interface AboutPageProps {
-  params: Promise<{
-    locale: string;
-  }>;
-}
-
-export default async function AboutPage({ params }: AboutPageProps) {
-  const { locale } = await params;
-
+export default async function AboutPage() {
   const t = await getTranslations("AboutPage");
-
-  setRequestLocale(locale);
 
   return (
     <div className="grid grid-cols-3 gap-x-4 gap-y-4 text-center font-mono">
@@ -30,18 +19,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
             className={cn(
               "text-nowrap font-cal text-[4.5rem] leading-none sm:text-[6rem] md:text-[8rem] xl:text-8xl 2xl:text-[10rem]",
             )}
-            text={t("name.lastName")}
-          />
-
-          <AnimatedTextLetters
-            animationConfig={{
-              startDelay: 0.6,
-              delay: 0.03,
-            }}
-            className={cn(
-              "text-nowrap font-cal text-[4.5rem] leading-none sm:text-[6rem] md:text-[8rem] xl:text-8xl 2xl:text-[10rem]",
-            )}
-            text={t("name.firstName")}
+            text={"Flisikowski\nMateusz"}
           />
         </div>
 
