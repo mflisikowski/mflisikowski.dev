@@ -76,14 +76,17 @@ export const CookieConsent: FC = () => {
           <div className="rounded-md border bg-white/95 shadow-lg backdrop-blur-sm">
             <div className="grid gap-2">
               <div className="flex h-14 items-center justify-between border-b p-4">
-                <h2 aria-labelledby="cookie-consent-title" className="text-lg font-medium">
+                <h2
+                  aria-labelledby="cookie-consent-title"
+                  className="text-lg font-medium text-zinc-950"
+                >
                   {t("title")}
                 </h2>
                 <CookieIcon className="h-5 w-5" aria-hidden="true" />
               </div>
               <div className="space-y-2 border-b p-4">
                 <p
-                  className="text-left text-sm leading-relaxed text-gray-700"
+                  className="text-left text-sm leading-relaxed text-zinc-950"
                   aria-describedby="cookie-consent-description"
                 >
                   {t("description")}{" "}
