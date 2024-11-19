@@ -1,9 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { TypeAnimation } from "react-type-animation";
+
+import { NotionAvatar } from "@/components/notion-avatar";
 
 import { cn } from "@/utils/cn";
 
@@ -25,13 +26,7 @@ export function Logo({ className, as = Link, ...props }: LogoProps) {
       {...props}
     >
       <div className="flex aspect-[160/32] items-center gap-2">
-        <Image
-          className="flex h-10 w-10"
-          src="/notion-avatar.svg"
-          alt=""
-          width={120}
-          height={120}
-        />
+        <NotionAvatar />
 
         <TypeAnimation
           aria-label="Mission Focused Developer"
