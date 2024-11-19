@@ -59,7 +59,7 @@ export const CookieConsent: FC = () => {
   return (
     <>
       {!isConsentGiven && (
-        <div className="fixed inset-0 z-50 h-screen w-screen bg-black/45 backdrop-blur-sm duration-200 animate-in fade-in" />
+        <div className="fixed inset-0 z-40 h-screen w-screen bg-black/45 backdrop-blur-sm duration-200 animate-in fade-in" />
       )}
 
       <div

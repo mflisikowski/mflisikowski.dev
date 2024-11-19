@@ -82,18 +82,18 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} className="h-full" suppressHydrationWarning>
-      <body className={cn(CalSans.variable, Inter.variable)}>
+      <body className={cn("relative", CalSans.variable, Inter.variable)}>
         <Providers>
           <AnalyticsPageView />
 
           <Header />
-          <main className="relative z-20 flex flex-grow flex-col overflow-hidden py-4 lg:py-16">
+          <main className="relative z-20 flex flex-grow flex-col overflow-hidden">
             <>{children}</>
           </main>
           <Footer />
 
           <CookieConsent />
-          {shouldInjectToolbar && <VercelToolbar />}
+          {shouldInjectToolbar && <VercelToolbar className="z-30" />}
         </Providers>
       </body>
     </html>
