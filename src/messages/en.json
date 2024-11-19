@@ -53,5 +53,11 @@
     },
     "save": "Save settings",
     "cancel": "Cancel"
+  },
+  "themeToggle": {
+    "toggleTheme": "Toggle theme",
+    "system": "System",
+    "light": "Light",
+    "dark": "Dark"
   }
 }

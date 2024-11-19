@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 @layer base {
-
-  html,
   body {
-    /* @apply font-inter; TODO: Change it later */
-    @apply text-zinc-900;
+    @apply bg-sky-100 text-zinc-900 dark:bg-zinc-900 dark:text-zinc-50;
+    @apply bg-[url('/dark-noise.png')] bg-repeat dark:bg-[url('/dark-noise.png')];
+    @apply relative flex min-h-full flex-col antialiased;
+    @apply bg-blend-difference dark:bg-blend-darken;
   }
 }
 

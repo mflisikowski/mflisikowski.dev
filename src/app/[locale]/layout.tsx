@@ -81,15 +81,9 @@ export default async function RootLayout({
   setRequestLocale(locale);
 
   return (
-    <html lang={locale} className="h-full">
-      <Providers>
-        <body
-          className={cn(
-            "relative flex min-h-full flex-col bg-yellow-50 text-gray-900 antialiased",
-            CalSans.variable,
-            Inter.variable,
-          )}
-        >
+    <html lang={locale} className="h-full" suppressHydrationWarning>
+      <body className={cn(CalSans.variable, Inter.variable)}>
+        <Providers>
           <AnalyticsPageView />
 
           <Header />
@@ -100,8 +94,8 @@ export default async function RootLayout({
 
           <CookieConsent />
           {shouldInjectToolbar && <VercelToolbar />}
-        </body>
-      </Providers>
+        </Providers>
+      </body>
     </html>
   );
 }

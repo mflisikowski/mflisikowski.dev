@@ -53,5 +53,11 @@
     },
     "save": "Zapisz ustawienia",
     "cancel": "Anuluj"
+  },
+  "themeToggle": {
+    "toggleTheme": "Przełącz motyw",
+    "system": "Systemowy",
+    "light": "Jasny",
+    "dark": "Ciemny"
   }
 }
