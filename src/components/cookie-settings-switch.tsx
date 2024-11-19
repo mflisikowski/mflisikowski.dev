@@ -18,8 +18,8 @@ export function CookieSettingsSwitch({
   return (
     <div className="flex items-center justify-between space-x-4 rounded-lg p-4 transition-colors">
       <div className="flex-1">
-        <h4 className="font-medium text-gray-900">{title}</h4>
-        <p className="text-muted-foreground mt-1 text-sm">{description}</p>
+        <h4 className="font-medium text-zinc-950 dark:text-zinc-50">{title}</h4>
+        <p className="mt-1 text-sm text-zinc-950 dark:text-zinc-50">{description}</p>
       </div>
 
       <Switch

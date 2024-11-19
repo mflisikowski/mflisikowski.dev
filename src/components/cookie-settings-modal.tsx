@@ -20,10 +20,12 @@ export function CookieSettingsModal() {
 
   return (
     <Dialog open={isSettingsVisible} onOpenChange={hideSettings}>
-      <DialogContent className="h-full w-full max-w-full sm:h-auto sm:max-w-[700px]">
+      <DialogContent className="h-full w-full max-w-full bg-white sm:h-auto sm:max-w-[700px]">
         <DialogHeader>
-          <DialogTitle>{t("title")}</DialogTitle>
-          <DialogDescription>{t("description")}</DialogDescription>
+          <DialogTitle className="text-zinc-950 dark:text-zinc-50">{t("title")}</DialogTitle>
+          <DialogDescription className="text-zinc-950 dark:text-zinc-50">
+            {t("description")}
+          </DialogDescription>
         </DialogHeader>
 
         <div className="space-y-2 py-4">
