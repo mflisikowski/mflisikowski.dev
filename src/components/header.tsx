@@ -1,4 +1,3 @@
-import { Container } from "@/components/container";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { Logo } from "@/components/logo";
 import { Navigation } from "@/components/navigation";
@@ -10,19 +9,19 @@ export function Header() {
   const isSticky = false;
 
   return (
-    <Container
-      className={cn("relative z-20 w-full", isSticky && "sticky top-0 z-50 backdrop-blur-md")}
-      as="header"
+    <header
+      className={cn(
+        "relative z-20 flex w-full items-center justify-between px-4 font-inter h-header lg:px-24",
+        isSticky && "sticky top-0 z-50 backdrop-blur-md",
+      )}
     >
-      <div className="flex min-h-24 items-center justify-between font-inter">
-        <Logo href="/" />
+      <Logo href="/" />
 
-        <div className="flex items-center gap-4">
-          <LanguageSwitcher className="hidden lg:order-2 lg:flex" />
-          <ThemeToggle className="hidden lg:order-2 lg:flex" />
-          <Navigation />
-        </div>
+      <div className="flex items-center gap-4">
+        <LanguageSwitcher className="hidden lg:order-2 lg:flex" />
+        <ThemeToggle className="hidden lg:order-2 lg:flex" />
+        <Navigation />
       </div>
-    </Container>
+    </header>
   );
 }
