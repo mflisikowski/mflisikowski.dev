@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
 
 const config = {
   darkMode: "class",
@@ -49,7 +50,22 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    plugin(({ addUtilities, theme }) => {
+      addUtilities({
+        ".h-header": {
+          height: theme("height.24"),
+        },
+        ".h-hero": {
+          height: `calc(${theme("height.screen")} - ${theme("height.24")})`,
+        },
+        ".h-footer": {
+          height: theme("height.16"),
+        },
+      });
+    }),
+  ],
 } satisfies Config;
 
 export default config;
