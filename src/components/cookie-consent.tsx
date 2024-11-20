@@ -12,6 +12,28 @@ import { cn } from "@/utils/cn";
 
 import { useConsentStore } from "@/stores/consent-store";
 
+export const ButtonManage = ({ hideText = false }: { hideText?: boolean }) => {
+  const { isConsentGiven, showSettings } = useConsentStore();
+  const t = useTranslations("cookieConsent");
+
+  return (
+    <Button
+      className="flex w-full items-center gap-2"
+      variant={"cookieManage"}
+      onClick={showSettings}
+      aria-label={t("manage")}
+    >
+      <CookieIcon
+        className={cn("h-5 w-5 shrink-0", isConsentGiven ? "block" : "hidden", hideText && "")}
+        aria-hidden="true"
+      />
+      <p className={cn("group-hover:underline", hideText && "hidden")}>
+        <>{t("manage")}</>
+      </p>
+    </Button>
+  );
+};
+
 export const CookieConsent: FC = () => {
   // prettier-ignore
   const { isConsentGiven, setConsent, showSettings, checkConsent, acceptAll } = useConsentStore();
@@ -41,21 +63,6 @@ export const CookieConsent: FC = () => {
     return null;
   }
 
-  const ButtonManage = () => (
-    <Button
-      className="flex w-full items-center gap-2"
-      variant="cookieManage"
-      onClick={showSettings}
-      aria-label={t("manage")}
-    >
-      <CookieIcon
-        className={cn("h-5 w-5 shrink-0", isConsentGiven ? "block" : "hidden")}
-        aria-hidden="true"
-      />
-      <p className="group-hover:underline">{t("manage")}</p>
-    </Button>
-  );
-
   return (
     <>
       {!isConsentGiven && (
@@ -69,8 +76,8 @@ export const CookieConsent: FC = () => {
         role="dialog"
       >
         {isConsentGiven ? (
-          <div className="p-4">
-            <ButtonManage />
+          <div className="hidden p-4 lg:block">
+            <ButtonManage standalone />
           </div>
         ) : (
           <div className="rounded-md border bg-white/95 shadow-lg backdrop-blur-sm">
