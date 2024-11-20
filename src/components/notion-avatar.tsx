@@ -3,7 +3,7 @@ import React from "react";
 export function NotionAvatar() {
   return (
     <svg
-      className="flex h-10 w-10"
+      className="h-6 w-6 lg:h-8 lg:w-8"
       width="120"
       height="120"
       viewBox="0 0 600 600"
