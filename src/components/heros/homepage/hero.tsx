@@ -1,47 +1,46 @@
 import { getTranslations } from "next-intl/server";
-import React from "react";
 
 import { ElevateYourBrandTodayButton } from "@/components/buttons/elevate-your-brad-today";
 import { AnimatedTextLetters } from "@/components/framer-motion/animated-text-letters";
 import { FadeIn, FadeInStagger } from "@/components/framer-motion/fade-in";
+import { HeroVideo } from "@/components/heros/homepage/video";
+
+import { cn } from "@/utils/cn";
 
 export const Hero = async () => {
   const t = await getTranslations("HomePageHero");
 
   return (
-    <FadeInStagger className="relative">
-      <div className="z-10 space-y-10">
-        <div className="space-y-4 lg:space-y-8">
-          <div>
-            <FadeIn>
-              <AnimatedTextLetters
-                className="font-inter text-6xl font-normal tracking-wide will-change-transform md:text-7xl lg:text-nowrap lg:text-8xl"
-                animationConfig={{ startDelay: 0.5 }}
-                text={t("title")}
-                animated
-              />
-            </FadeIn>
-          </div>
+    <FadeInStagger
+      className={cn(
+        "supports-[height:100cqh]:h-[100cqh] lg:supports-[height:100cqh]:h-[calc(100cqh-theme(height.24))]",
+        "relative flex grow items-end",
+      )}
+    >
+      <div className="relative z-20 mb-6 w-full lg:mb-12">
+        <FadeIn className="space-y-10 px-6 py-6 md:px-24">
+          <AnimatedTextLetters
+            className="font-cal text-5xl font-normal tracking-wide lg:text-6xl 2xl:text-8xl"
+            animationConfig={{ startDelay: 0.5 }}
+            text={t("title")}
+            animated
+          />
 
-          <FadeIn>
-            <div className="max-w-lg xl:mt-14">
-              <AnimatedTextLetters
-                className="text-wrap font-mono text-xl font-light will-change-transform"
-                animationConfig={{ startDelay: 0.7 }}
-                text={t("subtitle")}
-                animated
-              />
-            </div>
-          </FadeIn>
-        </div>
+          <AnimatedTextLetters
+            className="font-mono text-lg font-light lg:text-xl"
+            animationConfig={{ startDelay: 0.7 }}
+            text={t("subtitle")}
+            animated
+          />
 
-        <div className="order-2">
-          <div className="flex items-center justify-center space-y-3 lg:justify-start">
-            <FadeIn>
-              <ElevateYourBrandTodayButton />
-            </FadeIn>
+          <div className="order-2">
+            <ElevateYourBrandTodayButton />
           </div>
-        </div>
+        </FadeIn>
+      </div>
+
+      <div className="absolute inset-0 z-0">
+        <HeroVideo />
       </div>
     </FadeInStagger>
   );
