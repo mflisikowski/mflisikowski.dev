@@ -36,7 +36,7 @@ export const ButtonManage = ({ hideText = false }: { hideText?: boolean }) => {
 
 export const CookieConsent: FC = () => {
   // prettier-ignore
-  const { isConsentGiven, setConsent, showSettings, checkConsent, acceptAll } = useConsentStore();
+  const { isConsentGiven, setConsent, checkConsent, acceptAll } = useConsentStore();
   const [isLoading, setIsLoading] = useState(true);
   const t = useTranslations("cookieConsent");
 
@@ -77,7 +77,7 @@ export const CookieConsent: FC = () => {
       >
         {isConsentGiven ? (
           <div className="hidden p-4 lg:block">
-            <ButtonManage standalone />
+            <ButtonManage hideText />
           </div>
         ) : (
           <div className="rounded-md border bg-white/95 shadow-lg backdrop-blur-sm">
