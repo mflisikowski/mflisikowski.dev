@@ -48,7 +48,9 @@ export function NavigationMobile({
               {items?.map(({ href, title }) => {
                 return (
                   <div
-                    className={cn("flex min-h-16 items-center justify-center bg-white")}
+                    className={cn(
+                      "flex min-h-16 items-center justify-center bg-white dark:text-zinc-950",
+                    )}
                     key={href}
                   >
                     <MobileLink onOpenChange={setOpen} className="flex-grow px-10" href={href!}>
@@ -65,7 +67,7 @@ export function NavigationMobile({
 
                 return (
                   <Link
-                    className="flex min-h-16 w-full items-center justify-center gap-2 bg-white px-6"
+                    className="flex min-h-16 w-full items-center justify-center gap-2 bg-white px-6 dark:text-zinc-950"
                     target="_blank"
                     href={social.href!}
                     key={social.href}
