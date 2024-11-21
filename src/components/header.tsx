@@ -1,7 +1,7 @@
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { Logo } from "@/components/logo";
 import { Navigation } from "@/components/navigation";
-import { ThemeToggle } from "@/components/theme-toggle";
+import { ThemeToggleIcon } from "@/components/theme-toggle";
 
 export function Header() {
   return (
@@ -10,7 +10,7 @@ export function Header() {
 
       <div className="flex items-center gap-4">
         <LanguageSwitcher className="hidden lg:order-2 lg:flex" />
-        <ThemeToggle className="hidden lg:order-2 lg:flex" />
+        <ThemeToggleIcon className="hidden lg:order-2 lg:flex" />
         <Navigation />
       </div>
     </header>
