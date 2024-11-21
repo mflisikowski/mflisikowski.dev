@@ -1,4 +1,3 @@
-import { VercelToolbar } from "@vercel/toolbar/next";
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import dynamic from "next/dynamic";
@@ -75,7 +74,6 @@ export default async function RootLayout({
     locale: string;
   }>;
 }>) {
-  const shouldInjectToolbar = process.env.NODE_ENV === "development";
   const { locale } = await params;
 
   setRequestLocale(locale);
@@ -93,7 +91,6 @@ export default async function RootLayout({
           <Footer />
 
           <CookieConsent />
-          {shouldInjectToolbar && <VercelToolbar className="z-30" />}
         </Providers>
       </body>
     </html>
