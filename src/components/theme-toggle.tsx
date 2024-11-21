@@ -17,7 +17,7 @@ type ThemeToggleProps = React.HTMLAttributes<HTMLDivElement>;
 
 export function ThemeToggleIcon({ className }: ThemeToggleProps) {
   const t = useTranslations("themeToggle");
-  const { setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
 
   return (
     <div className={cn(className)}>
@@ -31,9 +31,15 @@ export function ThemeToggleIcon({ className }: ThemeToggleProps) {
         </DropdownMenuTrigger>
 
         <DropdownMenuContent align="end">
-          <DropdownMenuItem onClick={() => setTheme("light")}>{t("light")}</DropdownMenuItem>
-          <DropdownMenuItem onClick={() => setTheme("dark")}>{t("dark")}</DropdownMenuItem>
-          <DropdownMenuItem onClick={() => setTheme("system")}>{t("system")}</DropdownMenuItem>
+          <DropdownMenuItem onClick={() => setTheme("light")} isSelected={theme === "light"}>
+            {t("light")}
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => setTheme("dark")} isSelected={theme === "dark"}>
+            {t("dark")}
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => setTheme("system")} isSelected={theme === "system"}>
+            {t("system")}
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
