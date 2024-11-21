@@ -4,8 +4,6 @@ import Link from "next/link";
 import React from "react";
 import { TypeAnimation } from "react-type-animation";
 
-import { NotionAvatar } from "@/components/notion-avatar";
-
 import { cn } from "@/utils/cn";
 
 type LogoProps = {
