@@ -59,5 +59,9 @@
     "system": "Systemowy",
     "light": "Jasny",
     "dark": "Ciemny"
+  },
+  "underConstruction": {
+    "title": "Strona w budowie",
+    "subtitle": "Przepraszamy, ta strona jest obecnie w budowie."
   }
 }

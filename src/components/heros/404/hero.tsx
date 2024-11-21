@@ -1,6 +1,5 @@
 import { getTranslations } from "next-intl/server";
 
-import { ElevateYourBrandTodayButton } from "@/components/buttons/elevate-your-brad-today";
 import { AnimatedTextLetters } from "@/components/framer-motion/animated-text-letters";
 import { FadeIn, FadeInStagger } from "@/components/framer-motion/fade-in";
 import { HeroVideo } from "@/components/heros/video";
@@ -8,13 +7,13 @@ import { HeroVideo } from "@/components/heros/video";
 import { cn } from "@/utils/cn";
 
 export const Hero = async () => {
-  const t = await getTranslations("HomePageHero");
+  const t = await getTranslations("underConstruction");
 
   return (
     <FadeInStagger
       className={cn(
-        "supports-[height:100cqh]:h-[100cqh] lg:supports-[height:100cqh]:h-[calc(100cqh-theme(height.24))]",
-        "relative flex grow items-end",
+        "supports-[height:100cqh]:h-[100cqh] lg:supports-[height:100cqh]:h-[100cqh]",
+        "relative flex grow items-center",
       )}
     >
       <div className="relative z-20 mb-6 w-full lg:mb-12">
@@ -32,10 +31,6 @@ export const Hero = async () => {
             text={t("subtitle")}
             animated
           />
-
-          <div className="order-2">
-            <ElevateYourBrandTodayButton />
-          </div>
         </FadeIn>
       </div>
 

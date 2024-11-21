@@ -59,5 +59,9 @@
     "system": "System",
     "light": "Light",
     "dark": "Dark"
+  },
+  "underConstruction": {
+    "title": "Page under construction",
+    "subtitle": "Sorry, this page is currently under construction."
   }
 }

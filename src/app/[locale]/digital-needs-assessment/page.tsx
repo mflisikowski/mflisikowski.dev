@@ -1,3 +1,5 @@
+import { Hero } from "@/components/heros/404/hero";
+
 export default function DigitalNeedsAssessmentPage() {
-  return <>Digital Needs Assessment</>;
+  return <Hero />;
 }
