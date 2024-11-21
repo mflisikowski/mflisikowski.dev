@@ -26,8 +26,6 @@ export function Logo({ className, as = Link, ...props }: LogoProps) {
       {...props}
     >
       <div className="flex aspect-[160/32] items-center gap-2">
-        <NotionAvatar />
-
         <TypeAnimation
           aria-label="Mission Focused Developer"
           role="marquee"
