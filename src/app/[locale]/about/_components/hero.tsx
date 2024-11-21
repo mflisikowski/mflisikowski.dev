@@ -1,6 +1,5 @@
 import { getTranslations } from "next-intl/server";
 
-import { ElevateYourBrandTodayButton } from "@/components/buttons/elevate-your-brad-today";
 import { AnimatedTextLetters } from "@/components/framer-motion/animated-text-letters";
 import { FadeIn, FadeInStagger } from "@/components/framer-motion/fade-in";
 import { HeroVideo } from "@/components/heros/video";
