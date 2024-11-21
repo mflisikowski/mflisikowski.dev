@@ -18,16 +18,16 @@ export const Hero = async () => {
       )}
     >
       <div className="relative z-20 mb-6 w-full lg:mb-12">
-        <FadeIn className="space-y-10 px-6 py-6 md:px-24">
+        <FadeIn className="space-y-6 px-6 py-6 md:space-y-10 md:px-24">
           <AnimatedTextLetters
-            className="font-cal text-5xl font-normal tracking-wide lg:text-6xl 2xl:text-8xl"
+            className="font-cal text-4xl font-normal tracking-wide sm:text-5xl lg:text-6xl 2xl:text-8xl"
             animationConfig={{ startDelay: 0.5 }}
             text={t("title")}
             animated
           />
 
           <AnimatedTextLetters
-            className="font-mono text-lg font-light lg:text-xl"
+            className="font-mono text-base font-light md:text-lg lg:text-xl"
             animationConfig={{ startDelay: 0.7 }}
             text={t("subtitle")}
             animated
