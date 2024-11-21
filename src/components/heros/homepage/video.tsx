@@ -58,6 +58,7 @@ export const HeroVideo = () => {
         )}
         ref={videoRef}
         src="/videos/mixkit-an-ethereal-white-mistrapidly-maskes-waves-as-it-descents-50941-full-hd.mp4"
+        preload="auto"
         onError={handleError}
         playsInline
         autoPlay
