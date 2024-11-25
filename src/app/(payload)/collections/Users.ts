@@ -28,6 +28,11 @@ export const Users: CollectionConfig = {
       name: "firstName",
       type: "text",
     },
+    {
+      name: "avatar",
+      type: "relationship",
+      relationTo: "media",
+    },
   ],
 
   timestamps: true,

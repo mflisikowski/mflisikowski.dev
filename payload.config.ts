@@ -1,28 +1,20 @@
-import { Users } from "@/collections/Users";
-import { postgresAdapter } from "@payloadcms/db-postgres";
-import { resendAdapter } from "@payloadcms/email-resend";
-import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { buildConfig } from "payload";
 import sharp from "sharp";
 
-export default buildConfig({
-  editor: lexicalEditor(),
+import { collections, db, editor, email, plugins } from "@/payload/config";
 
-  collections: [Users],
+export default buildConfig({
+  collections,
 
   secret: process.env.PAYLOAD_SECRET || "",
 
-  email: resendAdapter({
-    defaultFromAddress: "dev@mflisikowski.dev",
-    defaultFromName: "Mateusz Flisikowski",
-    apiKey: process.env.RESEND_API_KEY || "",
-  }),
+  plugins,
 
-  db: postgresAdapter({
-    pool: {
-      connectionString: process.env.DATABASE_URI,
-    },
-  }),
+  editor,
+
+  email,
 
   sharp,
+
+  db,
 });
