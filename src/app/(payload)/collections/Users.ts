@@ -30,8 +30,9 @@ export const Users: CollectionConfig = {
     },
     {
       name: "avatar",
-      type: "relationship",
+      type: "upload",
       relationTo: "media",
+      required: true,
     },
   ],
 
