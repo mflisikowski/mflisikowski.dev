@@ -1,3 +1,4 @@
+import path from "path";
 import { buildConfig } from "payload";
 import sharp from "sharp";
 
@@ -7,6 +8,10 @@ export default buildConfig({
   collections,
 
   secret: process.env.PAYLOAD_SECRET || "",
+
+  typescript: {
+    outputFile: path.resolve(__dirname, "payload-types.ts"),
+  },
 
   plugins,
 
