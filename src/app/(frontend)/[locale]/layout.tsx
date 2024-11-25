@@ -15,7 +15,7 @@ import { Providers } from "@/providers/index";
 
 import { routing } from "@/i18n/routing";
 
-import "../globals.css";
+import "../../globals.css";
 
 export const metadata: Metadata = {
   title: {
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
 const CalSans = localFont({
   variable: "--font-cal",
   display: "swap",
-  src: "../../../public/fonts/CalSans-SemiBold.woff2",
+  src: "../../../../public/fonts/CalSans-SemiBold.woff2",
 });
 
 const Inter = Font({

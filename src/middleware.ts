@@ -7,7 +7,7 @@ export const config = {
     //
     "/",
     "/(en|pl)/:path*",
-    "/((?!_next|_vercel|.*\\..*).*)",
+    "/((?!api|_next|_vercel|admin|.*\\..*).*)",
   ],
 };
 
