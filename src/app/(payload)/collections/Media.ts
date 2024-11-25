@@ -1,7 +1,5 @@
 import { anyone } from "@/access/anyone";
 import { authenticated } from "@/access/authenticated";
-// prettier-ignore
-import { FixedToolbarFeature, InlineToolbarFeature, lexicalEditor } from "@payloadcms/richtext-lexical";
 import type { CollectionConfig } from "payload";
 
 export const Media: CollectionConfig = {
@@ -19,6 +17,6 @@ export const Media: CollectionConfig = {
       name: "alt",
       type: "text",
       required: true,
-    }
+    },
   ],
 };
