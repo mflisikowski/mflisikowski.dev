@@ -10,6 +10,8 @@ import type { CollectionConfig } from "payload";
 import { authenticated } from "@/access/authenticated";
 import { authenticatedOrPublished } from "@/access/authenticatedOrPublished";
 
+import { slugField } from "@/components/(payload)/fields/slug";
+
 import { generatePreviewPath } from "@/utils/generate-preview-path";
 import { getServerSideURL } from "@/utils/get-url";
 
@@ -103,6 +105,7 @@ export const Pages: CollectionConfig<"pages"> = {
         position: "sidebar",
       },
     },
+    ...slugField(),
   ],
 
   hooks: {
