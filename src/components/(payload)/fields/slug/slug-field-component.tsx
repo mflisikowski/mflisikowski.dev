@@ -6,12 +6,10 @@ import React, { useCallback, useEffect } from "react";
 
 import { normalizeString } from "@/utils/normalize-string";
 
-import "./index.scss";
-
-type SlugFieldComponentProps = {
-  fieldToUse: string;
+interface SlugFieldComponentProps extends TextFieldClientProps {
   checkboxFieldPath: string;
-} & TextFieldClientProps;
+  fieldToUse: string;
+}
 
 export const SlugFieldComponent: React.FC<SlugFieldComponentProps> = ({
   checkboxFieldPath: checkboxFieldPathFromProps,
@@ -65,23 +63,21 @@ export const SlugFieldComponent: React.FC<SlugFieldComponentProps> = ({
     [checkboxValue, checkboxFieldPath, dispatchFields],
   );
 
-  const readOnly = readOnlyFromProps || checkboxValue;
-
   return (
-    <div className="field-type slug-field-component">
-      <div className="label-wrapper">
+    <div className="flex flex-col gap-1">
+      <div className="flex items-center justify-between">
         <FieldLabel htmlFor={`field-${path}`} label={label} />
 
-        <Button className="lock-button" buttonStyle="none" onClick={handleLock}>
+        <Button className="m-0" buttonStyle="none" onClick={handleLock}>
           {checkboxValue ? "Unlock" : "Lock"}
         </Button>
       </div>
 
       <TextInput
-        value={value}
+        readOnly={Boolean(readOnlyFromProps || checkboxValue)}
         onChange={setValue}
+        value={value}
         path={path || field.name}
-        readOnly={Boolean(readOnly)}
       />
     </div>
   );
