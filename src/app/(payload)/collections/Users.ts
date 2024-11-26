@@ -13,11 +13,9 @@ export const Users: CollectionConfig = {
   },
 
   admin: {
-    defaultColumns: ["firstName", "lastName", "email"],
+    defaultColumns: ["avatar", "firstName", "lastName", "email"],
     useAsTitle: "firstName",
   },
-
-  auth: true,
 
   fields: [
     {
@@ -29,12 +27,15 @@ export const Users: CollectionConfig = {
       type: "text",
     },
     {
+      displayPreview: true,
+      relationTo: "media",
+      required: false,
       name: "avatar",
       type: "upload",
-      relationTo: "media",
-      required: true,
     },
   ],
 
   timestamps: true,
+
+  auth: true,
 };
