@@ -5,9 +5,9 @@ import { Inter as Font } from "next/font/google";
 import localFont from "next/font/local";
 import React from "react";
 
-import { CookieConsent } from "@/components/cookie-consent";
-import { Footer } from "@/components/footer";
-import { Header } from "@/components/header";
+import { CookieConsent } from "@/components/(frontend)/cookie-consent";
+import { Footer } from "@/components/(frontend)/footer";
+import { Header } from "@/components/(frontend)/header";
 
 import { cn } from "@/utils/cn";
 
@@ -59,7 +59,9 @@ const Inter = Font({
   subsets: ["latin"],
 });
 
-const AnalyticsPageView = dynamic(() => import("@/components/analytics/analytics-page-view"));
+const AnalyticsPageView = dynamic(
+  () => import("@/components/(frontend)/analytics/analytics-page-view"),
+);
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));

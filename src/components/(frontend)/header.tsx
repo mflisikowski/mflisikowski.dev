@@ -1,7 +1,7 @@
-import { LanguageSwitcher } from "@/components/language-switcher";
-import { Logo } from "@/components/logo";
-import { Navigation } from "@/components/navigation";
-import { ThemeToggleIcon } from "@/components/theme-toggle";
+import { LanguageSwitcher } from "@/components/(frontend)/language-switcher";
+import { Logo } from "@/components/(frontend)/logo";
+import { Navigation } from "@/components/(frontend)/navigation";
+import { ThemeToggleIcon } from "@/components/(frontend)/theme-toggle";
 
 export function Header() {
   return (

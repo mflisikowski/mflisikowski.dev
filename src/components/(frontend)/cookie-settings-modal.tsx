@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 
-import { CookieSettingsSwitch } from "@/components/cookie-settings-switch";
+import { CookieSettingsSwitch } from "@/components/(frontend)/cookie-settings-switch";
 import { Button } from "@/components/ui/button";
 // prettier-ignore
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";

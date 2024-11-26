@@ -1,7 +1,7 @@
 import { fetchNavigationData, fetchSocialData } from "@/repositories/navigation-respository";
 
-import { NavigationDesktop } from "@/components/navigation-desktop";
-import { NavigationMobile } from "@/components/navigation-mobile";
+import { NavigationDesktop } from "@/components/(frontend)/navigation-desktop";
+import { NavigationMobile } from "@/components/(frontend)/navigation-mobile";
 
 export function Navigation() {
   const { items: socials } = fetchSocialData();

@@ -6,11 +6,11 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import React, { useState } from "react";
 
-import { iconMap } from "@/components/icons";
-import { LanguageSwitcher } from "@/components/language-switcher";
-import { Logo } from "@/components/logo";
-import { MobileLink } from "@/components/mobile-link";
-import { ThemeToggleSelect } from "@/components/theme-toggle";
+import { iconMap } from "@/components/(frontend)/icons";
+import { LanguageSwitcher } from "@/components/(frontend)/language-switcher";
+import { Logo } from "@/components/(frontend)/logo";
+import { MobileLink } from "@/components/(frontend)/mobile-link";
+import { ThemeToggleSelect } from "@/components/(frontend)/theme-toggle";
 import { ScrollArea } from "@/components/ui/scroll-area";
 // prettier-ignore
 import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";

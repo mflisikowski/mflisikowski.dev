@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { type FC, useEffect, useState } from "react";
 
-import { CookieSettingsModal } from "@/components/cookie-settings-modal";
+import { CookieSettingsModal } from "@/components/(frontend)/cookie-settings-modal";
 import { Button } from "@/components/ui/button";
 
 import { cn } from "@/utils/cn";
