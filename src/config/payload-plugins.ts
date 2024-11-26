@@ -1,7 +1,22 @@
+import { Page } from "@/payload-types";
+import { seoPlugin } from "@payloadcms/plugin-seo";
+import { GenerateTitle, GenerateURL } from "@payloadcms/plugin-seo/types";
 import { uploadthingStorage } from "@payloadcms/storage-uploadthing";
-import type { Config } from "payload";
+import { Plugin } from "payload";
 
-export const payloadPluginsConfig: Config["plugins"] = [
+import { getServerSideURL } from "@/utils/get-url";
+
+const generateTitle: GenerateTitle<Page> = ({ doc }) => {
+  return doc?.title ? `${doc.title} | Payload Website Template` : "Payload Website Template";
+};
+
+const generateURL: GenerateURL<Page> = ({ doc }) => {
+  const url = getServerSideURL();
+
+  return doc?.slug ? `${url}/${doc.slug}` : url;
+};
+
+export const payloadPluginsConfig: Plugin[] = [
   uploadthingStorage({
     collections: {
       media: true,
@@ -11,5 +26,10 @@ export const payloadPluginsConfig: Config["plugins"] = [
       token: process.env.UPLOADTHING_TOKEN,
       acl: "public-read",
     },
+  }),
+
+  seoPlugin({
+    generateTitle,
+    generateURL,
   }),
 ];
