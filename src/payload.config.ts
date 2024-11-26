@@ -2,24 +2,34 @@ import path from "path";
 import { buildConfig } from "payload";
 import sharp from "sharp";
 
-import { collections, db, editor, email, plugins } from "@/payload/config";
+import {
+  payloadAdminConfig,
+  payloadCollectionsConfig,
+  payloadDbConfig,
+  payloadEditorConfig,
+  payloadEmailConfig,
+  payloadPluginsConfig,
+  payloadSecretConfig,
+} from "@/config";
 
 export default buildConfig({
-  collections,
+  collections: payloadCollectionsConfig,
 
-  secret: process.env.PAYLOAD_SECRET || "",
+  secret: payloadSecretConfig,
 
   typescript: {
     outputFile: path.resolve(__dirname, "payload-types.ts"),
   },
 
-  plugins,
+  plugins: payloadPluginsConfig,
 
-  editor,
+  editor: payloadEditorConfig,
 
-  email,
+  email: payloadEmailConfig,
+
+  admin: payloadAdminConfig,
+
+  db: payloadDbConfig,
 
   sharp,
-
-  db,
 });

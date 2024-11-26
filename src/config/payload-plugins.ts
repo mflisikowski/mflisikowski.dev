@@ -1,7 +1,7 @@
 import { uploadthingStorage } from "@payloadcms/storage-uploadthing";
 import type { Config } from "payload";
 
-export const plugins: Config["plugins"] = [
+export const payloadPluginsConfig: Config["plugins"] = [
   uploadthingStorage({
     collections: {
       media: true,
