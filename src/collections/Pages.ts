@@ -10,6 +10,9 @@ import type { CollectionConfig } from "payload";
 import { authenticated } from "@/access/authenticated";
 import { authenticatedOrPublished } from "@/access/authenticatedOrPublished";
 
+import { generatePreviewPath } from "@/utils/generate-preview-path";
+import { getServerSideURL } from "@/utils/get-url";
+
 import { populatePublishedAt } from "@/hooks/payload-populate-published-at";
 import { revalidatePage } from "@/hooks/payload-revalidate-page";
 
@@ -33,6 +36,23 @@ export const Pages: CollectionConfig<"pages"> = {
 
   admin: {
     defaultColumns: ["title", "slug", "updatedAt"],
+    livePreview: {
+      url: ({ data }) => {
+        const path = generatePreviewPath({
+          slug: typeof data?.slug === "string" ? data.slug : "",
+          collection: "pages",
+        });
+        return `${getServerSideURL()}${path}`;
+      },
+    },
+
+    preview: (data) => {
+      const path = generatePreviewPath({
+        slug: typeof data?.slug === "string" ? data.slug : "",
+        collection: "pages",
+      });
+      return `${getServerSideURL()}${path}`;
+    },
     useAsTitle: "title",
   },
 
@@ -91,6 +111,11 @@ export const Pages: CollectionConfig<"pages"> = {
   },
 
   versions: {
+    drafts: {
+      autosave: {
+        interval: 100, // We set this interval for optimal live preview
+      },
+    },
     maxPerDoc: 50,
   },
 };
