@@ -1,4 +1,4 @@
-import { CollectionSlug } from "payload";
+import type { CollectionSlug } from "payload";
 
 const collectionPrefixMap: Partial<Record<CollectionSlug, string>> = {
   pages: "",

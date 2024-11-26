@@ -1,8 +1,8 @@
-import { Page } from "@/payload-types";
+import type { Page } from "@/payload-types";
 import { seoPlugin } from "@payloadcms/plugin-seo";
-import { GenerateTitle, GenerateURL } from "@payloadcms/plugin-seo/types";
+import type { GenerateTitle, GenerateURL } from "@payloadcms/plugin-seo/types";
 import { uploadthingStorage } from "@payloadcms/storage-uploadthing";
-import { Plugin } from "payload";
+import type { Plugin } from "payload";
 
 import { getServerSideURL } from "@/utils/get-url";
 
