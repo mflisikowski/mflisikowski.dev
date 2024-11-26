@@ -1,2 +1,3 @@
-export * from "@/collections/Users";
+export * from "@/collections/Pages";
 export * from "@/collections/Media";
+export * from "@/collections/Users";

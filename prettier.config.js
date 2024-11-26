@@ -8,6 +8,7 @@ module.exports = {
   importOrderSortSpecifiers: true,
   importOrderSeparation: true,
   importOrder: [
+    "^@/access/(.*)$",
     "^@/types/(.*)$",
     "^@types/(.*)$",
     "^@/public/(.*)$",
