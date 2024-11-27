@@ -1,79 +1,72 @@
-import {
-  FixedToolbarFeature,
-  HeadingFeature,
-  InlineToolbarFeature,
-  lexicalEditor,
-} from "@payloadcms/richtext-lexical";
-import type { Block, Field } from "payload";
+import type { Block } from "payload";
 
-import { link } from "@/components/(payload)/fields/link";
+import { richText } from "@/config/payload-fields/rich-text";
 
-const columnFields: Field[] = [
-  {
-    defaultValue: "half",
-    type: "select",
-    name: "size",
-    options: [
-      {
-        label: "One Third",
-        value: "one-third",
-      },
-      {
-        label: "Half",
-        value: "half",
-      },
-      {
-        label: "Two Thirds",
-        value: "two-thirds",
-      },
-      {
-        label: "Full",
-        value: "full",
-      },
-    ],
-  },
-  {
-    name: "richText",
-    type: "richText",
-    editor: lexicalEditor({
-      features: ({ rootFeatures }) => {
-        return [
-          ...rootFeatures,
-          HeadingFeature({ enabledHeadingSizes: ["h2", "h3", "h4"] }),
-          FixedToolbarFeature(),
-          InlineToolbarFeature(),
-        ];
-      },
-    }),
-    label: false,
-  },
-
-  {
-    name: "enableLink",
-    type: "checkbox",
-  },
-
-  link({
-    overrides: {
-      admin: {
-        condition: (_: unknown, { enableLink }: { enableLink: boolean }) => Boolean(enableLink),
-      },
-    },
-  }),
-];
-
-export interface ContentBlockConfig extends Block {
-  fields: typeof columnFields;
-}
-
-export const ContentBlock: ContentBlockConfig = {
-  interfaceName: "ContentBlock",
-  slug: "content",
+export const Content: Block = {
   fields: [
     {
-      fields: columnFields,
-      name: "columns",
-      type: "array",
+      label: "Use Leading Header",
+      name: "useLeadingHeader",
+      type: "checkbox",
     },
+
+    richText({
+      name: "leadingHeader",
+      label: "Leading Header",
+      admin: {
+        condition: (_, siblingData) => siblingData.useLeadingHeader,
+      },
+    }),
+
+    {
+      name: "layout",
+      type: "select",
+      defaultValue: "oneColumn",
+      options: [
+        {
+          label: "One Column",
+          value: "oneColumn",
+        },
+        {
+          label: "Two Columns",
+          value: "twoColumns",
+        },
+        {
+          label: "Two Thirds + One Third",
+          value: "twoThirdsOneThird",
+        },
+        {
+          label: "Half + Half",
+          value: "halfAndHalf",
+        },
+        {
+          label: "Three Columns",
+          value: "threeColumns",
+        },
+      ],
+    },
+
+    richText({
+      name: "columnOne",
+    }),
+
+    richText({
+      name: "columnTwo",
+      admin: {
+        condition: (_, siblingData) =>
+          ["twoColumns", "twoThirdsOneThird", "halfAndHalf", "threeColumns"].includes(
+            siblingData.layout,
+          ),
+      },
+    }),
+
+    richText({
+      name: "columnThree",
+      admin: {
+        condition: (_, siblingData) => siblingData.layout === "threeColumns",
+      },
+    }),
   ],
+
+  slug: "content",
 };

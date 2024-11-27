@@ -3,7 +3,7 @@ import { MetaDescriptionField, MetaImageField, MetaTitleField, OverviewField, Pr
 
 import { slugField } from "@/components/(payload)/fields/slug";
 
-import { ContentBlock } from "@/config/payload-blocks/content";
+import { Content } from "@/config/payload-blocks/content";
 
 import type { PageCollectionConfig } from ".";
 
@@ -22,7 +22,7 @@ export const pagesFields: PageCollectionConfig["fields"] = [
           {
             name: "layout",
             type: "blocks",
-            blocks: [ContentBlock],
+            blocks: [Content],
             required: true,
           },
         ],
