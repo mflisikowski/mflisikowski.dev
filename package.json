@@ -44,7 +44,6 @@
     "sharp": "^0.33.5",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7",
-    "ts-deepmerge": "^7.0.2",
     "vaul": "^1.1.1",
     "zustand": "^5.0.1"
   },
