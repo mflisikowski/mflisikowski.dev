@@ -12,8 +12,8 @@ export interface Config {
   };
   collections: {
     pages: Page;
-    media: Media;
     users: User;
+    media: Media;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -21,8 +21,8 @@ export interface Config {
   collectionsJoins: {};
   collectionsSelect: {
     pages: PagesSelect<false> | PagesSelect<true>;
-    media: MediaSelect<false> | MediaSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
+    media: MediaSelect<false> | MediaSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -66,6 +66,7 @@ export interface UserAuthOperations {
 export interface Page {
   id: number;
   title: string;
+  layout: ContentBlock[];
   meta?: {
     title?: string | null;
     image?: (number | null) | Media;
@@ -77,6 +78,48 @@ export interface Page {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContentBlock".
+ */
+export interface ContentBlock {
+  columns?:
+    | {
+        size?: ('one-third' | 'half' | 'two-thirds' | 'full') | null;
+        richText?: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        enableLink?: boolean | null;
+        link?: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?: {
+            relationTo: 'pages';
+            value: number | Page;
+          } | null;
+          url?: string | null;
+          label: string;
+          appearance?: ('default' | 'outline') | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'content';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -186,12 +229,12 @@ export interface PayloadLockedDocument {
         value: number | Page;
       } | null)
     | ({
-        relationTo: 'media';
-        value: number | Media;
-      } | null)
-    | ({
         relationTo: 'users';
         value: number | User;
+      } | null)
+    | ({
+        relationTo: 'media';
+        value: number | Media;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -241,6 +284,34 @@ export interface PayloadMigration {
  */
 export interface PagesSelect<T extends boolean = true> {
   title?: T;
+  layout?:
+    | T
+    | {
+        content?:
+          | T
+          | {
+              columns?:
+                | T
+                | {
+                    size?: T;
+                    richText?: T;
+                    enableLink?: T;
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          reference?: T;
+                          url?: T;
+                          label?: T;
+                          appearance?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+      };
   meta?:
     | T
     | {
@@ -254,6 +325,24 @@ export interface PagesSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "users_select".
+ */
+export interface UsersSelect<T extends boolean = true> {
+  lastName?: T;
+  firstName?: T;
+  avatar?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  email?: T;
+  resetPasswordToken?: T;
+  resetPasswordExpiration?: T;
+  salt?: T;
+  hash?: T;
+  loginAttempts?: T;
+  lockUntil?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -343,24 +432,6 @@ export interface MediaSelect<T extends boolean = true> {
               filename?: T;
             };
       };
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users_select".
- */
-export interface UsersSelect<T extends boolean = true> {
-  lastName?: T;
-  firstName?: T;
-  avatar?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  email?: T;
-  resetPasswordToken?: T;
-  resetPasswordExpiration?: T;
-  salt?: T;
-  hash?: T;
-  loginAttempts?: T;
-  lockUntil?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
