@@ -1,35 +1,25 @@
-import path from "path";
-import { buildConfig } from "payload";
+import { type Config, buildConfig } from "payload";
 import sharp from "sharp";
 
-import {
-  payloadAdminConfig,
-  payloadCollectionsConfig,
-  payloadDbConfig,
-  payloadEditorConfig,
-  payloadEmailConfig,
-  payloadPluginsConfig,
-  payloadSecretConfig,
-} from "@/config";
+import { admin } from "@/config/payload-config/admin";
+import { collections } from "@/config/payload-config/collections";
+import { db } from "@/config/payload-config/db";
+import { editor } from "@/config/payload-config/editor";
+import { email } from "@/config/payload-config/email";
+import { plugins } from "@/config/payload-config/plugins";
+import { secret } from "@/config/payload-config/secret";
+import { typescript } from "@/config/payload-config/typescript";
 
-export default buildConfig({
-  collections: payloadCollectionsConfig,
-
-  secret: payloadSecretConfig,
-
-  typescript: {
-    outputFile: path.resolve(__dirname, "payload-types.ts"),
-  },
-
-  plugins: payloadPluginsConfig,
-
-  editor: payloadEditorConfig,
-
-  email: payloadEmailConfig,
-
-  admin: payloadAdminConfig,
-
-  db: payloadDbConfig,
-
+const config: Config = {
+  collections,
+  typescript,
+  plugins,
+  editor,
+  secret,
+  email,
+  admin,
   sharp,
-});
+  db,
+};
+
+export default buildConfig(config);
