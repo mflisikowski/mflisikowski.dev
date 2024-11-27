@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "generate:importmap": "pnpm payload generate:importmap",
+    "generate:types": "pnpm payload generate:types",
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
