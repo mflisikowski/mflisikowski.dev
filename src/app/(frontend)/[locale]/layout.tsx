@@ -9,6 +9,14 @@ import { CookieConsent } from "@/components/(frontend)/cookie-consent";
 import { Footer } from "@/components/(frontend)/footer";
 import { Header } from "@/components/(frontend)/header";
 
+import {
+  META_AUTHOR_NAME,
+  META_AUTHOR_URL,
+  META_DESCRIPTION,
+  META_KEYWORDS,
+  META_WEBSITE_TITLE,
+} from "@/config/meta";
+
 import { cn } from "@/utils/cn";
 
 import { Providers } from "@/providers/index";
@@ -19,32 +27,14 @@ import "../../globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: `Mateusz Flisikowski Mission Focused Developer`,
-    template: `%s | Mateusz Flisikowski`,
+    default: META_WEBSITE_TITLE,
+    template: `%s | ${META_WEBSITE_TITLE}`,
   },
-  description: `Mateusz Flisikowski, deweloper z pasją do tworzenia innowacyjnych rozwiązań, posiada podejście skoncentrowane na misji, nowoczesnych technologiach i rozwoju oprogramowania.`,
-  keywords: [
-    "Mateusz Flisikowski",
-    "TypeScript Developer",
-    "Node.js Developer",
-    "JavaScript Developer",
-    "Next.js Developer",
-    "React Developer",
-    "Frontend Developer",
-    "Tworzenie aplikacji webowych",
-    "Tworzenie stron internetowych",
-    "Programista JavaScript",
-    "Programista TypeScript",
-    "Innowacyjne rozwiązania",
-    "Technologia zorientowana na misję",
-    "Tworzenie stron internetowych dostosowanych do potrzeb klienta",
-    "Tworzenie aplikacji webowych dostosowanych do potrzeb klienta",
-    "Innowacyjne rozwiązania technologiczne dla małych i średnich przedsiębiorstw",
-    "Rozwój oprogramowania zorientowany na potrzeby biznesowe klienta",
-  ],
+  description: META_DESCRIPTION,
+  keywords: META_KEYWORDS,
   authors: {
-    name: "Mateusz Flisikowski",
-    url: "www.mflisikowski.dev",
+    name: META_AUTHOR_NAME,
+    url: META_AUTHOR_URL,
   },
 };
 
