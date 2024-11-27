@@ -1,6 +1,5 @@
 import type { Config } from "tailwindcss";
 import animate from "tailwindcss-animate";
-import { isolateInsideOfContainer, scopedPreflightStyles } from "tailwindcss-scoped-preflight";
 
 const config = {
   darkMode: "class",
@@ -51,12 +50,7 @@ const config = {
       },
     },
   },
-  plugins: [
-    scopedPreflightStyles({
-      isolationStrategy: isolateInsideOfContainer([".useTw"]),
-    }),
-    animate,
-  ],
+  plugins: [animate],
 } satisfies Config;
 
 export default config;
