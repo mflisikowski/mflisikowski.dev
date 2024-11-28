@@ -2,11 +2,10 @@
 import { MetaDescriptionField, MetaImageField, MetaTitleField, OverviewField, PreviewField } from "@payloadcms/plugin-seo/fields";
 import type { CollectionConfig } from "payload";
 
-import { slugField } from "@/components/(payload)/fields/slug";
-
 import { ContentBlock } from "@/config/payload-blocks/content";
 import { CtaBlock } from "@/config/payload-blocks/cta";
 import { MediaBlock } from "@/config/payload-blocks/media";
+import { slugField } from "@/config/payload-fields/slug";
 
 export const pagesFields: CollectionConfig["fields"] = [
   {
