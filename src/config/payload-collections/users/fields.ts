@@ -5,25 +5,31 @@ import { isAdminOrSelfFieldLevel } from "@/config/payload-access/is-admin-or-sel
 
 export const usersFields: CollectionConfig["fields"] = [
   {
-    name: "roles",
-    type: "select",
-    access: {
-      create: isAdminFieldLevel,
-      update: isAdminFieldLevel,
-      read: isAdminOrSelfFieldLevel,
-    },
-    defaultValue: ["public"],
-    hasMany: true,
-    options: ["admin", "public"],
+    type: "row",
     required: true,
-  },
-  {
-    name: "lastName",
-    type: "text",
-  },
-  {
-    name: "firstName",
-    type: "text",
+    fields: [
+      {
+        name: "firstName",
+        type: "text",
+      },
+      {
+        name: "lastName",
+        type: "text",
+      },
+      {
+        name: "roles",
+        type: "select",
+        access: {
+          create: isAdminFieldLevel,
+          update: isAdminFieldLevel,
+          read: isAdminOrSelfFieldLevel,
+        },
+        defaultValue: ["public"],
+        hasMany: true,
+        options: ["admin", "public"],
+        required: true,
+      },
+    ],
   },
   {
     displayPreview: true,
