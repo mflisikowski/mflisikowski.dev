@@ -7,9 +7,7 @@ import { pagesFields as fields } from "@/config/payload-collections/pages/fields
 import { pagesHooks as hooks } from "@/config/payload-collections/pages/hooks";
 import { pagesVersions as versions } from "@/config/payload-collections/pages/version";
 
-export type PageCollectionConfig = CollectionConfig<"pages">;
-
-export const Pages: PageCollectionConfig = {
+export const Pages: CollectionConfig = {
   defaultPopulate,
   versions,
   access,

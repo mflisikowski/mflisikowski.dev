@@ -1,6 +1,6 @@
-import type { UsersCollectionConfig } from ".";
+import type { CollectionConfig } from "payload";
 
-export const usersAdmin: UsersCollectionConfig["admin"] = {
+export const usersAdmin: CollectionConfig["admin"] = {
   defaultColumns: ["avatar", "firstName", "lastName", "email"],
   useAsTitle: "firstName",
 };

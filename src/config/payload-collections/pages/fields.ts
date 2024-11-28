@@ -1,13 +1,12 @@
 // prettier-ignore
 import { MetaDescriptionField, MetaImageField, MetaTitleField, OverviewField, PreviewField } from "@payloadcms/plugin-seo/fields";
+import type { CollectionConfig } from "payload";
 
 import { slugField } from "@/components/(payload)/fields/slug";
 
 import { Content } from "@/config/payload-blocks/content";
 
-import type { PageCollectionConfig } from ".";
-
-export const pagesFields: PageCollectionConfig["fields"] = [
+export const pagesFields: CollectionConfig["fields"] = [
   {
     name: "title",
     type: "text",

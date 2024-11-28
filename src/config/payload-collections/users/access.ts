@@ -1,8 +1,8 @@
+import type { CollectionConfig } from "payload";
+
 import { authenticated } from "@/config/payload-access/authenticated";
 
-import type { UsersCollectionConfig } from ".";
-
-export const usersAccess: UsersCollectionConfig["access"] = {
+export const usersAccess: CollectionConfig["access"] = {
   admin: authenticated,
   create: authenticated,
   delete: authenticated,

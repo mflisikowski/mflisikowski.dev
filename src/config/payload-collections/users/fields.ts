@@ -1,6 +1,6 @@
-import type { UsersCollectionConfig } from ".";
+import type { CollectionConfig } from "payload";
 
-export const usersFields: UsersCollectionConfig["fields"] = [
+export const usersFields: CollectionConfig["fields"] = [
   {
     name: "lastName",
     type: "text",

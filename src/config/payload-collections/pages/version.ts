@@ -1,6 +1,6 @@
-import type { PageCollectionConfig } from ".";
+import type { CollectionConfig } from "payload";
 
-export const pagesVersions: PageCollectionConfig["versions"] = {
+export const pagesVersions: CollectionConfig["versions"] = {
   drafts: {
     autosave: {
       interval: 100, // We set this interval for optimal live preview

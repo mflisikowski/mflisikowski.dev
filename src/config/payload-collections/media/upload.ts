@@ -1,6 +1,6 @@
-import type { MediaCollectionConfig } from ".";
+import type { CollectionConfig } from "payload";
 
-export const mediaUpload: MediaCollectionConfig["upload"] = {
+export const mediaUpload: CollectionConfig["upload"] = {
   adminThumbnail: "thumbnail",
 
   mimeTypes: ["image/jpeg", "image/jpg", "image/webp"],

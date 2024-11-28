@@ -1,9 +1,9 @@
+import type { CollectionConfig } from "payload";
+
 import { authenticated } from "@/config/payload-access/authenticated";
 import { authenticatedOrPublished } from "@/config/payload-access/authenticatedOrPublished";
 
-import type { PageCollectionConfig } from ".";
-
-export const pagesAccess: PageCollectionConfig["access"] = {
+export const pagesAccess: CollectionConfig["access"] = {
   create: authenticated,
   delete: authenticated,
   update: authenticated,

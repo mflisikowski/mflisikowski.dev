@@ -1,9 +1,9 @@
+import type { CollectionConfig } from "payload";
+
 import { generatePreviewPath } from "@/utils/generate-preview-path";
 import { getServerSideURL } from "@/utils/get-url";
 
-import type { PageCollectionConfig } from ".";
-
-export const pagesAdmin: PageCollectionConfig["admin"] = {
+export const pagesAdmin: CollectionConfig["admin"] = {
   defaultColumns: ["title", "slug", "updatedAt"],
   useAsTitle: "title",
 

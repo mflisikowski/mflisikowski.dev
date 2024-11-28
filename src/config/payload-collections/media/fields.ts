@@ -1,6 +1,6 @@
-import type { MediaCollectionConfig } from ".";
+import type { CollectionConfig } from "payload";
 
-export const mediaFields: MediaCollectionConfig["fields"] = [
+export const mediaFields: CollectionConfig["fields"] = [
   {
     name: "alt",
     type: "text",
