@@ -23,6 +23,12 @@ importers:
       '@payloadcms/next':
         specifier: ^3.1.1
         version: 3.1.1(@types/react@18.3.12)(graphql@16.9.0)(monaco-editor@0.52.0)(next@15.0.1(react-dom@19.0.0-rc-45804af1-20241021(react@19.0.0-rc-45804af1-20241021))(react@19.0.0-rc-45804af1-20241021)(sass@1.77.4))(payload@3.1.1(graphql@16.9.0)(monaco-editor@0.52.0)(react-dom@19.0.0-rc-45804af1-20241021(react@19.0.0-rc-45804af1-20241021))(react@19.0.0-rc-45804af1-20241021)(typescript@5.7.2))(react-dom@19.0.0-rc-45804af1-20241021(react@19.0.0-rc-45804af1-20241021))(react@19.0.0-rc-45804af1-20241021)(typescript@5.7.2)
+      '@payloadcms/plugin-nested-docs':
+        specifier: 3.1.1
+        version: 3.1.1(payload@3.1.1(graphql@16.9.0)(monaco-editor@0.52.0)(react-dom@19.0.0-rc-45804af1-20241021(react@19.0.0-rc-45804af1-20241021))(react@19.0.0-rc-45804af1-20241021)(typescript@5.7.2))
+      '@payloadcms/plugin-redirects':
+        specifier: 3.1.1
+        version: 3.1.1(payload@3.1.1(graphql@16.9.0)(monaco-editor@0.52.0)(react-dom@19.0.0-rc-45804af1-20241021(react@19.0.0-rc-45804af1-20241021))(react@19.0.0-rc-45804af1-20241021)(typescript@5.7.2))
       '@payloadcms/plugin-seo':
         specifier: ^3.1.1
         version: 3.1.1(@types/react@18.3.12)(monaco-editor@0.52.0)(next@15.0.1(react-dom@19.0.0-rc-45804af1-20241021(react@19.0.0-rc-45804af1-20241021))(react@19.0.0-rc-45804af1-20241021)(sass@1.77.4))(payload@3.1.1(graphql@16.9.0)(monaco-editor@0.52.0)(react-dom@19.0.0-rc-45804af1-20241021(react@19.0.0-rc-45804af1-20241021))(react@19.0.0-rc-45804af1-20241021)(typescript@5.7.2))(react-dom@19.0.0-rc-45804af1-20241021(react@19.0.0-rc-45804af1-20241021))(react@19.0.0-rc-45804af1-20241021)(typescript@5.7.2)
@@ -1203,6 +1209,16 @@ packages:
         optional: true
       '@vercel/blob':
         optional: true
+
+  '@payloadcms/plugin-nested-docs@3.1.1':
+    resolution: {integrity: sha512-lfKymckS+nY855hmOEoNPjYah9gFCEC3buPlV5ppvtrx755WxYfxBBkNdjRsSHsGYZNGsJ5MkqNS466Fs32Hjg==}
+    peerDependencies:
+      payload: 3.1.1
+
+  '@payloadcms/plugin-redirects@3.1.1':
+    resolution: {integrity: sha512-GsrcH5VjCUS8B8FNowpwnLVkFRbrrdVH00BMsMwL3//2Wpey/m7Ndwm4ZSYj17Ifvc5sD6qxIWQI1WVjpYOz/A==}
+    peerDependencies:
+      payload: 3.1.1
 
   '@payloadcms/plugin-seo@3.1.1':
     resolution: {integrity: sha512-u3lydrt6ntM2rJXdDY3ZemgEo7ezhEtaIKEvIZt18WYmNQWhWff3kCrKuLX9rU0nbTXUR81vlhxD4zzbxEyB5g==}
@@ -5279,6 +5295,14 @@ snapshots:
       find-node-modules: 2.1.3
       payload: 3.1.1(graphql@16.9.0)(monaco-editor@0.52.0)(react-dom@19.0.0-rc-45804af1-20241021(react@19.0.0-rc-45804af1-20241021))(react@19.0.0-rc-45804af1-20241021)(typescript@5.7.2)
       range-parser: 1.2.1
+
+  '@payloadcms/plugin-nested-docs@3.1.1(payload@3.1.1(graphql@16.9.0)(monaco-editor@0.52.0)(react-dom@19.0.0-rc-45804af1-20241021(react@19.0.0-rc-45804af1-20241021))(react@19.0.0-rc-45804af1-20241021)(typescript@5.7.2))':
+    dependencies:
+      payload: 3.1.1(graphql@16.9.0)(monaco-editor@0.52.0)(react-dom@19.0.0-rc-45804af1-20241021(react@19.0.0-rc-45804af1-20241021))(react@19.0.0-rc-45804af1-20241021)(typescript@5.7.2)
+
+  '@payloadcms/plugin-redirects@3.1.1(payload@3.1.1(graphql@16.9.0)(monaco-editor@0.52.0)(react-dom@19.0.0-rc-45804af1-20241021(react@19.0.0-rc-45804af1-20241021))(react@19.0.0-rc-45804af1-20241021)(typescript@5.7.2))':
+    dependencies:
+      payload: 3.1.1(graphql@16.9.0)(monaco-editor@0.52.0)(react-dom@19.0.0-rc-45804af1-20241021(react@19.0.0-rc-45804af1-20241021))(react@19.0.0-rc-45804af1-20241021)(typescript@5.7.2)
 
   '@payloadcms/plugin-seo@3.1.1(@types/react@18.3.12)(monaco-editor@0.52.0)(next@15.0.1(react-dom@19.0.0-rc-45804af1-20241021(react@19.0.0-rc-45804af1-20241021))(react@19.0.0-rc-45804af1-20241021)(sass@1.77.4))(payload@3.1.1(graphql@16.9.0)(monaco-editor@0.52.0)(react-dom@19.0.0-rc-45804af1-20241021(react@19.0.0-rc-45804af1-20241021))(react@19.0.0-rc-45804af1-20241021)(typescript@5.7.2))(react-dom@19.0.0-rc-45804af1-20241021(react@19.0.0-rc-45804af1-20241021))(react@19.0.0-rc-45804af1-20241021)(typescript@5.7.2)':
     dependencies:
