@@ -288,6 +288,7 @@ export interface Media {
  */
 export interface User {
   id: number;
+  roles: ('admin' | 'public')[];
   lastName?: string | null;
   firstName?: string | null;
   avatar?: (number | null) | Media;
@@ -438,6 +439,7 @@ export interface PagesSelect<T extends boolean = true> {
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
+  roles?: T;
   lastName?: T;
   firstName?: T;
   avatar?: T;
