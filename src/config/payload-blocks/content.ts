@@ -2,7 +2,7 @@ import type { Block } from "payload";
 
 import { richText } from "@/config/payload-fields/rich-text";
 
-export const Content: Block = {
+export const ContentBlock: Block = {
   fields: [
     {
       label: "Use Leading Header",
@@ -68,5 +68,5 @@ export const Content: Block = {
     }),
   ],
 
-  slug: "content",
+  slug: "contentBlock",
 };

@@ -66,73 +66,97 @@ export interface UserAuthOperations {
 export interface Page {
   id: number;
   title: string;
-  layout: {
-    useLeadingHeader?: boolean | null;
-    leadingHeader?: {
-      root: {
-        type: string;
-        children: {
-          type: string;
-          version: number;
+  layout: (
+    | {
+        useLeadingHeader?: boolean | null;
+        leadingHeader?: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
           [k: string]: unknown;
-        }[];
-        direction: ('ltr' | 'rtl') | null;
-        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-        indent: number;
-        version: number;
-      };
-      [k: string]: unknown;
-    } | null;
-    layout?: ('oneColumn' | 'twoColumns' | 'twoThirdsOneThird' | 'halfAndHalf' | 'threeColumns') | null;
-    columnOne: {
-      root: {
-        type: string;
-        children: {
-          type: string;
-          version: number;
+        } | null;
+        layout?: ('oneColumn' | 'twoColumns' | 'twoThirdsOneThird' | 'halfAndHalf' | 'threeColumns') | null;
+        columnOne: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
           [k: string]: unknown;
-        }[];
-        direction: ('ltr' | 'rtl') | null;
-        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-        indent: number;
-        version: number;
-      };
-      [k: string]: unknown;
-    };
-    columnTwo?: {
-      root: {
-        type: string;
-        children: {
-          type: string;
-          version: number;
+        };
+        columnTwo?: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
           [k: string]: unknown;
-        }[];
-        direction: ('ltr' | 'rtl') | null;
-        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-        indent: number;
-        version: number;
-      };
-      [k: string]: unknown;
-    } | null;
-    columnThree?: {
-      root: {
-        type: string;
-        children: {
-          type: string;
-          version: number;
+        } | null;
+        columnThree?: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
           [k: string]: unknown;
-        }[];
-        direction: ('ltr' | 'rtl') | null;
-        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-        indent: number;
-        version: number;
-      };
-      [k: string]: unknown;
-    } | null;
-    id?: string | null;
-    blockName?: string | null;
-    blockType: 'content';
-  }[];
+        } | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'contentBlock';
+      }
+    | {
+        position?: ('default' | 'wide') | null;
+        media: number | Media;
+        caption?: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'mediaBlock';
+      }
+  )[];
   meta?: {
     title?: string | null;
     image?: (number | null) | Media;
@@ -311,7 +335,7 @@ export interface PagesSelect<T extends boolean = true> {
   layout?:
     | T
     | {
-        content?:
+        contentBlock?:
           | T
           | {
               useLeadingHeader?: T;
@@ -320,6 +344,15 @@ export interface PagesSelect<T extends boolean = true> {
               columnOne?: T;
               columnTwo?: T;
               columnThree?: T;
+              id?: T;
+              blockName?: T;
+            };
+        mediaBlock?:
+          | T
+          | {
+              position?: T;
+              media?: T;
+              caption?: T;
               id?: T;
               blockName?: T;
             };

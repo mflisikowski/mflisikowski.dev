@@ -4,7 +4,8 @@ import type { CollectionConfig } from "payload";
 
 import { slugField } from "@/components/(payload)/fields/slug";
 
-import { Content } from "@/config/payload-blocks/content";
+import { ContentBlock } from "@/config/payload-blocks/content";
+import { MediaBlock } from "@/config/payload-blocks/media";
 
 export const pagesFields: CollectionConfig["fields"] = [
   {
@@ -21,7 +22,7 @@ export const pagesFields: CollectionConfig["fields"] = [
           {
             name: "layout",
             type: "blocks",
-            blocks: [Content],
+            blocks: [ContentBlock, MediaBlock],
             required: true,
           },
         ],
