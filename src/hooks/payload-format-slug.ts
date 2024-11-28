@@ -1,21 +1,24 @@
 import type { FieldHook } from "payload";
 
-import { normalizeString } from "@/utils/normalize-string";
+import { createSlug } from "@/utils/create-slug";
 
 export const formatSlug =
   (fallback: string): FieldHook =>
   ({ data, operation, value }) => {
     if (typeof value === "string") {
-      return normalizeString(value);
+      return createSlug(value);
     }
 
-    if (operation === "create" || !data?.slug) {
-      const fallbackData = data?.[fallback] || data?.[fallback];
-
-      if (fallbackData && typeof fallbackData === "string") {
-        return normalizeString(fallbackData);
-      }
+    if (
+      data &&
+      (operation === "create" || !data.slug) &&
+      fallback &&
+      fallback in data &&
+      typeof data[fallback] === "string"
+    ) {
+      return createSlug(data[fallback]);
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return value;
   };
