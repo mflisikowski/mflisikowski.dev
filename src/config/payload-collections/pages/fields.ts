@@ -5,6 +5,7 @@ import type { CollectionConfig } from "payload";
 import { slugField } from "@/components/(payload)/fields/slug";
 
 import { ContentBlock } from "@/config/payload-blocks/content";
+import { CtaBlock } from "@/config/payload-blocks/cta";
 import { MediaBlock } from "@/config/payload-blocks/media";
 
 export const pagesFields: CollectionConfig["fields"] = [
@@ -22,7 +23,7 @@ export const pagesFields: CollectionConfig["fields"] = [
           {
             name: "layout",
             type: "blocks",
-            blocks: [ContentBlock, MediaBlock],
+            blocks: [ContentBlock, MediaBlock, CtaBlock],
             required: true,
           },
         ],

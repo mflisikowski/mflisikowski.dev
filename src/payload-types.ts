@@ -156,6 +156,43 @@ export interface Page {
         blockName?: string | null;
         blockType: 'mediaBlock';
       }
+    | {
+        content: {
+          text: {
+            root: {
+              type: string;
+              children: {
+                type: string;
+                version: number;
+                [k: string]: unknown;
+              }[];
+              direction: ('ltr' | 'rtl') | null;
+              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+              indent: number;
+              version: number;
+            };
+            [k: string]: unknown;
+          };
+          links?:
+            | {
+                link: {
+                  label: string;
+                  linkType?: ('internal' | 'external') | null;
+                  url?: string | null;
+                  internalLink?: {
+                    relationTo: 'pages';
+                    value: number | Page;
+                  } | null;
+                  openInNewTab?: boolean | null;
+                };
+                id?: string | null;
+              }[]
+            | null;
+        };
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'ctaBlock';
+      }
   )[];
   meta?: {
     title?: string | null;
@@ -353,6 +390,31 @@ export interface PagesSelect<T extends boolean = true> {
               position?: T;
               media?: T;
               caption?: T;
+              id?: T;
+              blockName?: T;
+            };
+        ctaBlock?:
+          | T
+          | {
+              content?:
+                | T
+                | {
+                    text?: T;
+                    links?:
+                      | T
+                      | {
+                          link?:
+                            | T
+                            | {
+                                label?: T;
+                                linkType?: T;
+                                url?: T;
+                                internalLink?: T;
+                                openInNewTab?: T;
+                              };
+                          id?: T;
+                        };
+                  };
               id?: T;
               blockName?: T;
             };
