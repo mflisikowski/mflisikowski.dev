@@ -383,6 +383,15 @@ export interface Post {
   publishedOn: string;
   slug?: string | null;
   slugLock?: boolean | null;
+  parent?: (number | null) | Post;
+  breadcrumbs?:
+    | {
+        doc?: (number | null) | Post;
+        url?: string | null;
+        label?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -616,6 +625,15 @@ export interface PostsSelect<T extends boolean = true> {
   publishedOn?: T;
   slug?: T;
   slugLock?: T;
+  parent?: T;
+  breadcrumbs?:
+    | T
+    | {
+        doc?: T;
+        url?: T;
+        label?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
