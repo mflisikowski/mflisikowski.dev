@@ -293,10 +293,19 @@ export interface Page {
                   label: string;
                   linkType?: ('internal' | 'external') | null;
                   url?: string | null;
-                  internalLink?: {
-                    relationTo: 'pages';
-                    value: number | Page;
-                  } | null;
+                  internalLink?:
+                    | ({
+                        relationTo: 'pages';
+                        value: number | Page;
+                      } | null)
+                    | ({
+                        relationTo: 'posts';
+                        value: number | Post;
+                      } | null)
+                    | ({
+                        relationTo: 'case-studies';
+                        value: number | CaseStudy;
+                      } | null);
                   openInNewTab?: boolean | null;
                 };
                 id?: string | null;

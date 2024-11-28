@@ -79,7 +79,7 @@ export const linkField: LinkField = (overrides = {}) => {
             },
             label: "Internal Reference",
             name: "internalLink",
-            relationTo: ["pages"],
+            relationTo: ["pages", "posts", "case-studies"],
             required: true,
             type: "relationship",
           },
