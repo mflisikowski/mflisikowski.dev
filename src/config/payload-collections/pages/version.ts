@@ -7,5 +7,5 @@ export const pagesVersions: CollectionConfig["versions"] = {
     },
   },
 
-  maxPerDoc: 50,
+  maxPerDoc: 5,
 };
