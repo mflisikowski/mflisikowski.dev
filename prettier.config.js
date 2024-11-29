@@ -20,7 +20,7 @@ module.exports = {
     "^@/stores/(.*)$",
     "^@/types/(.*)$",
     "^@/utils/(.*)$",
-    "^@types/(.*)$",
+    "^@/types",
     "^[./]",
   ],
   attributeGroups: ["^(id|name)$", "^class$", "$DEFAULT", "^aria-"],

@@ -1,9 +1,10 @@
 import { getCachedPages, getPageData } from "@/data";
 import { createMetadata } from "@/seo";
-import type { PageProps } from "@/types";
 import type { Metadata } from "next";
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
+
+import type { PageProps } from "@/types/index";
 
 export async function generateStaticParams() {
   const pages = await getCachedPages();

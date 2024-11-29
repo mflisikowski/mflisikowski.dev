@@ -1,6 +1,5 @@
 "use client";
 
-import type { NavigationItem } from "@/types";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import * as React from "react";
@@ -14,6 +13,8 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+
+import type { NavigationItem } from "@/types/index";
 
 export function NavigationDesktop({ items }: { items: NavigationItem[] }) {
   const t = useTranslations("Navigation");

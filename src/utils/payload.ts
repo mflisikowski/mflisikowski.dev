@@ -1,8 +1,9 @@
 import configPromise from "@/payload-config";
 import type { CaseStudy, Page, Post } from "@/payload-types";
-import type { PayloadCollections } from "@/types";
 import { unstable_cache } from "next/cache";
 import { getPayload as getPayloadService } from "payload";
+
+import type { PayloadCollections } from "@/types/index";
 
 export const getPayload = async () => getPayloadService({ config: configPromise });
 

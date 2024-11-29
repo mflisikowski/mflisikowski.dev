@@ -1,3 +1,5 @@
+import type { Config } from "payload";
+
 export type NavigationItem = {
   subItems?: NavigationItem[];
   title: string;
@@ -17,3 +19,14 @@ export interface CookieConsentButtonProps {
   label: string;
   onAction?: () => void;
 }
+
+export interface PagePropsParams {
+  locale: string;
+  slug: string[];
+}
+
+export interface PageProps {
+  params: Promise<PagePropsParams>;
+}
+
+export type PayloadCollections = keyof Config["collections"];
