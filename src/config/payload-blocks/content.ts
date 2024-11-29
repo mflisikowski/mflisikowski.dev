@@ -11,17 +11,17 @@ export const ContentBlock: Block = {
     },
 
     richText({
-      name: "leadingHeader",
       label: "Leading Header",
+      name: "leadingHeader",
       admin: {
         condition: (_, siblingData) => siblingData.useLeadingHeader,
       },
     }),
 
     {
+      defaultValue: "oneColumn",
       name: "layout",
       type: "select",
-      defaultValue: "oneColumn",
       options: [
         {
           label: "One Column",
