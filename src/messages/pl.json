@@ -63,5 +63,9 @@
   "underConstruction": {
     "title": "Strona w budowie",
     "subtitle": "Przepraszamy, ta strona jest obecnie w budowie."
+  },
+  "notFound": {
+    "title": "Strona, której szukasz, nie istnieje",
+    "link": "Powrót do strony głównej"
   }
 }

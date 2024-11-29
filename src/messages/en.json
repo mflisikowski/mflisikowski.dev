@@ -63,5 +63,9 @@
   "underConstruction": {
     "title": "Page under construction",
     "subtitle": "Sorry, this page is currently under construction."
+  },
+  "notFound": {
+    "title": "Page that you are looking for does not exist",
+    "link": "Return Home"
   }
 }
