@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import dynamic from "next/dynamic";
 import { Inter as Font } from "next/font/google";
@@ -24,19 +23,6 @@ import { Providers } from "@/providers/index";
 import { routing } from "@/i18n/routing";
 
 import "../../globals.css";
-
-export const metadata: Metadata = {
-  title: {
-    default: META_WEBSITE_TITLE,
-    template: `%s | ${META_WEBSITE_TITLE}`,
-  },
-  description: META_DESCRIPTION,
-  keywords: META_KEYWORDS,
-  authors: {
-    name: META_AUTHOR_NAME,
-    url: META_AUTHOR_URL,
-  },
-};
 
 const CalSans = localFont({
   variable: "--font-cal",
