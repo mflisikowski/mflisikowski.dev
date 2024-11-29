@@ -13,10 +13,10 @@ export const CtaBlock: Block = {
           name: "text",
         }),
         {
-          name: "links",
-          type: "array",
           minRows: 1,
           maxRows: 3,
+          name: "links",
+          type: "array",
           fields: [
             linkField({
               required: true,
@@ -28,8 +28,8 @@ export const CtaBlock: Block = {
   ],
 
   labels: {
-    plural: "Calls to Action",
     singular: "Call to Action",
+    plural: "Calls to Action",
   },
 
   slug: "ctaBlock",
