@@ -3,9 +3,9 @@ import type { Block } from "payload";
 export const MediaBlock: Block = {
   fields: [
     {
+      defaultValue: "default",
       name: "position",
       type: "select",
-      defaultValue: "default",
       options: [
         {
           label: "Default",
@@ -18,10 +18,10 @@ export const MediaBlock: Block = {
       ],
     },
     {
-      name: "media",
-      type: "upload",
       relationTo: "media",
       required: true,
+      type: "upload",
+      name: "media",
     },
     {
       name: "caption",
