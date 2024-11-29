@@ -1,10 +1,10 @@
+import type { Page } from "@/payload-types";
 import type { Metadata } from "next";
 
 import {
   META_AUTHOR_NAME,
   META_AUTHOR_URL,
   META_DESCRIPTION,
-  META_KEYWORDS,
   META_SITE_NAME,
   META_TYPE,
   META_WEBSITE_TITLE,
@@ -30,16 +30,16 @@ export const mergeOpenGraph = (og?: Metadata["openGraph"]): Metadata["openGraph"
   };
 };
 
-export function createMetadata(page: any, slug: string[]): Metadata {
+// TODO: Property 'url' does not exist on type 'number | Media'. Property 'url' does not exist on type 'number'.ts(2339)
+// TODO: Add keywords
+export function createMetadata(page: Page, slug: string[]): Metadata {
   const description = page?.meta?.description || META_DESCRIPTION;
-  const keywords = page?.meta?.keywords || META_KEYWORDS;
   const title = page?.meta?.title || META_WEBSITE_TITLE;
-  const image = page?.meta?.image?.url || "/images/og-image.jpg";
+  // const image = page?.meta?.image?.url || "/images/og-image.jpg";
   const url = Array.isArray(slug) ? slug.join("/") : "/";
 
   return {
     description,
-    keywords,
     title: {
       default: title,
       template: `%s | ${title}`,
@@ -51,7 +51,7 @@ export function createMetadata(page: any, slug: string[]): Metadata {
 
     openGraph: mergeOpenGraph({
       description,
-      images: image ? [{ url: image }] : undefined,
+      // images: image ? [{ url: image }] : undefined,
       title,
       url,
     }),

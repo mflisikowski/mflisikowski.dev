@@ -8,19 +8,11 @@ import { CookieConsent } from "@/components/(frontend)/cookie-consent";
 import { Footer } from "@/components/(frontend)/footer";
 import { Header } from "@/components/(frontend)/header";
 
-import {
-  META_AUTHOR_NAME,
-  META_AUTHOR_URL,
-  META_DESCRIPTION,
-  META_KEYWORDS,
-  META_WEBSITE_TITLE,
-} from "@/config/meta";
-
-import { cn } from "@/utils/cn";
+import { routing } from "@/i18n/routing";
 
 import { Providers } from "@/providers/index";
 
-import { routing } from "@/i18n/routing";
+import { cn } from "@/utils/cn";
 
 import "../../globals.css";
 

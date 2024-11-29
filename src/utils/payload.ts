@@ -1,5 +1,5 @@
 import configPromise from "@/payload-config";
-import type { CaseStudy, Config, Page, Post } from "@/payload-types";
+import type { CaseStudy, Page, Post } from "@/payload-types";
 import type { PayloadCollections } from "@/types";
 import { unstable_cache } from "next/cache";
 import { getPayload as getPayloadService } from "payload";
@@ -42,4 +42,4 @@ export const getCachedRedirects = () =>
   });
 
 // prettier-ignore
-export const isDocument = (doc: any): doc is CaseStudy | Page | Post => typeof doc === "object" && doc !== null && "slug" in doc;
+export const isDocument = (doc: CaseStudy | Page | Post) => typeof doc === "object" && doc !== null && "slug" in doc;

@@ -1,4 +1,4 @@
-import { Config } from "payload";
+import type { Config } from "payload";
 
 export interface PagePropsParams {
   locale: string;

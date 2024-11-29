@@ -34,7 +34,7 @@ export const pagesFields: CollectionConfig["fields"] = [
           OverviewField({
             titlePath: "meta.title",
             descriptionPath: "meta.description",
-            imagePath: "meta.image",
+            imagePath: "meta.image.url",
           }),
 
           MetaTitleField({

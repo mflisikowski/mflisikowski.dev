@@ -1,7 +1,7 @@
 import { getCachedPages, getPageData } from "@/data";
 import { createMetadata } from "@/seo";
-import { PageProps } from "@/types";
-import { Metadata } from "next";
+import type { PageProps } from "@/types";
+import type { Metadata } from "next";
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 
