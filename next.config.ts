@@ -4,7 +4,7 @@ import createNextIntlPlugin from "next-intl/plugin";
 
 const withNextIntl = createNextIntlPlugin();
 
-const isProduction = process.env.NODE_ENV === "production";
+const isProduction = process.env.VERCEL_ENV === "production";
 
 /**
  * Temporary redirects for development
