@@ -1,5 +1,4 @@
-import { redirect } from "next/navigation";
+import PageTemplate, { generateMetadata } from "@/app/(frontend)/[locale]/[...slug]/page";
 
-export default function Page() {
-  redirect("/home");
-}
+export default PageTemplate;
+export { generateMetadata };
