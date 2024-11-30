@@ -25,4 +25,7 @@ const nextConfig: NextConfig = {
   redirects,
 };
 
+console.log("process.env.VERCEL_ENV", process.env.VERCEL_ENV);
+console.log("process.env.NODE_ENV", process.env.NODE_ENV);
+
 export default withPayload(withNextIntl(nextConfig));
