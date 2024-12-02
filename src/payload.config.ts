@@ -9,8 +9,11 @@ import { email } from "@/config/payload-config/email";
 import { plugins } from "@/config/payload-config/plugins";
 import { secret } from "@/config/payload-config/secret";
 import { typescript } from "@/config/payload-config/typescript";
+import { i18n } from "@/config/payload-i18n";
+import { localization } from "@/config/payload-localize";
 
 const config: Config = {
+  localization,
   collections,
   typescript,
   plugins,
@@ -19,6 +22,7 @@ const config: Config = {
   email,
   admin,
   sharp,
+  i18n,
   db,
 };
 

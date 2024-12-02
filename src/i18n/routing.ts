@@ -1,6 +1,5 @@
 import { defineRouting } from "next-intl/routing";
 
-export const routing = defineRouting({
-  locales: ["en", "pl"],
-  defaultLocale: "en",
-});
+import { nextIntlConfig } from "@/config/i18n";
+
+export const routing = defineRouting(nextIntlConfig);
