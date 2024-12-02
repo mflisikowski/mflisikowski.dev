@@ -5,6 +5,7 @@ import { caseStudiesAdmin as admin } from "@/config/payload-collections/case-stu
 import { caseStudiesDefaultPopulate as defaultPopulate } from "@/config/payload-collections/case-studies/default-populate";
 import { caseStudiesFields as fields } from "@/config/payload-collections/case-studies/fields";
 import { caseStudiesHooks as hooks } from "@/config/payload-collections/case-studies/hooks";
+import { caseStudiesLabels as labels } from "@/config/payload-collections/case-studies/labels";
 import { caseStudiesVersions as versions } from "@/config/payload-collections/case-studies/version";
 
 export const CaseStudies: CollectionConfig = {
@@ -12,6 +13,7 @@ export const CaseStudies: CollectionConfig = {
   versions,
   access,
   fields,
+  labels,
   hooks,
   admin,
 
