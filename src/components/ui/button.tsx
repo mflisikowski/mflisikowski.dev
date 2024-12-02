@@ -28,6 +28,12 @@ const buttonVariants = cva(
           hover:bg-gray-50
           rounded-lg
         `,
+        outline: `
+          bg-white text-black
+          hover:bg-gray-50
+          rounded-lg
+          border border-black
+        `,
         default: `
           bg-white text-black
           hover:bg-gray-50
