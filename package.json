@@ -21,6 +21,7 @@
     "@payloadcms/plugin-seo": "3.2.2",
     "@payloadcms/richtext-lexical": "3.2.2",
     "@payloadcms/storage-uploadthing": "3.2.2",
+    "@payloadcms/translations": "3.2.2",
     "@payloadcms/ui": "3.2.2",
     "@radix-ui/react-dialog": "^1.1.2",
     "@radix-ui/react-dropdown-menu": "^2.1.2",
