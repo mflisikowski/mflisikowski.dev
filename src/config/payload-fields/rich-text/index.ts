@@ -13,6 +13,13 @@ export const richText: RichText = (overrides = {}): RichTextField => {
     name: "richText",
     type: "richText",
     required: true,
+    localized: true,
+
+    label: {
+      pl: "Edytor tekstu z rozszerzeniami",
+      en: "Rich text editor",
+    },
+
     ...overridesToMerge,
   };
 };
