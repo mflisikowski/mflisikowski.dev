@@ -1,7 +1,10 @@
 {
   "$schema": "https://inlang.com/schema/project-settings",
-  "sourceLanguageTag": "en",
-  "languageTags": ["en", "pl"],
+  "sourceLanguageTag": "pl",
+  "languageTags": [
+    "en",
+    "pl"
+  ],
   "modules": [
     "https://cdn.jsdelivr.net/npm/@inlang/plugin-next-intl@latest/dist/index.js",
     "https://cdn.jsdelivr.net/npm/@inlang/message-lint-rule-empty-pattern@latest/dist/index.js",
@@ -10,6 +13,11 @@
     "https://cdn.jsdelivr.net/npm/@inlang/message-lint-rule-without-source@latest/dist/index.js"
   ],
   "plugin.inlang.nextIntl": {
-    "pathPattern": "./src/messages/{languageTag}.json"
+    "pathPattern": "./src/messages/{languageTag}.json",
+    "variableReferencePattern": [
+      "{{",
+      "}}"
+    ],
+    "ignore": []
   }
 }
