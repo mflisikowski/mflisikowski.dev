@@ -179,10 +179,13 @@ export interface Media {
  */
 export interface Page {
   id: number;
+  publishedAt: string;
   title: string;
+  slug?: string | null;
+  slugLock?: boolean | null;
   layout: (
     | {
-        useLeadingHeader?: boolean | null;
+        checkboxLeadingHeader?: boolean | null;
         leadingHeader?: {
           root: {
             type: string;
@@ -199,7 +202,7 @@ export interface Page {
           [k: string]: unknown;
         } | null;
         layout?: ('oneColumn' | 'twoColumns' | 'twoThirdsOneThird' | 'halfAndHalf' | 'threeColumns') | null;
-        columnOne: {
+        oneColumn: {
           root: {
             type: string;
             children: {
@@ -214,7 +217,7 @@ export interface Page {
           };
           [k: string]: unknown;
         };
-        columnTwo?: {
+        twoColumns?: {
           root: {
             type: string;
             children: {
@@ -229,7 +232,7 @@ export interface Page {
           };
           [k: string]: unknown;
         } | null;
-        columnThree?: {
+        threeColumns?: {
           root: {
             type: string;
             children: {
@@ -322,9 +325,6 @@ export interface Page {
     image?: (number | null) | Media;
     description?: string | null;
   };
-  publishedAt?: string | null;
-  slug?: string | null;
-  slugLock?: boolean | null;
   parent?: (number | null) | Page;
   breadcrumbs?:
     | {
@@ -539,19 +539,22 @@ export interface CaseStudiesSelect<T extends boolean = true> {
  * via the `definition` "pages_select".
  */
 export interface PagesSelect<T extends boolean = true> {
+  publishedAt?: T;
   title?: T;
+  slug?: T;
+  slugLock?: T;
   layout?:
     | T
     | {
         contentBlock?:
           | T
           | {
-              useLeadingHeader?: T;
+              checkboxLeadingHeader?: T;
               leadingHeader?: T;
               layout?: T;
-              columnOne?: T;
-              columnTwo?: T;
-              columnThree?: T;
+              oneColumn?: T;
+              twoColumns?: T;
+              threeColumns?: T;
               id?: T;
               blockName?: T;
             };
@@ -597,9 +600,6 @@ export interface PagesSelect<T extends boolean = true> {
         image?: T;
         description?: T;
       };
-  publishedAt?: T;
-  slug?: T;
-  slugLock?: T;
   parent?: T;
   breadcrumbs?:
     | T
