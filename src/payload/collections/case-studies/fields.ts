@@ -1,8 +1,8 @@
 import type { CollectionConfig } from "payload";
 
 import { slugField } from "@/payload/custom-fields/slug";
+import { titleField } from "@/payload/custom-fields/title";
 import { richTextField } from "@/payload/fields/rich-text";
-import { titleField } from "@/payload/fields/title";
 
 const caseStudyTitle = titleField();
 

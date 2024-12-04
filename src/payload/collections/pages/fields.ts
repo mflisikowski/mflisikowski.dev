@@ -7,7 +7,7 @@ import { CtaBlock } from "@/payload/blocks/cta";
 import { MediaBlock } from "@/payload/blocks/media";
 import { pagePublishedAt } from "@/payload/custom-fields/published-at";
 import { slugField } from "@/payload/custom-fields/slug";
-import { titleField } from "@/payload/fields/title";
+import { titleField } from "@/payload/custom-fields/title";
 
 const pageTitle = titleField();
 const pageSlug = slugField();
