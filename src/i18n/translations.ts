@@ -29,6 +29,7 @@ export const translations: Record<
     "custom-rich-text": "Rich-Text editor",
     "custom-text": "Text",
     "custom-slug": "Slug",
+    "custom-upload": "Upload",
   },
   pl: {
     "custom-checkboxLeadingHeader": "Użyj nagłówka wiodącego",
@@ -47,6 +48,7 @@ export const translations: Record<
     "custom-rich-text": "Edytor tekstu",
     "custom-text": "Tekst",
     "custom-slug": "Przyjazny URL",
+    "custom-upload": "Plik",
   },
 };
 
