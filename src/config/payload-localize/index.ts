@@ -11,6 +11,6 @@ export const localization: Config["localization"] = {
       code: "pl",
     },
   ],
-  defaultLocale: "en",
+  defaultLocale: "pl",
   fallback: true,
 };
