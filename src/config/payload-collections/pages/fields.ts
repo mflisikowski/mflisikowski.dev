@@ -5,14 +5,28 @@ import type { CollectionConfig } from "payload";
 import { ContentBlock } from "@/config/payload-blocks/content";
 import { CtaBlock } from "@/config/payload-blocks/cta";
 import { MediaBlock } from "@/config/payload-blocks/media";
+import { dateField } from "@/config/payload-fields/date";
 import { slugField } from "@/config/payload-fields/slug";
+import { titleField } from "@/config/payload-fields/title";
+
+const pagePublishedAt = dateField({
+  // @ts-expect-error - TFunction type is not automatically merged with the default translations
+  label: ({ t }) => t("custom-pagePublishedAt"),
+  admin: {
+    position: "sidebar",
+  },
+  name: "publishedAt",
+});
+
+const pageTitle = titleField();
+const pageSlug = slugField();
 
 export const pagesFields: CollectionConfig["fields"] = [
-  {
-    name: "title",
-    type: "text",
-    required: true,
-  },
+  pagePublishedAt,
+  pageTitle,
+
+  ...pageSlug,
+
   {
     type: "tabs",
     tabs: [
@@ -20,10 +34,11 @@ export const pagesFields: CollectionConfig["fields"] = [
         label: "Content",
         fields: [
           {
+            localized: true,
+            required: true,
+            blocks: [ContentBlock, MediaBlock, CtaBlock],
             name: "layout",
             type: "blocks",
-            blocks: [ContentBlock, MediaBlock, CtaBlock],
-            required: true,
           },
         ],
       },
@@ -58,13 +73,4 @@ export const pagesFields: CollectionConfig["fields"] = [
       },
     ],
   },
-  {
-    name: "publishedAt",
-    type: "date",
-    admin: {
-      position: "sidebar",
-    },
-  },
-
-  ...slugField(),
 ];
