@@ -1,9 +1,9 @@
 import type { Block } from "payload";
 
 // prettier-ignore
-import { gridLayoutColumnOneField, gridLayoutColumnSelectField, gridLayoutColumnThreeField, gridLayoutColumnTwoField } from "@/payload/fields/grid-layout";
+import { gridLayoutColumnOneField, gridLayoutColumnSelectField, gridLayoutColumnThreeField, gridLayoutColumnTwoField } from "@/payload/custom-fields/grid-layout";
 // prettier-ignore
-import { leadingHeaderCheckboxField, leadingHeaderRichTextField } from "@/payload/fields/leading-header";
+import { leadingHeaderCheckboxField, leadingHeaderRichTextField } from "@/payload/custom-fields/leading-header";
 
 const leadingHeaderCheckbox = leadingHeaderCheckboxField();
 const leadingHeaderRichText = leadingHeaderRichTextField();

@@ -1,7 +1,7 @@
 import type { CollectionConfig } from "payload";
 
+import { slugField } from "@/payload/custom-fields/slug";
 import { richTextField } from "@/payload/fields/rich-text";
-import { slugField } from "@/payload/fields/slug";
 import { titleField } from "@/payload/fields/title";
 
 const postTitle = titleField();

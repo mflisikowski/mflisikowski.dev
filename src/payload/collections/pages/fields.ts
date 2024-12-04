@@ -5,8 +5,8 @@ import type { CollectionConfig } from "payload";
 import { ContentBlock } from "@/payload/blocks/content";
 import { CtaBlock } from "@/payload/blocks/cta";
 import { MediaBlock } from "@/payload/blocks/media";
+import { slugField } from "@/payload/custom-fields/slug";
 import { dateField } from "@/payload/fields/date";
-import { slugField } from "@/payload/fields/slug";
 import { titleField } from "@/payload/fields/title";
 
 const pagePublishedAt = dateField({
