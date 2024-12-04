@@ -5,18 +5,9 @@ import type { CollectionConfig } from "payload";
 import { ContentBlock } from "@/payload/blocks/content";
 import { CtaBlock } from "@/payload/blocks/cta";
 import { MediaBlock } from "@/payload/blocks/media";
+import { pagePublishedAt } from "@/payload/custom-fields/published-at";
 import { slugField } from "@/payload/custom-fields/slug";
-import { dateField } from "@/payload/fields/date";
 import { titleField } from "@/payload/fields/title";
-
-const pagePublishedAt = dateField({
-  // @ts-expect-error - TFunction type is not automatically merged with the default translations
-  label: ({ t }) => t("custom-pagePublishedAt"),
-  admin: {
-    position: "sidebar",
-  },
-  name: "publishedAt",
-});
 
 const pageTitle = titleField();
 const pageSlug = slugField();
