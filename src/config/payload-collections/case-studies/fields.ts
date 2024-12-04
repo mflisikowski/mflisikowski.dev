@@ -1,15 +1,15 @@
 import type { CollectionConfig } from "payload";
 
-import { richText } from "@/config/payload-fields/rich-text";
+import { richTextField } from "@/config/payload-fields/rich-text";
 import { slugField } from "@/config/payload-fields/slug";
+import { titleField } from "@/config/payload-fields/title";
+
+const caseStudyTitle = titleField();
 
 export const caseStudiesFields: CollectionConfig["fields"] = [
-  {
-    required: true,
-    name: "title",
-    type: "text",
-  },
-  richText({
+  caseStudyTitle,
+
+  richTextField({
     name: "introContent",
   }),
   {
