@@ -1,5 +1,4 @@
-import type { TFunction } from "@payloadcms/translations";
-import type { CheckboxField, Config } from "payload";
+import type { CheckboxField } from "payload";
 import type { RichTextField } from "payload";
 
 import type { CheckboxFieldProps } from "@/config/payload-fields/checkbox";
