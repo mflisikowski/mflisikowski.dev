@@ -8,7 +8,7 @@ import {
   META_SITE_NAME,
   META_TYPE,
   META_WEBSITE_TITLE,
-} from "@/config/meta";
+} from "@/constants/meta";
 
 const defaultOpenGraph: Metadata["openGraph"] = {
   type: META_TYPE,
