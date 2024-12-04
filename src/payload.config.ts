@@ -1,16 +1,17 @@
 import { type Config, buildConfig } from "payload";
 import sharp from "sharp";
 
-import { payloadLocalizationConfig as localization } from "@/config/language";
-import { payloadI18nConfig as i18n } from "@/config/language";
-import { admin } from "@/config/payload-config/admin";
-import { collections } from "@/config/payload-config/collections";
-import { db } from "@/config/payload-config/db";
-import { editor } from "@/config/payload-config/editor";
-import { email } from "@/config/payload-config/email";
-import { plugins } from "@/config/payload-config/plugins";
-import { secret } from "@/config/payload-config/secret";
-import { typescript } from "@/config/payload-config/typescript";
+import { payloadLocalizationConfig as localization } from "@/i18n/config";
+import { payloadI18nConfig as i18n } from "@/i18n/config";
+
+import { admin } from "@/payload/config-admin";
+import { collections } from "@/payload/config-collections";
+import { db } from "@/payload/config-db";
+import { editor } from "@/payload/config-editor";
+import { email } from "@/payload/config-email";
+import { plugins } from "@/payload/config-plugins";
+import { secret } from "@/payload/config-secret";
+import { typescript } from "@/payload/config-typescript";
 
 const config: Config = {
   localization,
