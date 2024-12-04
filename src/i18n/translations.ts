@@ -28,6 +28,7 @@ export const translations: Record<
     "custom-pagePublishedAt": "Published at",
     "custom-rich-text": "Rich-Text editor",
     "custom-text": "Text",
+    "custom-slug": "Slug",
   },
   pl: {
     "custom-checkboxLeadingHeader": "Użyj nagłówka wiodącego",
@@ -45,6 +46,7 @@ export const translations: Record<
     "custom-pagePublishedAt": "Data publikacji",
     "custom-rich-text": "Edytor tekstu",
     "custom-text": "Tekst",
+    "custom-slug": "Przyjazny URL",
   },
 };
 

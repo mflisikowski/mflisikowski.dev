@@ -9,14 +9,15 @@ import { pagePublishedAt } from "@/payload/custom-fields/published-at";
 import { slugField } from "@/payload/custom-fields/slug";
 import { titleField } from "@/payload/custom-fields/title";
 
+const [pageSlugField, pageCheckboxField] = slugField();
 const pageTitle = titleField();
-const pageSlug = slugField();
 
 export const pagesFields: CollectionConfig["fields"] = [
   pagePublishedAt,
   pageTitle,
 
-  ...pageSlug,
+  pageSlugField,
+  pageCheckboxField,
 
   {
     type: "tabs",

@@ -4,10 +4,14 @@ import { slugField } from "@/payload/custom-fields/slug";
 import { titleField } from "@/payload/custom-fields/title";
 import { richTextField } from "@/payload/fields/rich-text";
 
+const [postSlugField, postCheckboxField] = slugField();
 const postTitle = titleField();
 
 export const postsFields: CollectionConfig["fields"] = [
   postTitle,
+
+  postSlugField,
+  postCheckboxField,
 
   {
     relationTo: "media",
@@ -69,6 +73,4 @@ export const postsFields: CollectionConfig["fields"] = [
       position: "sidebar",
     },
   },
-
-  ...slugField(),
 ];

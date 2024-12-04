@@ -3,59 +3,67 @@ import { deepMerge } from "payload";
 
 import { formatSlug } from "@/hooks/payload-format-slug";
 
+import { checkboxField } from "@/payload/fields/checkbox";
+import { textField } from "@/payload/fields/text";
+
 export type SlugFieldOverrides = {
   checkboxOverrides?: Partial<CheckboxField>;
   slugOverrides?: Partial<TextField>;
 };
 
-type Slug = (fieldToUse?: string, overrides?: SlugFieldOverrides) => [TextField, CheckboxField];
+type SlugFieldProps = (
+  fieldToUse?: string,
+  overrides?: SlugFieldOverrides,
+) => [TextField, CheckboxField];
 
-export const slugField: Slug = (fieldToUse = "title", overrides = {}) => {
-  const { checkboxOverrides = {}, slugOverrides = {} } = overrides;
-
-  const checkBoxField = deepMerge<CheckboxField>(
-    {
-      admin: {
-        position: "sidebar",
-        hidden: true,
-      },
-
-      defaultValue: true,
-      name: "slugLock",
-      type: "checkbox",
-    },
-
-    checkboxOverrides,
-  );
-
-  const slugField = deepMerge<TextField>(
-    {
-      admin: {
-        components: {
-          Field: {
-            clientProps: {
-              checkboxFieldPath: checkBoxField.name,
-              fieldToUse,
-            },
-            path: "@/components/(payload)/slug-field#SlugField",
-          },
+export const slugField: SlugFieldProps = (fieldToUse = "title", overrides = {}) => {
+  const checkbox = checkboxField(
+    deepMerge<CheckboxField>(
+      {
+        admin: {
+          position: "sidebar",
+          hidden: true,
         },
-        position: "sidebar",
+
+        defaultValue: true,
+        name: "slugLock",
+        type: "checkbox",
       },
-
-      hooks: {
-        // Kept this in for hook or API based updates
-        beforeValidate: [formatSlug(fieldToUse)],
-      },
-
-      index: true,
-      label: "Slug",
-      name: "slug",
-      type: "text",
-    },
-
-    slugOverrides,
+      overrides.checkboxOverrides ?? {},
+    ),
   );
 
-  return [slugField, checkBoxField];
+  const input = textField(
+    deepMerge<TextField>(
+      {
+        // @ts-expect-error - TFunction type is not automatically merged with the default translations
+        label: ({ t }) => t("custom-slug"),
+
+        admin: {
+          components: {
+            Field: {
+              clientProps: {
+                checkboxFieldPath: checkbox.name,
+                fieldToUse,
+              },
+              path: "@/components/(payload)/slug-field#SlugField",
+            },
+          },
+          position: "sidebar",
+        },
+
+        hooks: {
+          // Kept this in for hook or API based updates
+          beforeValidate: [formatSlug(fieldToUse)],
+        },
+
+        name: "slug",
+        required: true,
+        index: true,
+      },
+      overrides.slugOverrides ?? {},
+    ),
+  );
+
+  return [input, checkbox];
 };

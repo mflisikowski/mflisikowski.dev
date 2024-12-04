@@ -4,10 +4,14 @@ import { slugField } from "@/payload/custom-fields/slug";
 import { titleField } from "@/payload/custom-fields/title";
 import { richTextField } from "@/payload/fields/rich-text";
 
+const [caseStudySlugField, caseStudyCheckboxField] = slugField();
 const caseStudyTitle = titleField();
 
 export const caseStudiesFields: CollectionConfig["fields"] = [
   caseStudyTitle,
+
+  caseStudySlugField,
+  caseStudyCheckboxField,
 
   richTextField({
     name: "introContent",
@@ -39,6 +43,4 @@ export const caseStudiesFields: CollectionConfig["fields"] = [
       position: "sidebar",
     },
   },
-
-  ...slugField(),
 ];

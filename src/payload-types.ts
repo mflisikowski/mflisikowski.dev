@@ -72,6 +72,8 @@ export interface UserAuthOperations {
 export interface CaseStudy {
   id: number;
   title: string;
+  slug: string;
+  slugLock?: boolean | null;
   introContent: {
     root: {
       type: string;
@@ -91,8 +93,6 @@ export interface CaseStudy {
   useCase?: string | null;
   featuredImage: number | Media;
   url?: string | null;
-  slug?: string | null;
-  slugLock?: boolean | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -181,7 +181,7 @@ export interface Page {
   id: number;
   publishedAt: string;
   title: string;
-  slug?: string | null;
+  slug: string;
   slugLock?: boolean | null;
   layout: (
     | {
@@ -345,6 +345,8 @@ export interface Page {
 export interface Post {
   id: number;
   title: string;
+  slug: string;
+  slugLock?: boolean | null;
   image: number | Media;
   useVideo?: boolean | null;
   videoUrl?: string | null;
@@ -381,8 +383,6 @@ export interface Post {
   relatedPosts?: (number | Post)[] | null;
   authors: (number | User)[];
   publishedOn: string;
-  slug?: string | null;
-  slugLock?: boolean | null;
   parent?: (number | null) | Post;
   breadcrumbs?:
     | {
@@ -523,13 +523,13 @@ export interface PayloadMigration {
  */
 export interface CaseStudiesSelect<T extends boolean = true> {
   title?: T;
+  slug?: T;
+  slugLock?: T;
   introContent?: T;
   industry?: T;
   useCase?: T;
   featuredImage?: T;
   url?: T;
-  slug?: T;
-  slugLock?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
@@ -619,6 +619,8 @@ export interface PagesSelect<T extends boolean = true> {
  */
 export interface PostsSelect<T extends boolean = true> {
   title?: T;
+  slug?: T;
+  slugLock?: T;
   image?: T;
   useVideo?: T;
   videoUrl?: T;
@@ -627,8 +629,6 @@ export interface PostsSelect<T extends boolean = true> {
   relatedPosts?: T;
   authors?: T;
   publishedOn?: T;
-  slug?: T;
-  slugLock?: T;
   parent?: T;
   breadcrumbs?:
     | T
