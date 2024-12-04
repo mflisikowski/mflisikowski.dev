@@ -1,7 +1,7 @@
 import type { Block } from "payload";
 
 import { linkField } from "@/config/payload-fields/link";
-import { richText } from "@/config/payload-fields/rich-text";
+import { richTextField } from "@/config/payload-fields/rich-text";
 
 export const CtaBlock: Block = {
   fields: [
@@ -9,7 +9,7 @@ export const CtaBlock: Block = {
       name: "content",
       type: "group",
       fields: [
-        richText({
+        richTextField({
           name: "text",
         }),
         {
