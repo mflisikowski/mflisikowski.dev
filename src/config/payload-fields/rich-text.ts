@@ -1,25 +1,24 @@
 import type { FeatureProviderServer } from "@payloadcms/richtext-lexical";
 import type { RichTextField } from "payload";
 
-type RichText = (
+export type RichText = (
   overrides?: Partial<RichTextField>,
   additionalFeatures?: FeatureProviderServer[],
 ) => RichTextField;
 
-export const richText: RichText = (overrides = {}): RichTextField => {
-  const overridesToMerge = overrides ? overrides : {};
-
+export const richTextField: RichText = (overrides = {}): RichTextField => {
   return {
+    localized: true,
+    required: true,
+
     name: "richText",
     type: "richText",
-    required: true,
-    localized: true,
 
     label: {
-      pl: "Edytor tekstu z rozszerzeniami",
-      en: "Rich text editor",
+      pl: "Edytor tekstu",
+      en: "Rich-Text editor",
     },
 
-    ...overridesToMerge,
+    ...overrides,
   };
 };
