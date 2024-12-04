@@ -1,14 +1,14 @@
 import type { CollectionConfig } from "payload";
 
-import { richText } from "@/config/payload-fields/rich-text";
+import { richTextField } from "@/config/payload-fields/rich-text";
 import { slugField } from "@/config/payload-fields/slug";
+import { titleField } from "@/config/payload-fields/title";
+
+const postTitle = titleField();
 
 export const postsFields: CollectionConfig["fields"] = [
-  {
-    required: true,
-    name: "title",
-    type: "text",
-  },
+  postTitle,
+
   {
     relationTo: "media",
     required: true,
@@ -28,7 +28,7 @@ export const postsFields: CollectionConfig["fields"] = [
       condition: (_, siblingData) => siblingData?.useVideo,
     },
   },
-  richText({
+  richTextField({
     name: "excerpt",
   }),
   {
