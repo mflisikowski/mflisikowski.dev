@@ -8,8 +8,10 @@ import { MediaBlock } from "@/payload/blocks/media";
 import { pagePublishedAt } from "@/payload/custom-fields/published-at";
 import { slugField } from "@/payload/custom-fields/slug";
 import { titleField } from "@/payload/custom-fields/title";
+import { reusableBlockField } from "@/payload/fields/block";
 
 const [pageSlugField, pageCheckboxField] = slugField();
+const pageBlocks = reusableBlockField({ name: "layout" });
 const pageTitle = titleField();
 
 export const pagesFields: CollectionConfig["fields"] = [
@@ -24,15 +26,7 @@ export const pagesFields: CollectionConfig["fields"] = [
     tabs: [
       {
         label: "Content",
-        fields: [
-          {
-            localized: true,
-            required: true,
-            blocks: [ContentBlock, MediaBlock, CtaBlock],
-            name: "layout",
-            type: "blocks",
-          },
-        ],
+        fields: [pageBlocks],
       },
       {
         name: "meta",
