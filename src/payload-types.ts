@@ -402,8 +402,8 @@ export interface Post {
  */
 export interface User {
   id: number;
-  firstName?: string | null;
-  lastName?: string | null;
+  firstName: string;
+  lastName: string;
   roles: ('admin' | 'public')[];
   avatar?: (number | null) | Media;
   updatedAt: string;

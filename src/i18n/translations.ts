@@ -33,6 +33,10 @@ export const translations: Record<
     "custom-case-study-url": "URL",
     "custom-case-study-industry": "Industry",
     "custom-case-study-use-case": "Use Case",
+    "custom-user-roles": "User roles",
+    "custom-user-avatar": "Avatar",
+    "custom-user-first-name": "First name",
+    "custom-user-last-name": "Last name",
   },
   pl: {
     "custom-checkboxLeadingHeader": "Użyj nagłówka wiodącego",
@@ -43,8 +47,8 @@ export const translations: Record<
     "custom-gridLayoutTwoThirdsOneThird": "Podział 2/3 + 1/3",
     "custom-gridLayoutHalfAndHalf": "Podział po połowie",
     "custom-gridLayoutThreeColumns": "Podział na trzy kolumny",
-    "custom-checkbox": "Pole wyboru",
-    "custom-select": "Pole wyboru",
+    "custom-checkbox": "Zaznacz",
+    "custom-select": "Wybierz",
     "custom-title": "Tytuł",
     "custom-date": "Data",
     "custom-pagePublishedAt": "Data publikacji",
@@ -55,6 +59,10 @@ export const translations: Record<
     "custom-case-study-url": "URL",
     "custom-case-study-industry": "Branża",
     "custom-case-study-use-case": "Zastosowanie",
+    "custom-user-roles": "Role użytkownika",
+    "custom-user-avatar": "Zdjęcie profilowe",
+    "custom-user-first-name": "Imię",
+    "custom-user-last-name": "Nazwisko",
   },
 };
 
