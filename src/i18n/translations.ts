@@ -37,6 +37,12 @@ export const translations: Record<
     "custom-user-avatar": "Avatar",
     "custom-user-first-name": "First name",
     "custom-user-last-name": "Last name",
+    "custom-post-image": "Post image",
+    "custom-post-published-on": "Published on",
+    "custom-post-use-video": "Use video",
+    "custom-post-video-url": "Video URL",
+    "custom-post-content": "Content",
+    "custom-post-excerpt": "Excerpt",
   },
   pl: {
     "custom-checkboxLeadingHeader": "Użyj nagłówka wiodącego",
@@ -63,6 +69,12 @@ export const translations: Record<
     "custom-user-avatar": "Zdjęcie profilowe",
     "custom-user-first-name": "Imię",
     "custom-user-last-name": "Nazwisko",
+    "custom-post-image": "Zdjęcie artykułu",
+    "custom-post-published-on": "Data publikacji",
+    "custom-post-use-video": "Użyj filmu",
+    "custom-post-video-url": "URL filmu",
+    "custom-post-content": "Treść",
+    "custom-post-excerpt": "Podsumowanie",
   },
 };
 

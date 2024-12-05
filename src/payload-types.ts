@@ -345,9 +345,9 @@ export interface Page {
 export interface Post {
   id: number;
   title: string;
+  image: number | Media;
   slug: string;
   slugLock?: boolean | null;
-  image: number | Media;
   useVideo?: boolean | null;
   videoUrl?: string | null;
   excerpt: {
@@ -365,7 +365,7 @@ export interface Post {
     };
     [k: string]: unknown;
   };
-  content?: {
+  content: {
     root: {
       type: string;
       children: {
@@ -379,7 +379,7 @@ export interface Post {
       version: number;
     };
     [k: string]: unknown;
-  } | null;
+  };
   relatedPosts?: (number | Post)[] | null;
   authors: (number | User)[];
   publishedOn: string;
@@ -619,9 +619,9 @@ export interface PagesSelect<T extends boolean = true> {
  */
 export interface PostsSelect<T extends boolean = true> {
   title?: T;
+  image?: T;
   slug?: T;
   slugLock?: T;
-  image?: T;
   useVideo?: T;
   videoUrl?: T;
   excerpt?: T;
