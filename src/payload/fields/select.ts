@@ -1,9 +1,7 @@
 import type { SelectField } from "payload";
 import { deepMerge } from "payload";
 
-export type SelectFieldProps = (
-  overrides?: Partial<SelectField & { hasMany?: false }>,
-) => SelectField;
+export type SelectFieldProps = (overrides?: Partial<SelectField>) => SelectField;
 
 export const selectField: SelectFieldProps = (overrides = {}) =>
   deepMerge<SelectField>(
