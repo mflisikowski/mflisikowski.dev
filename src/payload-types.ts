@@ -253,8 +253,7 @@ export interface Page {
       }
     | {
         position?: ('default' | 'wide') | null;
-        media: number | Media;
-        caption?: {
+        caption: {
           root: {
             type: string;
             children: {
@@ -268,7 +267,8 @@ export interface Page {
             version: number;
           };
           [k: string]: unknown;
-        } | null;
+        };
+        media: number | Media;
         id?: string | null;
         blockName?: string | null;
         blockType: 'mediaBlock';
@@ -562,8 +562,8 @@ export interface PagesSelect<T extends boolean = true> {
           | T
           | {
               position?: T;
-              media?: T;
               caption?: T;
+              media?: T;
               id?: T;
               blockName?: T;
             };
