@@ -8,7 +8,7 @@ import { titleField } from "@/payload/custom-fields/title";
 import { reusableBlockField } from "@/payload/fields/block";
 
 const [pageSlugField, pageCheckboxField] = slugField();
-const pageBlocks = reusableBlockField({ name: "layout" });
+const pageBlocks = reusableBlockField();
 const pageTitle = titleField();
 
 export const pagesFields: CollectionConfig["fields"] = [

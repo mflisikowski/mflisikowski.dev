@@ -16,7 +16,7 @@ export const reusableBlockField: BlockFieldProps = (overrides = {}) =>
         ContentBlock,
         MediaBlock,
       ],
-      name: "blocks",
+      name: "layout",
       type: "blocks",
     },
     overrides,
