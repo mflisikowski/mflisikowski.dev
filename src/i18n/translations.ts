@@ -30,6 +30,9 @@ export const translations: Record<
     "custom-text": "Text",
     "custom-slug": "Slug",
     "custom-upload": "Upload",
+    "custom-case-study-url": "URL",
+    "custom-case-study-industry": "Industry",
+    "custom-case-study-use-case": "Use Case",
   },
   pl: {
     "custom-checkboxLeadingHeader": "Użyj nagłówka wiodącego",
@@ -49,6 +52,9 @@ export const translations: Record<
     "custom-text": "Tekst",
     "custom-slug": "Przyjazny URL",
     "custom-upload": "Plik",
+    "custom-case-study-url": "URL",
+    "custom-case-study-industry": "Branża",
+    "custom-case-study-use-case": "Zastosowanie",
   },
 };
 

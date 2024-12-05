@@ -9,6 +9,7 @@ export const uploadField: UploadFieldProps = (overrides = {}) =>
       // @ts-expect-error - TFunction type is not automatically merged with the default translations
       label: ({ t }) => t("custom-upload"),
 
+      relationTo: "media",
       localized: true,
       name: "upload",
       type: "upload",
