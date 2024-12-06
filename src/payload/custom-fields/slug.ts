@@ -3,6 +3,7 @@ import { deepMerge } from "payload";
 
 import { formatSlug } from "@/hooks/payload-format-slug";
 
+import { isAdminFieldLevel } from "@/payload/access/is-admin";
 import { checkboxField } from "@/payload/fields/checkbox";
 import { textField } from "@/payload/fields/text";
 
@@ -50,6 +51,11 @@ export const slugField: SlugFieldProps = (fieldToUse = "title", overrides = {}) 
             },
           },
           position: "sidebar",
+        },
+
+        access: {
+          create: isAdminFieldLevel,
+          update: isAdminFieldLevel,
         },
 
         hooks: {
