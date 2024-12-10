@@ -3,7 +3,7 @@ import type { CollectionConfig } from "payload";
 export const mediaUpload: CollectionConfig["upload"] = {
   adminThumbnail: "thumbnail",
 
-  mimeTypes: ["image/jpeg", "image/jpg", "image/webp"],
+  mimeTypes: ["image/jpeg", "image/jpg", "image/webp", "video/mp4"],
 
   staticDir: "media",
 
