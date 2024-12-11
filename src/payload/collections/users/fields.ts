@@ -1,5 +1,7 @@
 import type { CollectionConfig } from "payload";
 
+import { tl } from "@/i18n/translations";
+
 import { isAdminFieldLevel } from "@/payload/access/is-admin";
 import { isAdminOrSelfFieldLevel } from "@/payload/access/is-admin-or-self";
 import { selectField } from "@/payload/fields/select";
@@ -12,39 +14,39 @@ export const enum UserRoles {
 }
 
 const userFirstName = textField({
-  // @ts-expect-error - TFunction type is not automatically merged with the default translations
-  label: ({ t }) => t("custom-user-first-name"),
-
+  localized: false,
   required: true,
+  label: tl("custom:user-first-name"),
   name: "firstName",
 });
 
 const userLastName = textField({
-  // @ts-expect-error - TFunction type is not automatically merged with the default translations
-  label: ({ t }) => t("custom-user-last-name"),
-
+  localized: false,
   required: true,
+  label: tl("custom:user-last-name"),
   name: "lastName",
 });
 
 const userAvatar = uploadField({
-  // @ts-expect-error - TFunction type is not automatically merged with the default translations
-  label: ({ t }) => t("custom-user-avatar"),
-
   displayPreview: true,
+  localized: false,
   required: false,
+  label: tl("custom:user-avatar"),
   name: "avatar",
 });
 
 const userRoles = selectField({
-  // @ts-expect-error - TFunction type is not automatically merged with the default translations
-  label: ({ t }) => t("custom-user-roles"),
-
   defaultValue: [UserRoles.Public],
+  localized: false,
   options: [
-    //
-    UserRoles.Admin,
-    UserRoles.Public,
+    {
+      label: tl("custom:user-roles-admin"),
+      value: UserRoles.Admin,
+    },
+    {
+      label: tl("custom:user-roles-public"),
+      value: UserRoles.Public,
+    },
   ],
   access: {
     create: isAdminFieldLevel,
@@ -53,6 +55,7 @@ const userRoles = selectField({
   },
   required: true,
   hasMany: true,
+  label: tl("custom:user-roles"),
   name: "roles",
 });
 
