@@ -8,8 +8,8 @@ export type SelectFieldProps = (overrides?: Partial<SelectField>) => SelectField
 export const selectField: SelectFieldProps = (overrides = {}) =>
   deepMerge<SelectField>(
     {
+      localized: true,
       label: tl("custom:select-field"),
-
       name: "select",
       type: "select",
       options: [],
