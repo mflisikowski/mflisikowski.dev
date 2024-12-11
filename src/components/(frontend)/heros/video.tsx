@@ -6,7 +6,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/utils/cn";
 
 export const HeroVideo = () => {
-  const requestAnimationFrameRef = useRef<number>();
+  const requestAnimationFrameRef = useRef<number | null>(null);
   const [error, setError] = useState<string | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -14,8 +14,9 @@ export const HeroVideo = () => {
     const video = videoRef.current;
     if (!video || video.readyState < 2) return;
 
-    if (requestAnimationFrameRef.current) {
+    if (requestAnimationFrameRef.current !== null) {
       cancelAnimationFrame(requestAnimationFrameRef.current);
+      requestAnimationFrameRef.current = null;
     }
 
     const animate = () => {
@@ -35,8 +36,9 @@ export const HeroVideo = () => {
 
   useEffect(() => {
     return () => {
-      if (requestAnimationFrameRef.current) {
+      if (requestAnimationFrameRef.current !== null) {
         cancelAnimationFrame(requestAnimationFrameRef.current);
+        requestAnimationFrameRef.current = null;
       }
     };
   }, []);
