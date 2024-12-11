@@ -1,8 +1,8 @@
 import type { Block } from "payload";
 
-import { gridField } from "@/payload/custom-fields/grid-layout";
+import { columnsField } from "@/payload/custom-fields/grid-layout";
 
 export const ContentBlock: Block = {
-  fields: [gridField],
+  fields: [columnsField],
   slug: "contentBlock",
 };

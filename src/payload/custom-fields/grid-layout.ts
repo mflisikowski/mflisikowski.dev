@@ -1,74 +1,60 @@
 import type { Field } from "payload";
 
+import { tl } from "@/i18n/translations";
+
 import { richTextField } from "@/payload/fields/rich-text";
 import { selectField } from "@/payload/fields/select";
 
-enum GridLayout {
-  TwoThirdsOneThird = "twoThirdsOneThird",
-  ThreeColumns = "threeColumns",
-  HalfAndHalf = "halfAndHalf",
-  TwoColumns = "twoColumns",
-  OneColumn = "oneColumn",
+enum Columns {
+  Three = "columns-three",
+  Two = "columns-two",
+  One = "columns-one",
 }
 
-export const gridField: Field = {
-  label: false,
+export const columnsField: Field = {
+  label: tl("custom:columns"),
   type: "group",
-  name: "grid",
+  name: "columns",
   fields: [
     selectField({
-      defaultValue: GridLayout.OneColumn,
+      defaultValue: Columns.One,
       options: [
         {
-          // @ts-expect-error - TFunction type is not automatically merged with the default translations
-          label: ({ t }) => t("custom-gridLayoutOneColumn"),
-          value: GridLayout.OneColumn,
+          label: tl("custom:columns-one"),
+          value: Columns.One,
         },
         {
-          // @ts-expect-error - TFunction type is not automatically merged with the default translations
-          label: ({ t }) => t("custom-gridLayoutTwoColumns"),
-          value: GridLayout.TwoColumns,
+          label: tl("custom:columns-two"),
+          value: Columns.Two,
         },
         {
-          // @ts-expect-error - TFunction type is not automatically merged with the default translations
-          label: ({ t }) => t("custom-gridLayoutTwoThirdsOneThird"),
-          value: GridLayout.TwoThirdsOneThird,
-        },
-        {
-          // @ts-expect-error - TFunction type is not automatically merged with the default translations
-          label: ({ t }) => t("custom-gridLayoutHalfAndHalf"),
-          value: GridLayout.HalfAndHalf,
-        },
-        {
-          // @ts-expect-error - TFunction type is not automatically merged with the default translations
-          label: ({ t }) => t("custom-gridLayoutThreeColumns"),
-          value: GridLayout.ThreeColumns,
+          label: tl("custom:columns-three"),
+          value: Columns.Three,
         },
       ],
-      // @ts-expect-error - TFunction type is not automatically merged with the default translations
-      label: ({ t }) => t("custom-selectGridLayout"),
-      name: "layout",
+      label: tl("custom:select-columns"),
+      name: "type",
     }),
 
     richTextField({
-      name: GridLayout.OneColumn,
+      label: tl("custom:columns-one"),
+      name: Columns.One,
     }),
 
     richTextField({
+      label: tl("custom:columns-two"),
       admin: {
-        condition: (_, siblingData) =>
-          [GridLayout.TwoColumns, GridLayout.TwoThirdsOneThird, GridLayout.HalfAndHalf].includes(
-            siblingData.layout,
-          ),
+        condition: (_, siblingData) => [Columns.Two, Columns.Three].includes(siblingData.type),
       },
-      name: GridLayout.TwoColumns,
+      name: Columns.Two,
     }),
 
     richTextField({
+      label: tl("custom:columns-three"),
       admin: {
-        condition: (_, siblingData) => siblingData.layout === GridLayout.ThreeColumns,
+        condition: (_, siblingData) => siblingData.type === Columns.Three,
       },
-      name: GridLayout.ThreeColumns,
+      name: Columns.Three,
     }),
   ],
 };
