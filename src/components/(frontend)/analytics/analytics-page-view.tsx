@@ -1,8 +1,9 @@
 "use client";
 
-import { useConsentAwareAnalytics } from "@/hooks/use-consent-aware-analytics";
 import { usePathname, useSearchParams } from "next/navigation";
-import { Suspense, useCallback, useEffect } from "react";
+import { type JSX, Suspense, useCallback, useEffect } from "react";
+
+import { useConsentAwareAnalytics } from "@/hooks/use-consent-aware-analytics";
 
 function AnalyticsPageViewInner(): null {
   const { trackEvent } = useConsentAwareAnalytics();

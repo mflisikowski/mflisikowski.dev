@@ -1,4 +1,4 @@
-import type { Field, SelectField } from "payload";
+import type { Field } from "payload";
 
 import { richTextField } from "@/payload/fields/rich-text";
 import { selectField } from "@/payload/fields/select";
