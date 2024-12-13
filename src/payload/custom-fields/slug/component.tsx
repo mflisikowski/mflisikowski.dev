@@ -14,9 +14,9 @@ type SlugFieldProps = {
 export const SlugField: React.FC<SlugFieldProps> = ({
   checkboxFieldPath: checkboxFieldPathFromProps,
   fieldToUse,
+  readOnly: readOnlyFromProps,
   field,
   path = "",
-  readOnly: readOnlyFromProps,
 }) => {
   const { label } = field;
 
@@ -27,23 +27,16 @@ export const SlugField: React.FC<SlugFieldProps> = ({
   const { value, setValue } = useField<string>({ path: path || field.name });
   const { dispatchFields } = useForm();
 
-  // The value of the checkbox
   // We're using separate useFormFields to minimise re-renders
-  const checkboxValue = useFormFields(([fields]) => {
-    return fields[checkboxFieldPath]?.value as string;
-  });
-
-  // The value of the field we're listening to for the slug
-  const targetFieldValue = useFormFields(([fields]) => {
-    return fields[fieldToUse]?.value as string;
-  });
+  const targetFieldValue = useFormFields(([fields]) => fields[fieldToUse]?.value as string);
+  const checkboxValue = useFormFields(([fields]) => fields[checkboxFieldPath]?.value as string);
 
   useEffect(() => {
     if (checkboxValue) {
       if (targetFieldValue) {
-        const formattedSlug = createSlug(targetFieldValue);
+        const slug = createSlug(targetFieldValue);
 
-        if (value !== formattedSlug) setValue(formattedSlug);
+        if (value !== slug) setValue(slug);
       } else {
         if (value !== "") setValue("");
       }
