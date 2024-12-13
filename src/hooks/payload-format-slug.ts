@@ -4,21 +4,18 @@ import { createSlug } from "@/utils/create-slug";
 
 export const formatSlug =
   (fallback: string): FieldHook =>
-  ({ data, operation, value }) => {
+  ({ data, operation, originalDoc, value }) => {
     if (typeof value === "string") {
       return createSlug(value);
     }
 
-    if (
-      data &&
-      (operation === "create" || !data.slug) &&
-      fallback &&
-      fallback in data &&
-      typeof data[fallback] === "string"
-    ) {
-      return createSlug(data[fallback]);
+    if (operation === "create") {
+      const fallbackData = data?.[fallback] || originalDoc?.[fallback];
+
+      if (fallbackData && typeof fallbackData === "string") {
+        return createSlug(fallbackData);
+      }
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return value;
   };
