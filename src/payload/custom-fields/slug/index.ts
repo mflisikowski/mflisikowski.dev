@@ -33,7 +33,7 @@ export const slugField: SlugFieldProps = (fieldToUse = "title") => {
       },
       position: "sidebar",
     },
-    label: tl("custom:slug-field"),
+    label: tl("custom:field-slug"),
     hooks: {
       // Kept this in for hook or API based updates
       beforeValidate: [formatSlug(fieldToUse)],

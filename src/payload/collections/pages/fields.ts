@@ -2,6 +2,8 @@
 import { MetaDescriptionField, MetaImageField, MetaTitleField, OverviewField, PreviewField } from "@payloadcms/plugin-seo/fields";
 import type { CollectionConfig } from "payload";
 
+import { tl } from "@/i18n/translations";
+
 import { pagePublishedAt } from "@/payload/custom-fields/published-at";
 import { slugField } from "@/payload/custom-fields/slug";
 import { titleField } from "@/payload/custom-fields/title";
@@ -22,12 +24,12 @@ export const pagesFields: CollectionConfig["fields"] = [
     type: "tabs",
     tabs: [
       {
-        label: "Content",
+        label: tl("custom:field-content"),
         fields: [pageBlocks],
       },
       {
         name: "meta",
-        label: "SEO",
+        label: tl("custom:field-seo"),
         fields: [
           OverviewField({
             titlePath: "meta.title",
