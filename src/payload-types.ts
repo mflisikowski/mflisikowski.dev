@@ -72,7 +72,7 @@ export interface UserAuthOperations {
 export interface CaseStudy {
   id: number;
   title: string;
-  slug: string;
+  slug?: string | null;
   slugLock?: boolean | null;
   introContent: {
     root: {
@@ -181,94 +181,97 @@ export interface Page {
   id: number;
   publishedAt: string;
   title: string;
-  slug: string;
+  slug?: string | null;
   slugLock?: boolean | null;
   layout: (
     | {
-        checkboxLeadingHeader?: boolean | null;
-        leadingHeader?: {
-          root: {
-            type: string;
-            children: {
-              type: string;
-              version: number;
-              [k: string]: unknown;
-            }[];
-            direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-            indent: number;
-            version: number;
+        hero: {
+          type: 'home';
+          title?: string | null;
+          subtitle?: string | null;
+          media?: {
+            type?: ('image' | 'video') | null;
+            image?: (number | null) | Media;
+            video?: (number | null) | Media;
           };
-          [k: string]: unknown;
-        } | null;
-        layout?: ('oneColumn' | 'twoColumns' | 'twoThirdsOneThird' | 'halfAndHalf' | 'threeColumns') | null;
-        oneColumn: {
-          root: {
-            type: string;
-            children: {
-              type: string;
-              version: number;
-              [k: string]: unknown;
-            }[];
-            direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-            indent: number;
-            version: number;
-          };
-          [k: string]: unknown;
         };
-        twoColumns?: {
-          root: {
-            type: string;
-            children: {
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'heroBlock';
+      }
+    | {
+        columns: {
+          type?: ('columns-one' | 'columns-two' | 'columns-three') | null;
+          'columns-one': {
+            root: {
               type: string;
+              children: {
+                type: string;
+                version: number;
+                [k: string]: unknown;
+              }[];
+              direction: ('ltr' | 'rtl') | null;
+              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+              indent: number;
               version: number;
-              [k: string]: unknown;
-            }[];
-            direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-            indent: number;
-            version: number;
+            };
+            [k: string]: unknown;
           };
-          [k: string]: unknown;
-        } | null;
-        threeColumns?: {
-          root: {
-            type: string;
-            children: {
+          'columns-two'?: {
+            root: {
               type: string;
+              children: {
+                type: string;
+                version: number;
+                [k: string]: unknown;
+              }[];
+              direction: ('ltr' | 'rtl') | null;
+              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+              indent: number;
               version: number;
-              [k: string]: unknown;
-            }[];
-            direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-            indent: number;
-            version: number;
-          };
-          [k: string]: unknown;
-        } | null;
+            };
+            [k: string]: unknown;
+          } | null;
+          'columns-three'?: {
+            root: {
+              type: string;
+              children: {
+                type: string;
+                version: number;
+                [k: string]: unknown;
+              }[];
+              direction: ('ltr' | 'rtl') | null;
+              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+              indent: number;
+              version: number;
+            };
+            [k: string]: unknown;
+          } | null;
+        };
         id?: string | null;
         blockName?: string | null;
         blockType: 'contentBlock';
       }
     | {
-        position?: ('default' | 'wide') | null;
-        caption: {
-          root: {
-            type: string;
-            children: {
+        multimedia: {
+          position?: ('default' | 'wide') | null;
+          caption: {
+            root: {
               type: string;
+              children: {
+                type: string;
+                version: number;
+                [k: string]: unknown;
+              }[];
+              direction: ('ltr' | 'rtl') | null;
+              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+              indent: number;
               version: number;
-              [k: string]: unknown;
-            }[];
-            direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-            indent: number;
-            version: number;
+            };
+            [k: string]: unknown;
           };
-          [k: string]: unknown;
+          media: number | Media;
         };
-        media: number | Media;
         id?: string | null;
         blockName?: string | null;
         blockType: 'mediaBlock';
@@ -346,7 +349,7 @@ export interface Post {
   id: number;
   title: string;
   image: number | Media;
-  slug: string;
+  slug?: string | null;
   slugLock?: boolean | null;
   useVideo?: boolean | null;
   videoUrl?: string | null;
@@ -537,24 +540,50 @@ export interface PagesSelect<T extends boolean = true> {
   layout?:
     | T
     | {
+        heroBlock?:
+          | T
+          | {
+              hero?:
+                | T
+                | {
+                    type?: T;
+                    title?: T;
+                    subtitle?: T;
+                    media?:
+                      | T
+                      | {
+                          type?: T;
+                          image?: T;
+                          video?: T;
+                        };
+                  };
+              id?: T;
+              blockName?: T;
+            };
         contentBlock?:
           | T
           | {
-              checkboxLeadingHeader?: T;
-              leadingHeader?: T;
-              layout?: T;
-              oneColumn?: T;
-              twoColumns?: T;
-              threeColumns?: T;
+              columns?:
+                | T
+                | {
+                    type?: T;
+                    'columns-one'?: T;
+                    'columns-two'?: T;
+                    'columns-three'?: T;
+                  };
               id?: T;
               blockName?: T;
             };
         mediaBlock?:
           | T
           | {
-              position?: T;
-              caption?: T;
-              media?: T;
+              multimedia?:
+                | T
+                | {
+                    position?: T;
+                    caption?: T;
+                    media?: T;
+                  };
               id?: T;
               blockName?: T;
             };
