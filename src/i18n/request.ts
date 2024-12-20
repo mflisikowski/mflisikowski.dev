@@ -6,7 +6,11 @@ import { routing } from "@/i18n/routing";
 type SupportedLocale = (typeof routing.locales)[number];
 
 export default getRequestConfig(async ({ requestLocale }) => {
-  const locale = await requestLocale;
+  let locale = await requestLocale;
+
+  if (!locale || !routing.locales.includes(locale as SupportedLocale)) {
+    locale = routing.defaultLocale;
+  }
 
   if (!routing.locales.includes(locale as SupportedLocale)) {
     notFound();
@@ -14,5 +18,6 @@ export default getRequestConfig(async ({ requestLocale }) => {
 
   return {
     messages: (await import(`./messages/${locale}.json`)).default,
+    locale,
   };
 });
