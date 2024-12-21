@@ -2,7 +2,8 @@
 import { MetaDescriptionField, MetaImageField, MetaTitleField, OverviewField, PreviewField } from "@payloadcms/plugin-seo/fields";
 import type { CollectionConfig } from "payload";
 
-import { tl } from "@/i18n/translations";
+// https://github.com/payloadcms/payload/pull/10115 - wait for the PR to be merged, then we can use the translation function here
+// import { tl } from "@/i18n/translations";
 
 import { pagePublishedAt } from "@/payload/custom-fields/published-at";
 import { slugField } from "@/payload/custom-fields/slug";
@@ -24,12 +25,13 @@ export const pagesFields: CollectionConfig["fields"] = [
     type: "tabs",
     tabs: [
       {
-        label: tl("custom:field-content"),
+        name: "content",
+        // label: tl("custom:field-content"),
         fields: [pageBlocks],
       },
       {
         name: "meta",
-        label: tl("custom:field-seo"),
+        // label: tl("custom:field-seo"),
         fields: [
           OverviewField({
             titlePath: "meta.title",
