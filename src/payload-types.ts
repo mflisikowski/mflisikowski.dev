@@ -183,148 +183,153 @@ export interface Page {
   title: string;
   slug?: string | null;
   slugLock?: boolean | null;
-  layout: (
-    | {
-        hero: {
-          type: 'home';
-          title?: string | null;
-          subtitle?: string | null;
-          media?: {
-            type?: ('image' | 'video') | null;
-            image?: (number | null) | Media;
-            video?: (number | null) | Media;
+  content: {
+    layout: (
+      | {
+          hero: {
+            type: 'home';
+            title?: string | null;
+            subtitle?: string | null;
+            media?: {
+              type?: ('image' | 'video') | null;
+              image?: (number | null) | Media;
+              video?: (number | null) | Media;
+            };
           };
-        };
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'heroBlock';
-      }
-    | {
-        columns: {
-          type?: ('columns-one' | 'columns-two' | 'columns-three') | null;
-          'columns-one': {
-            root: {
-              type: string;
-              children: {
+          id?: string | null;
+          blockName?: string | null;
+          blockType: 'heroBlock';
+        }
+      | {
+          columns: {
+            type?: ('columns-one' | 'columns-two' | 'columns-three') | null;
+            'columns-one': {
+              root: {
                 type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
                 version: number;
-                [k: string]: unknown;
-              }[];
-              direction: ('ltr' | 'rtl') | null;
-              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-              indent: number;
-              version: number;
+              };
+              [k: string]: unknown;
             };
-            [k: string]: unknown;
+            'columns-two'?: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            'columns-three'?: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
           };
-          'columns-two'?: {
-            root: {
-              type: string;
-              children: {
+          id?: string | null;
+          blockName?: string | null;
+          blockType: 'contentBlock';
+        }
+      | {
+          multimedia: {
+            position?: ('default' | 'wide') | null;
+            caption: {
+              root: {
                 type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
                 version: number;
-                [k: string]: unknown;
-              }[];
-              direction: ('ltr' | 'rtl') | null;
-              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-              indent: number;
-              version: number;
+              };
+              [k: string]: unknown;
             };
-            [k: string]: unknown;
-          } | null;
-          'columns-three'?: {
-            root: {
-              type: string;
-              children: {
-                type: string;
-                version: number;
-                [k: string]: unknown;
-              }[];
-              direction: ('ltr' | 'rtl') | null;
-              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-              indent: number;
-              version: number;
-            };
-            [k: string]: unknown;
-          } | null;
-        };
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'contentBlock';
-      }
-    | {
-        multimedia: {
-          position?: ('default' | 'wide') | null;
-          caption: {
-            root: {
-              type: string;
-              children: {
-                type: string;
-                version: number;
-                [k: string]: unknown;
-              }[];
-              direction: ('ltr' | 'rtl') | null;
-              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-              indent: number;
-              version: number;
-            };
-            [k: string]: unknown;
+            media: number | Media;
           };
-          media: number | Media;
-        };
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'mediaBlock';
-      }
-    | {
-        content: {
-          text: {
-            root: {
-              type: string;
-              children: {
+          id?: string | null;
+          blockName?: string | null;
+          blockType: 'mediaBlock';
+        }
+      | {
+          content: {
+            text: {
+              root: {
                 type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
                 version: number;
-                [k: string]: unknown;
-              }[];
-              direction: ('ltr' | 'rtl') | null;
-              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-              indent: number;
-              version: number;
+              };
+              [k: string]: unknown;
             };
-            [k: string]: unknown;
+            links?:
+              | {
+                  link: {
+                    label: string;
+                    linkType?: ('internal' | 'external') | null;
+                    url?: string | null;
+                    internalLink?:
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: number | Post;
+                        } | null)
+                      | ({
+                          relationTo: 'case-studies';
+                          value: number | CaseStudy;
+                        } | null);
+                    openInNewTab?: boolean | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
           };
-          links?:
-            | {
-                link: {
-                  label: string;
-                  linkType?: ('internal' | 'external') | null;
-                  url?: string | null;
-                  internalLink?:
-                    | ({
-                        relationTo: 'pages';
-                        value: number | Page;
-                      } | null)
-                    | ({
-                        relationTo: 'posts';
-                        value: number | Post;
-                      } | null)
-                    | ({
-                        relationTo: 'case-studies';
-                        value: number | CaseStudy;
-                      } | null);
-                  openInNewTab?: boolean | null;
-                };
-                id?: string | null;
-              }[]
-            | null;
-        };
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'ctaBlock';
-      }
-  )[];
+          id?: string | null;
+          blockName?: string | null;
+          blockType: 'ctaBlock';
+        }
+    )[];
+  };
   meta?: {
     title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
     image?: (number | null) | Media;
     description?: string | null;
   };
@@ -537,80 +542,84 @@ export interface PagesSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
   slugLock?: T;
-  layout?:
+  content?:
     | T
     | {
-        heroBlock?:
+        layout?:
           | T
           | {
-              hero?:
+              heroBlock?:
                 | T
                 | {
-                    type?: T;
-                    title?: T;
-                    subtitle?: T;
-                    media?:
+                    hero?:
                       | T
                       | {
                           type?: T;
-                          image?: T;
-                          video?: T;
-                        };
-                  };
-              id?: T;
-              blockName?: T;
-            };
-        contentBlock?:
-          | T
-          | {
-              columns?:
-                | T
-                | {
-                    type?: T;
-                    'columns-one'?: T;
-                    'columns-two'?: T;
-                    'columns-three'?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-        mediaBlock?:
-          | T
-          | {
-              multimedia?:
-                | T
-                | {
-                    position?: T;
-                    caption?: T;
-                    media?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-        ctaBlock?:
-          | T
-          | {
-              content?:
-                | T
-                | {
-                    text?: T;
-                    links?:
-                      | T
-                      | {
-                          link?:
+                          title?: T;
+                          subtitle?: T;
+                          media?:
                             | T
                             | {
-                                label?: T;
-                                linkType?: T;
-                                url?: T;
-                                internalLink?: T;
-                                openInNewTab?: T;
+                                type?: T;
+                                image?: T;
+                                video?: T;
                               };
-                          id?: T;
                         };
+                    id?: T;
+                    blockName?: T;
                   };
-              id?: T;
-              blockName?: T;
+              contentBlock?:
+                | T
+                | {
+                    columns?:
+                      | T
+                      | {
+                          type?: T;
+                          'columns-one'?: T;
+                          'columns-two'?: T;
+                          'columns-three'?: T;
+                        };
+                    id?: T;
+                    blockName?: T;
+                  };
+              mediaBlock?:
+                | T
+                | {
+                    multimedia?:
+                      | T
+                      | {
+                          position?: T;
+                          caption?: T;
+                          media?: T;
+                        };
+                    id?: T;
+                    blockName?: T;
+                  };
+              ctaBlock?:
+                | T
+                | {
+                    content?:
+                      | T
+                      | {
+                          text?: T;
+                          links?:
+                            | T
+                            | {
+                                link?:
+                                  | T
+                                  | {
+                                      label?: T;
+                                      linkType?: T;
+                                      url?: T;
+                                      internalLink?: T;
+                                      openInNewTab?: T;
+                                    };
+                                id?: T;
+                              };
+                        };
+                    id?: T;
+                    blockName?: T;
+                  };
             };
       };
   meta?:
