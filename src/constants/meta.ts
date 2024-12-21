@@ -41,3 +41,5 @@ export const META_AUTHOR_URL = `https://mflisikowski.dev`;
 
 export const META_SITE_NAME = `Mission Focused Developer`;
 export const META_TYPE = `website`;
+
+export const META_URL = `https://mflisikowski.dev`;
