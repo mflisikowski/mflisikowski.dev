@@ -3,7 +3,7 @@ import type {
   NestedKeysStripped,
   TFunction,
 } from "@payloadcms/translations";
-import type { Config } from "payload";
+import type { Config, LabelFunction } from "payload";
 
 // TODO: wait for answer on this: https://github.com/payloadcms/payload/issues/9858
 // @ts-expect-error: TFunction type is not automatically merged with the default translations
@@ -138,4 +138,4 @@ export type CustomTranslationsObject = (typeof translations)[keyof typeof transl
 export type CustomTranslationsKeys = NestedKeysStripped<CustomTranslationsObject>;
 
 // prettier-ignore
-export const tl = (transKey: CustomTranslationsKeys | DefaultTranslationKeys) => ({ t }: { t: TFunction<CustomTranslationsKeys | DefaultTranslationKeys> }) => t(transKey)
+export const tl = (transKey: CustomTranslationsKeys | DefaultTranslationKeys): LabelFunction => ({ t }: { t: TFunction<CustomTranslationsKeys | DefaultTranslationKeys> }) => t(transKey)
