@@ -5,13 +5,15 @@ import type { CollectionConfig } from "payload";
 // https://github.com/payloadcms/payload/pull/10115 - wait for the PR to be merged, then we can use the translation function here
 // import { tl } from "@/i18n/translations";
 
+import { contentBlockField } from "@/payload/custom-fields/content-block";
+import { heroBlockField } from "@/payload/custom-fields/hero-block";
 import { pagePublishedAt } from "@/payload/custom-fields/published-at";
 import { slugField } from "@/payload/custom-fields/slug";
 import { titleField } from "@/payload/custom-fields/title";
-import { reusableBlockField } from "@/payload/fields/block";
 
 const [pageSlugField, pageCheckboxField] = slugField();
-const pageBlocks = reusableBlockField();
+const pageBlocks = contentBlockField();
+const pageHero = heroBlockField();
 const pageTitle = titleField();
 
 export const pagesFields: CollectionConfig["fields"] = [
@@ -25,13 +27,18 @@ export const pagesFields: CollectionConfig["fields"] = [
     type: "tabs",
     tabs: [
       {
+        name: "hero",
+        label: "Hero",
+        fields: [pageHero],
+      },
+      {
         name: "content",
-        // label: tl("custom:field-content"),
+        label: "Content",
         fields: [pageBlocks],
       },
       {
         name: "meta",
-        // label: tl("custom:field-seo"),
+        label: "SEO",
         fields: [
           OverviewField({
             titlePath: "meta.title",

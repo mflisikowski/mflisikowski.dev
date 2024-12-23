@@ -1,4 +1,8 @@
-import type { TypedLocale } from "payload";
+import type { BlocksField, TypedLocale } from "payload";
+
+/**
+ * Frontend related types
+ */
 
 export type NavigationItem = {
   subItems?: NavigationItem[];
@@ -28,3 +32,9 @@ export interface PagePropsParams {
 export interface PageProps {
   params: Promise<PagePropsParams>;
 }
+
+/**
+ * Payload related types
+ */
+
+export type PayloadBlockFieldProps = (overrides?: Partial<BlocksField>) => BlocksField;

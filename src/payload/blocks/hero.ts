@@ -2,7 +2,7 @@ import type { Block } from "payload";
 
 import { heroField } from "@/payload/custom-fields/hero";
 
-export const HeroBlock: Block = {
+export const heroBlock: Block = {
   fields: [heroField],
   slug: "heroBlock",
 };

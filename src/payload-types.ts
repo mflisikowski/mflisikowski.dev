@@ -183,23 +183,25 @@ export interface Page {
   title: string;
   slug?: string | null;
   slugLock?: boolean | null;
+  hero: {
+    layout: {
+      hero: {
+        type: 'home';
+        title?: string | null;
+        subtitle?: string | null;
+        media?: {
+          type?: ('image' | 'video') | null;
+          image?: (number | null) | Media;
+          video?: (number | null) | Media;
+        };
+      };
+      id?: string | null;
+      blockName?: string | null;
+      blockType: 'heroBlock';
+    }[];
+  };
   content: {
     layout: (
-      | {
-          hero: {
-            type: 'home';
-            title?: string | null;
-            subtitle?: string | null;
-            media?: {
-              type?: ('image' | 'video') | null;
-              image?: (number | null) | Media;
-              video?: (number | null) | Media;
-            };
-          };
-          id?: string | null;
-          blockName?: string | null;
-          blockType: 'heroBlock';
-        }
       | {
           columns: {
             type?: ('columns-one' | 'columns-two' | 'columns-three') | null;
@@ -542,7 +544,7 @@ export interface PagesSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
   slugLock?: T;
-  content?:
+  hero?:
     | T
     | {
         layout?:
@@ -568,6 +570,14 @@ export interface PagesSelect<T extends boolean = true> {
                     id?: T;
                     blockName?: T;
                   };
+            };
+      };
+  content?:
+    | T
+    | {
+        layout?:
+          | T
+          | {
               contentBlock?:
                 | T
                 | {
