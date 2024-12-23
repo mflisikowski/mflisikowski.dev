@@ -2,7 +2,7 @@ import configPromise from "@/payload-config";
 import type { Page } from "@/payload-types";
 import { draftMode } from "next/headers";
 import { getPayload as getPayloadService } from "payload";
-import type { TypedLocale, Where } from "payload";
+import type { TypedLocale } from "payload";
 import { cache } from "react";
 
 export const getPayload = async () => getPayloadService({ config: configPromise });
