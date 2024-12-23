@@ -83,7 +83,7 @@ export const heroField: Field = {
           label: tl("custom:hero-media-image"),
           name: "image",
           admin: {
-            condition: (_, siblingData) => siblingData?.mediaType === "image",
+            condition: (_, siblingData) => siblingData?.type === "image",
           },
         }),
 
@@ -97,7 +97,7 @@ export const heroField: Field = {
           label: tl("custom:hero-media-video"),
           name: "video",
           admin: {
-            condition: (_, siblingData) => siblingData?.mediaType === "video",
+            condition: (_, siblingData) => siblingData?.type === "video",
           },
         }),
       ],
