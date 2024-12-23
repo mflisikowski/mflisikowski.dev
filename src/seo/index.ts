@@ -33,11 +33,11 @@ export const mergeOpenGraph = (og?: Metadata["openGraph"]): Metadata["openGraph"
 
 // TODO: Property 'url' does not exist on type 'number | Media'. Property 'url' does not exist on type 'number'.ts(2339)
 // TODO: Add keywords
-export function generateMeta(page: Page, slug: string[]): Metadata {
+export function generateMeta(page: Page, slug: string): Metadata {
   const description = page?.meta?.description || META_DESCRIPTION;
   const title = page?.meta?.title || META_WEBSITE_TITLE;
   // const image = page?.meta?.image?.url || "/images/og-image.jpg";
-  const url = Array.isArray(slug) ? slug.join("/") : "/";
+  const url = slug ? `/${slug}` : "/";
 
   return {
     metadataBase: new URL(META_URL),
