@@ -1,4 +1,4 @@
-import type { Config } from "payload";
+import type { TypedLocale } from "payload";
 
 export type NavigationItem = {
   subItems?: NavigationItem[];
@@ -21,12 +21,10 @@ export interface CookieConsentButtonProps {
 }
 
 export interface PagePropsParams {
-  locale: string;
+  locale: TypedLocale;
   slug: string[];
 }
 
 export interface PageProps {
   params: Promise<PagePropsParams>;
 }
-
-export type PayloadCollections = keyof Config["collections"];
