@@ -1,46 +1,49 @@
 import configPromise from "@/payload-config";
-import type { CaseStudy, Page, Post } from "@/payload-types";
-import { unstable_cache } from "next/cache";
+import type { Page } from "@/payload-types";
+import { draftMode } from "next/headers";
 import { getPayload as getPayloadService } from "payload";
-
-import type { PayloadCollections } from "@/types/index";
+import type { TypedLocale, Where } from "payload";
+import { cache } from "react";
 
 export const getPayload = async () => getPayloadService({ config: configPromise });
 
-async function getDocument(collection: PayloadCollections, slug: string, depth = 0) {
+type QueryPageBySlugParams = {
+  locale: TypedLocale;
+  slug: Page["slug"];
+};
+
+export const queryPageBySlug = cache(async ({ locale, slug }: QueryPageBySlugParams) => {
+  const { isEnabled: draft } = await draftMode();
   const payload = await getPayload();
 
-  const page = await payload.find({
-    collection,
-    depth,
-    where: { slug: { equals: slug } },
+  const result = await payload.find({
+    overrideAccess: draft,
+    collection: "pages",
+    pagination: false,
+    limit: 1,
+    locale,
+    draft,
+    where: {
+      slug: {
+        equals: slug,
+      },
+    },
   });
 
-  return page.docs[0];
-}
+  return result?.docs?.[0] || null;
+});
 
-export async function getRedirects(depth = 1) {
+export const queryRedirects = cache(async ({ locale }: { locale: TypedLocale }) => {
+  const { isEnabled: draft } = await draftMode();
   const payload = await getPayload();
 
-  const { docs: redirects } = await payload.find({
+  const redirects = await payload.find({
+    overrideAccess: draft,
     collection: "redirects",
     pagination: false,
-    limit: 0,
-    depth,
+    locale,
+    draft,
   });
 
-  return redirects;
-}
-
-export const getCachedDocument = (collection: PayloadCollections, slug: string) =>
-  unstable_cache(async () => getDocument(collection, slug), [collection, slug], {
-    tags: [`${collection}_${slug}`],
-  });
-
-export const getCachedRedirects = () =>
-  unstable_cache(async () => getRedirects(), ["redirects"], {
-    tags: ["redirects"],
-  });
-
-// prettier-ignore
-export const isDocument = (doc: CaseStudy | Page | Post) => typeof doc === "object" && doc !== null && "slug" in doc;
+  return redirects?.docs || [];
+});
