@@ -4,8 +4,8 @@ import { generatePreviewPath } from "@/utils/generate-preview-path";
 import { getServerSideURL } from "@/utils/get-url";
 
 export const pagesAdmin: CollectionConfig["admin"] = {
-  defaultColumns: ["title", "slug", "updatedAt"],
-  useAsTitle: "title",
+  defaultColumns: ["pageTitle", "slug", "updatedAt"],
+  useAsTitle: "pageTitle",
 
   livePreview: {
     url: ({ data }) => {

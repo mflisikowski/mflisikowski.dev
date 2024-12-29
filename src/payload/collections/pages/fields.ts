@@ -3,22 +3,35 @@ import { MetaDescriptionField, MetaImageField, MetaTitleField, OverviewField, Pr
 import type { CollectionConfig } from "payload";
 
 // https://github.com/payloadcms/payload/pull/10115 - wait for the PR to be merged, then we can use the translation function here
-// import { tl } from "@/i18n/translations";
+import { tl } from "@/i18n/translations";
 
 import { contentBlockField } from "@/payload/custom-fields/content-block";
 import { heroBlockField } from "@/payload/custom-fields/hero-block";
 import { pagePublishedAt } from "@/payload/custom-fields/published-at";
 import { slugField } from "@/payload/custom-fields/slug";
-import { titleField } from "@/payload/custom-fields/title";
 
-const [pageSlugField, pageCheckboxField] = slugField();
+const [pageSlugField, pageCheckboxField] = slugField("pageTitle");
 const pageBlocks = contentBlockField();
 const pageHero = heroBlockField();
-const pageTitle = titleField();
 
 export const pagesFields: CollectionConfig["fields"] = [
   pagePublishedAt,
-  pageTitle,
+
+  {
+    /** Text field docs: https://payloadcms.com/docs/fields/text */
+    label: tl("custom:page-title"),
+    name: "pageTitle",
+
+    localized: true,
+    required: true,
+    unique: true,
+    type: "text",
+
+    admin: {
+      // TODO: Check if this is now possible in the new version of payload
+      // placeholder: tl("custom:page-title"),
+    },
+  },
 
   pageSlugField,
   pageCheckboxField,
