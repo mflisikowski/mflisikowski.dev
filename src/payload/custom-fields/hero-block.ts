@@ -11,7 +11,7 @@ export const heroBlockField: PayloadBlockFieldProps = (overrides = {}) =>
       localized: true,
       required: true,
       blocks: [heroBlock],
-      name: "layout",
+      name: "hero",
       type: "blocks",
     },
     overrides,
