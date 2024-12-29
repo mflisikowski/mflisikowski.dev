@@ -80,7 +80,7 @@ const PageTemplate = async ({ params }: PageProps) => {
           <AnimatedTextLetters
             className="font-cal text-4xl font-normal tracking-wide sm:text-5xl lg:text-6xl 2xl:text-8xl"
             animationConfig={{ startDelay: 0.5 }}
-            text={page?.title}
+            text={page?.pageTitle}
             animated
           />
 
