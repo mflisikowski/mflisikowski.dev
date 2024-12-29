@@ -50,6 +50,13 @@ export const translations: Config["i18n"]["translations"] = {
       "columns-one": "One column",
 
       /**
+       * Collection fields
+       */
+      "collection-content": "Content",
+      "collection-hero": "Hero",
+      "collection-seo": "SEO",
+
+      /**
        * Fields
        */
       "field-slug": "Slug",
@@ -116,6 +123,13 @@ export const translations: Config["i18n"]["translations"] = {
       "columns-three": "Trzy kolumny",
       "columns-two": "Dwie kolumny",
       "columns-one": "Jedna kolumna",
+
+      /**
+       * Collection fields
+       */
+      "collection-content": "Treść",
+      "collection-hero": "Hero",
+      "collection-seo": "SEO",
 
       /**
        * Fields
