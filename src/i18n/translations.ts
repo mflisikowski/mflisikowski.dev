@@ -57,6 +57,12 @@ export const translations: Config["i18n"]["translations"] = {
       "field-content": "Content",
       "field-seo": "SEO",
 
+      /**
+       * Pages fields
+       */
+      "page-title": "Page Title",
+      "page-slug": "Friendly URL",
+
       "rich-text": "Rich-Text editor",
 
       "case-study-url": "URL",
@@ -119,6 +125,12 @@ export const translations: Config["i18n"]["translations"] = {
       "field-content": "Treść",
       "field-seo": "SEO",
 
+      /**
+       * Pages fields
+       */
+      "page-title": "Tytuł strony",
+      "page-slug": "Adres URL",
+
       "rich-text": "Edytor tekstu",
       "case-study-url": "URL",
       "case-study-industry": "Branża",
@@ -137,5 +149,7 @@ export const translations: Config["i18n"]["translations"] = {
 export type CustomTranslationsObject = (typeof translations)[keyof typeof translations];
 export type CustomTranslationsKeys = NestedKeysStripped<CustomTranslationsObject>;
 
+export type TranslationLabelKey = CustomTranslationsKeys | DefaultTranslationKeys;
+
 // prettier-ignore
-export const tl = (transKey: CustomTranslationsKeys | DefaultTranslationKeys): LabelFunction => ({ t }: { t: TFunction<CustomTranslationsKeys | DefaultTranslationKeys> }) => t(transKey)
+export const tl = (transKey: TranslationLabelKey): LabelFunction => ({ t }: { t: TFunction<TranslationLabelKey> }) => t(transKey)
