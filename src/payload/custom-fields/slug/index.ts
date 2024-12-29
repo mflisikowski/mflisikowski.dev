@@ -4,13 +4,11 @@ import { formatSlug } from "@/hooks/payload-format-slug";
 
 import { tl } from "@/i18n/translations";
 
-import { checkboxField } from "@/payload/fields/checkbox";
-import { textField } from "@/payload/fields/text";
-
-type SlugFieldProps = (fieldToUse?: string) => [TextField, CheckboxField];
+export type SlugFieldProps = (fieldToUse?: string) => [TextField, CheckboxField];
 
 export const slugField: SlugFieldProps = (fieldToUse = "title") => {
-  const checkbox = checkboxField({
+  /** Checkbox field docs: https://payloadcms.com/docs/fields/checkbox */
+  const checkbox: CheckboxField = {
     admin: {
       position: "sidebar",
       hidden: true,
@@ -18,9 +16,25 @@ export const slugField: SlugFieldProps = (fieldToUse = "title") => {
 
     defaultValue: true,
     name: "slugLock",
-  });
+    type: "checkbox",
+  };
 
-  const input = textField({
+  /** Text field docs: https://payloadcms.com/docs/fields/text */
+  const input: TextField = {
+    label: tl("custom:field-slug"),
+    name: "slug",
+
+    localized: true,
+    required: true,
+    unique: true,
+    index: true,
+    type: "text",
+
+    hooks: {
+      // Kept this in for hook or API based updates
+      beforeValidate: [formatSlug(fieldToUse)],
+    },
+
     admin: {
       components: {
         Field: {
@@ -33,14 +47,7 @@ export const slugField: SlugFieldProps = (fieldToUse = "title") => {
       },
       position: "sidebar",
     },
-    label: tl("custom:field-slug"),
-    hooks: {
-      // Kept this in for hook or API based updates
-      beforeValidate: [formatSlug(fieldToUse)],
-    },
-    name: "slug",
-    index: true,
-  });
+  };
 
   return [input, checkbox];
 };
