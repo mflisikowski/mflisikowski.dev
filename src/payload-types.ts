@@ -34,7 +34,7 @@ export interface Config {
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
   };
   db: {
-    defaultIDType: number;
+    defaultIDType: string;
   };
   globals: {};
   globalsSelect: {};
@@ -70,9 +70,9 @@ export interface UserAuthOperations {
  * via the `definition` "case-studies".
  */
 export interface CaseStudy {
-  id: number;
+  id: string;
   title: string;
-  slug?: string | null;
+  slug: string;
   slugLock?: boolean | null;
   introContent: {
     root: {
@@ -91,7 +91,7 @@ export interface CaseStudy {
   };
   industry?: string | null;
   useCase?: string | null;
-  featuredImage: number | Media;
+  featuredImage: string | Media;
   url?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -102,7 +102,7 @@ export interface CaseStudy {
  * via the `definition` "media".
  */
 export interface Media {
-  id: number;
+  id: string;
   alt: string;
   _key?: string | null;
   updatedAt: string;
@@ -178,21 +178,21 @@ export interface Media {
  * via the `definition` "pages".
  */
 export interface Page {
-  id: number;
+  id: string;
   publishedAt: string;
-  title: string;
-  slug?: string | null;
+  pageTitle: string;
+  slug: string;
   slugLock?: boolean | null;
   hero: {
-    layout: {
+    hero: {
       hero: {
         type: 'home';
         title?: string | null;
         subtitle?: string | null;
         media?: {
           type?: ('image' | 'video') | null;
-          image?: (number | null) | Media;
-          video?: (number | null) | Media;
+          image?: (string | null) | Media;
+          video?: (string | null) | Media;
         };
       };
       id?: string | null;
@@ -273,7 +273,7 @@ export interface Page {
               };
               [k: string]: unknown;
             };
-            media: number | Media;
+            media: string | Media;
           };
           id?: string | null;
           blockName?: string | null;
@@ -305,15 +305,15 @@ export interface Page {
                     internalLink?:
                       | ({
                           relationTo: 'pages';
-                          value: number | Page;
+                          value: string | Page;
                         } | null)
                       | ({
                           relationTo: 'posts';
-                          value: number | Post;
+                          value: string | Post;
                         } | null)
                       | ({
                           relationTo: 'case-studies';
-                          value: number | CaseStudy;
+                          value: string | CaseStudy;
                         } | null);
                     openInNewTab?: boolean | null;
                   };
@@ -332,13 +332,13 @@ export interface Page {
     /**
      * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
      */
-    image?: (number | null) | Media;
+    image?: (string | null) | Media;
     description?: string | null;
   };
-  parent?: (number | null) | Page;
+  parent?: (string | null) | Page;
   breadcrumbs?:
     | {
-        doc?: (number | null) | Page;
+        doc?: (string | null) | Page;
         url?: string | null;
         label?: string | null;
         id?: string | null;
@@ -353,10 +353,10 @@ export interface Page {
  * via the `definition` "posts".
  */
 export interface Post {
-  id: number;
+  id: string;
   title: string;
-  image: number | Media;
-  slug?: string | null;
+  image: string | Media;
+  slug: string;
   slugLock?: boolean | null;
   useVideo?: boolean | null;
   videoUrl?: string | null;
@@ -390,13 +390,13 @@ export interface Post {
     };
     [k: string]: unknown;
   };
-  relatedPosts?: (number | Post)[] | null;
-  authors: (number | User)[];
+  relatedPosts?: (string | Post)[] | null;
+  authors: (string | User)[];
   publishedOn: string;
-  parent?: (number | null) | Post;
+  parent?: (string | null) | Post;
   breadcrumbs?:
     | {
-        doc?: (number | null) | Post;
+        doc?: (string | null) | Post;
         url?: string | null;
         label?: string | null;
         id?: string | null;
@@ -411,11 +411,11 @@ export interface Post {
  * via the `definition` "users".
  */
 export interface User {
-  id: number;
+  id: string;
   firstName: string;
   lastName: string;
   roles: ('admin' | 'public')[];
-  avatar?: (number | null) | Media;
+  avatar?: (string | null) | Media;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -432,13 +432,13 @@ export interface User {
  * via the `definition` "redirects".
  */
 export interface Redirect {
-  id: number;
+  id: string;
   from: string;
   to?: {
     type?: ('reference' | 'custom') | null;
     reference?: {
       relationTo: 'pages';
-      value: number | Page;
+      value: string | Page;
     } | null;
     url?: string | null;
   };
@@ -450,36 +450,36 @@ export interface Redirect {
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
-  id: number;
+  id: string;
   document?:
     | ({
         relationTo: 'case-studies';
-        value: number | CaseStudy;
+        value: string | CaseStudy;
       } | null)
     | ({
         relationTo: 'pages';
-        value: number | Page;
+        value: string | Page;
       } | null)
     | ({
         relationTo: 'posts';
-        value: number | Post;
+        value: string | Post;
       } | null)
     | ({
         relationTo: 'users';
-        value: number | User;
+        value: string | User;
       } | null)
     | ({
         relationTo: 'media';
-        value: number | Media;
+        value: string | Media;
       } | null)
     | ({
         relationTo: 'redirects';
-        value: number | Redirect;
+        value: string | Redirect;
       } | null);
   globalSlug?: string | null;
   user: {
     relationTo: 'users';
-    value: number | User;
+    value: string | User;
   };
   updatedAt: string;
   createdAt: string;
@@ -489,10 +489,10 @@ export interface PayloadLockedDocument {
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
-  id: number;
+  id: string;
   user: {
     relationTo: 'users';
-    value: number | User;
+    value: string | User;
   };
   key?: string | null;
   value?:
@@ -512,7 +512,7 @@ export interface PayloadPreference {
  * via the `definition` "payload-migrations".
  */
 export interface PayloadMigration {
-  id: number;
+  id: string;
   name?: string | null;
   batch?: number | null;
   updatedAt: string;
@@ -541,13 +541,13 @@ export interface CaseStudiesSelect<T extends boolean = true> {
  */
 export interface PagesSelect<T extends boolean = true> {
   publishedAt?: T;
-  title?: T;
+  pageTitle?: T;
   slug?: T;
   slugLock?: T;
   hero?:
     | T
     | {
-        layout?:
+        hero?:
           | T
           | {
               heroBlock?:
