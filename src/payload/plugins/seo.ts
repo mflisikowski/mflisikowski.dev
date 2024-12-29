@@ -6,7 +6,7 @@ import { META_WEBSITE_TITLE } from "@/constants/meta";
 import { getServerSideURL } from "@/utils/get-url";
 
 const generateTitle: GenerateTitle<Page> = ({ doc }) => {
-  return doc?.title ? `${doc.title} | ${META_WEBSITE_TITLE}` : META_WEBSITE_TITLE;
+  return doc?.pageTitle ? `${doc.pageTitle} | ${META_WEBSITE_TITLE}` : META_WEBSITE_TITLE;
 };
 
 const generateURL: GenerateURL<Page> = ({ doc }) => {
