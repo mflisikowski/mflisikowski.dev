@@ -21,13 +21,7 @@ const Inter = Font({
   subsets: ["latin"],
 });
 
-export default function GlobalError({
-  error,
-  reset,
-}: {
-  error: Error & { digest?: string };
-  reset: () => void;
-}) {
+export default function GlobalError({ error }: { error: Error & { digest?: string } }) {
   return (
     <html suppressHydrationWarning>
       <head>
