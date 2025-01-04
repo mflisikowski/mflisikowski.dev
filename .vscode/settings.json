@@ -30,5 +30,13 @@
   "files.exclude": {
     "**/node_modules": true,
     "**/.git": true
-  }
+  },
+  "spellright.language": [
+    "en",
+    "pl"
+  ],
+  "spellright.documentTypes": [
+    "latex",
+    "plaintext"
+  ]
 }

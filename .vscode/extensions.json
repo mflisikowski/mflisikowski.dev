@@ -1,5 +1,6 @@
 {
   "recommendations": [
-    "inlang.vs-code-extension"
+    "inlang.vs-code-extension",
+    "ban.spellright"
   ]
 }
