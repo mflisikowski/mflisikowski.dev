@@ -67,5 +67,12 @@
   "notFound": {
     "title": "Strona, której szukasz, nie istnieje",
     "link": "Powrót do strony głównej"
+  },
+  "Error": {
+    "title": "Coś poszło nie tak!",
+    "subtitle": "Przepraszamy, wystąpił błąd podczas przetwarzania Twojego zapytania.",
+    "message": "Treść błędu:",
+    "digest": "Kod błędu:",
+    "try-again": "Spróbuj ponownie"
   }
 }
