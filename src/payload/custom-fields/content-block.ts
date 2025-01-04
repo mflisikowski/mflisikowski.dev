@@ -11,7 +11,7 @@ export const contentBlockField: PayloadBlockFieldProps = (overrides = {}) =>
   deepMerge<BlocksField>(
     {
       localized: true,
-      required: true,
+      required: false,
       blocks: [
         //
         ContentBlock,
