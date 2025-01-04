@@ -46,6 +46,11 @@ export default async function AboutPage() {
             </div>
           </div>
         </div>
+        Jestem ambitnym i samodzielnym programistą front-end z doświadczeniem w tworzeniu
+        nowoczesnych, wysokiej jakości aplikacji webowych. Szybko przyswajam nowe technologie i z
+        pasją podejmuję wyzwania związane z tworzeniem innowacyjnych rozwiązań. Moim celem jest
+        rozwijanie umiejętności, by dostarczać jeszcze bardziej kompleksowe i dopracowane
+        rozwiązania, które spełniają najwyższe oczekiwania użytkowników i klientów.
       </Container>
     </>
   );

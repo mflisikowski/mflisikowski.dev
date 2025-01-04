@@ -40,7 +40,7 @@ export const Hero = async () => {
       </div>
 
       <div className="absolute inset-0 z-0">
-        <HeroVideo />
+        <HeroVideo url="/videos/hero.mp4" />
       </div>
     </FadeInStagger>
   );
