@@ -25,6 +25,7 @@ const CalSans = localFont({
 const Inter = Font({
   variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const AnalyticsPageView = dynamic(
