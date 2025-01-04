@@ -1,12 +1,11 @@
-import { Media } from "@/payload-types";
+import type { Media } from "@/payload-types";
 import Image from "next/image";
 
 import { AnimatedTextLetters } from "@/components/(frontend)/framer-motion/animated-text-letters";
 import { FadeIn, FadeInStagger } from "@/components/(frontend)/framer-motion/fade-in";
+import { HeroVideo } from "@/components/(frontend)/heros/video";
 
 import { cn } from "@/utils/cn";
-
-import { HeroVideo } from "./video";
 
 interface HeroProps {
   subheadline: string;
