@@ -77,6 +77,7 @@ export const pagesFields: CollectionConfig["fields"] = [
           }),
         ],
         label: tl("custom:collection-seo"),
+        name: "meta",
       },
     ],
   },

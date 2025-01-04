@@ -316,12 +316,14 @@ export interface Page {
           }
       )[]
     | null;
-  title?: string | null;
-  /**
-   * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-   */
-  image?: (string | null) | Media;
-  description?: string | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (string | null) | Media;
+    description?: string | null;
+  };
   parent?: (string | null) | Page;
   breadcrumbs?:
     | {
@@ -595,9 +597,13 @@ export interface PagesSelect<T extends boolean = true> {
               blockName?: T;
             };
       };
-  title?: T;
-  image?: T;
-  description?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
   parent?: T;
   breadcrumbs?:
     | T
