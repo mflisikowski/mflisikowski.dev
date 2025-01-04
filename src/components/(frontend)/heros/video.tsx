@@ -5,7 +5,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 import { cn } from "@/utils/cn";
 
-export const HeroVideo = () => {
+export const HeroVideo = ({ className, url }: { className?: string; url: string }) => {
   const requestAnimationFrameRef = useRef<number | null>(null);
   const [error, setError] = useState<string | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -53,15 +53,11 @@ export const HeroVideo = () => {
     !error && (
       <video
         onContextMenu={(e) => e.preventDefault()}
-        className={cn(
-          "absolute inset-0 z-0 h-full w-full object-cover",
-          "dark:opacity-20 dark:hue-rotate-0 dark:invert",
-          "opacity-50 brightness-110",
-        )}
-        ref={videoRef}
-        src="/videos/mixkit-an-ethereal-white-mistrapidly-maskes-waves-as-it-descents-50941-full-hd.mp4"
+        className={cn("absolute inset-0 z-0 h-full w-full object-cover", className)}
         preload="auto"
         onError={handleError}
+        ref={videoRef}
+        src={url}
         playsInline
         autoPlay
         muted

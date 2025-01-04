@@ -4,8 +4,8 @@ import type { CollectionConfig } from "payload";
 
 import { tl } from "@/i18n/translations";
 
+import { fields as heroFields } from "@/payload/collections/pages/fields-hero";
 import { contentBlockField } from "@/payload/custom-fields/content-block";
-import { heroBlockField } from "@/payload/custom-fields/hero-block";
 import { pagePublishedAt } from "@/payload/custom-fields/published-at";
 import { slugField } from "@/payload/custom-fields/slug";
 
@@ -37,14 +37,18 @@ export const pagesFields: CollectionConfig["fields"] = [
     type: "tabs",
     tabs: [
       {
-        fields: [heroBlockField()],
+        fields: [
+          {
+            fields: heroFields,
+            type: "group",
+            name: "hero",
+          },
+        ],
         label: tl("custom:collection-hero"),
-        name: "hero",
       },
       {
         fields: [contentBlockField()],
         label: tl("custom:collection-content"),
-        name: "content",
       },
       {
         fields: [
@@ -73,7 +77,6 @@ export const pagesFields: CollectionConfig["fields"] = [
           }),
         ],
         label: tl("custom:collection-seo"),
-        name: "meta",
       },
     ],
   },

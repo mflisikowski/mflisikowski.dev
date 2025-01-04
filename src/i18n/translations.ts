@@ -23,17 +23,19 @@ export const translations: Config["i18n"]["translations"] = {
       /**
        * Hero
        * */
+      "hero-field": "Hero",
       "hero-type": "Hero Type",
       "hero-type-home": "Home",
       "hero-headline": "Headline",
       "hero-subheadline": "Subheadline",
       "hero-media": "Media",
-      "hero-media-image": "Image",
-      "hero-media-video": "Video",
 
       /**
        * Media
        * */
+      "hero-media-type-none": "None",
+      "hero-media-type-image": "Image",
+      "hero-media-type-video": "Video",
       "media-position": "Position",
       "media-position-default": "Default",
       "media-position-wide": "Wide",
@@ -98,17 +100,19 @@ export const translations: Config["i18n"]["translations"] = {
       /**
        * Hero
        * */
+      "hero-field": "Hero",
       "hero-type": "Rodzaj elementu Hero",
       "hero-type-home": "Strona główna",
-      "hero-headline": "Tytuł",
+      "hero-headline": "Nagłówek",
       "hero-subheadline": "Podtytuł",
       "hero-media": "Multimedia",
-      "hero-media-image": "Obraz",
-      "hero-media-video": "Film",
 
       /**
        * Media
        * */
+      "hero-media-type-none": "Brak",
+      "hero-media-type-image": "Obraz",
+      "hero-media-type-video": "Film",
       "media-position": "Pozycja",
       "media-position-default": "Domyślny",
       "media-position-wide": "Szeroki",
