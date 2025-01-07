@@ -2,9 +2,6 @@ import type { Field } from "payload";
 
 import { tl } from "@/i18n/translations";
 
-import { richTextField } from "@/payload/fields/rich-text";
-import { selectField } from "@/payload/fields/select";
-
 enum Columns {
   Three = "columns-three",
   Two = "columns-two",
@@ -16,8 +13,10 @@ export const columnsField: Field = {
   type: "group",
   name: "columns",
   fields: [
-    selectField({
+    {
+      /** Select field docs: https://payloadcms.com/docs/fields/select */
       defaultValue: Columns.One,
+      localized: true,
       options: [
         {
           label: tl("custom:columns-one"),
@@ -33,28 +32,36 @@ export const columnsField: Field = {
         },
       ],
       label: tl("custom:select-columns"),
+      type: "select",
       name: "type",
-    }),
+    },
 
-    richTextField({
+    {
+      /** Rich text field docs: https://payloadcms.com/docs/fields/rich-text */
       label: tl("custom:columns-one"),
+      localized: true,
+      required: true,
       name: Columns.One,
-    }),
+      type: "richText",
+    },
 
-    richTextField({
+    {
+      /** Rich text field docs: https://payloadcms.com/docs/fields/rich-text */
       label: tl("custom:columns-two"),
       admin: {
         condition: (_, siblingData) => [Columns.Two, Columns.Three].includes(siblingData.type),
       },
       name: Columns.Two,
-    }),
-
-    richTextField({
+      type: "richText",
+    },
+    {
+      /** Rich text field docs: https://payloadcms.com/docs/fields/rich-text */
       label: tl("custom:columns-three"),
       admin: {
         condition: (_, siblingData) => siblingData.type === Columns.Three,
       },
       name: Columns.Three,
-    }),
+      type: "richText",
+    },
   ],
 };
