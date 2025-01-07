@@ -1,6 +1,6 @@
 import { LanguageSwitcher } from "@/components/(frontend)/language-switcher";
 import { Logo } from "@/components/(frontend)/logo";
-import { Navigation } from "@/components/(frontend)/navigation";
+// import { Navigation } from "@/components/(frontend)/navigation";
 import { ThemeToggleIcon } from "@/components/(frontend)/theme-toggle";
 
 export function Header() {
