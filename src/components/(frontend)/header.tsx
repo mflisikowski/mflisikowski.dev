@@ -11,7 +11,8 @@ export function Header() {
       <div className="flex items-center gap-4">
         <LanguageSwitcher className="hidden lg:order-2 lg:flex" />
         <ThemeToggleIcon className="hidden lg:order-2 lg:flex" />
-        <Navigation />
+
+        {/* <Navigation /> */}
       </div>
     </header>
   );
