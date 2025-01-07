@@ -3,12 +3,10 @@ import type { CollectionConfig } from "payload";
 import { tl } from "@/i18n/translations";
 
 import { slugField } from "@/payload/custom-fields/slug";
-import { titleField } from "@/payload/custom-fields/title";
 import { checkboxField } from "@/payload/fields/checkbox";
 import { dateField } from "@/payload/fields/date";
 import { richTextField } from "@/payload/fields/rich-text";
 import { textField } from "@/payload/fields/text";
-import { uploadField } from "@/payload/fields/upload";
 
 const [postSlugField, postCheckboxField] = slugField();
 
@@ -61,14 +59,6 @@ const postVideoUrl = textField({
   name: "videoUrl",
 });
 
-const postImage = uploadField({
-  // @ts-expect-error - TFunction type is not automatically merged with the default translations
-  label: ({ t }) => t("custom-post-image"),
-
-  required: true,
-  name: "image",
-});
-
 export const postsFields: CollectionConfig["fields"] = [
   {
     /** Text field docs: https://payloadcms.com/docs/fields/text */
@@ -80,7 +70,21 @@ export const postsFields: CollectionConfig["fields"] = [
     type: "text",
   },
 
-  postImage,
+  {
+    /** Upload field docs: https://payloadcms.com/docs/fields/upload */
+    filterOptions: {
+      mimeType: {
+        in: ["image/jpeg", "image/jpg", "image/webp"],
+      },
+    },
+    relationTo: "media",
+    required: true,
+    label: tl("custom:post-image"),
+    type: "upload",
+    name: "image",
+
+    typescriptSchema: [() => ({ $ref: `#/definitions/media` })],
+  },
 
   postSlugField,
   postCheckboxField,

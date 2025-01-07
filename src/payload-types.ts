@@ -344,7 +344,7 @@ export interface Page {
 export interface Post {
   id: string;
   title: string;
-  image: string | Media;
+  image: Media;
   slug: string;
   slugLock?: boolean | null;
   useVideo?: boolean | null;
