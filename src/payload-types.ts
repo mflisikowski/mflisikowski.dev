@@ -262,7 +262,7 @@ export interface Page {
                 };
                 [k: string]: unknown;
               };
-              media: string | Media;
+              image: Media;
             };
             id?: string | null;
             blockName?: string | null;
@@ -564,7 +564,7 @@ export interface PagesSelect<T extends boolean = true> {
                 | {
                     position?: T;
                     caption?: T;
-                    media?: T;
+                    image?: T;
                   };
               id?: T;
               blockName?: T;
