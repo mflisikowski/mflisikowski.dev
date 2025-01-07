@@ -1,5 +1,7 @@
 import type { CollectionConfig } from "payload";
 
+import { tl } from "@/i18n/translations";
+
 import { slugField } from "@/payload/custom-fields/slug";
 import { titleField } from "@/payload/custom-fields/title";
 import { checkboxField } from "@/payload/fields/checkbox";
@@ -67,10 +69,17 @@ const postImage = uploadField({
   name: "image",
 });
 
-const postTitle = titleField();
-
 export const postsFields: CollectionConfig["fields"] = [
-  postTitle,
+  {
+    /** Text field docs: https://payloadcms.com/docs/fields/text */
+    localized: true,
+    required: true,
+    unique: true,
+    label: tl("custom:post-title"),
+    name: "title",
+    type: "text",
+  },
+
   postImage,
 
   postSlugField,

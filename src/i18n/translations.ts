@@ -103,6 +103,7 @@ export const translations: Config["i18n"]["translations"] = {
       "post-video-url": "Video URL",
       "post-content": "Content",
       "post-excerpt": "Excerpt",
+      "post-title": "Title",
 
       /**
        * Users fields
@@ -208,6 +209,7 @@ export const translations: Config["i18n"]["translations"] = {
       "post-video-url": "URL filmu",
       "post-content": "Treść",
       "post-excerpt": "Podsumowanie",
+      "post-title": "Tytuł",
 
       /**
        * Users fields
