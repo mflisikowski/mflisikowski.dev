@@ -6,14 +6,24 @@ import { tl } from "@/i18n/translations";
 
 import { fields as heroFields } from "@/payload/collections/pages/fields-hero";
 import { contentBlockField } from "@/payload/custom-fields/content-block";
-import { pagePublishedAt } from "@/payload/custom-fields/published-at";
 import { slugField } from "@/payload/custom-fields/slug";
 
 const [pageSlugField, pageCheckboxField] = slugField("pageTitle");
 
 export const pagesFields: CollectionConfig["fields"] = [
-  pagePublishedAt,
-
+  {
+    /** Date field docs: https://payloadcms.com/docs/fields/date */
+    required: true,
+    admin: {
+      position: "sidebar",
+      date: {
+        pickerAppearance: "dayAndTime",
+      },
+    },
+    label: tl("custom:page-published-at"),
+    name: "publishedAt",
+    type: "date",
+  },
   {
     /** Text field docs: https://payloadcms.com/docs/fields/text */
     label: tl("custom:page-title"),
