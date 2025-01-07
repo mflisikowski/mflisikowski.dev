@@ -3,63 +3,25 @@ import type { CollectionConfig } from "payload";
 import { tl } from "@/i18n/translations";
 
 import { slugField } from "@/payload/custom-fields/slug";
-import { checkboxField } from "@/payload/fields/checkbox";
-import { dateField } from "@/payload/fields/date";
-import { richTextField } from "@/payload/fields/rich-text";
-import { textField } from "@/payload/fields/text";
 
 const [postSlugField, postCheckboxField] = slugField();
 
-const postUseVideoCheckbox = checkboxField({
-  // @ts-expect-error - TFunction type is not automatically merged with the default translations
-  label: ({ t }) => t("custom-post-use-video"),
-
-  name: "useVideo",
-});
-
-const postPublishedOnDate = dateField({
-  // @ts-expect-error - TFunction type is not automatically merged with the default translations
-  label: ({ t }) => t("custom-post-published-on"),
-
-  admin: {
-    date: {
-      pickerAppearance: "dayAndTime",
-    },
-    position: "sidebar",
-  },
-
-  required: true,
-  name: "publishedOn",
-});
-
-const postContent = richTextField({
-  // @ts-expect-error - TFunction type is not automatically merged with the default translations
-  label: ({ t }) => t("custom-post-content"),
-
-  required: true,
-  name: "content",
-});
-
-const postExcerpt = richTextField({
-  // @ts-expect-error - TFunction type is not automatically merged with the default translations
-  label: ({ t }) => t("custom-post-excerpt"),
-
-  required: true,
-  name: "excerpt",
-});
-
-const postVideoUrl = textField({
-  // @ts-expect-error - TFunction type is not automatically merged with the default translations
-  label: ({ t }) => t("custom-post-video-url"),
-
-  admin: {
-    condition: (_, siblingData) => siblingData?.useVideo,
-  },
-
-  name: "videoUrl",
-});
-
 export const postsFields: CollectionConfig["fields"] = [
+  postSlugField,
+  postCheckboxField,
+  {
+    /** Date field docs: https://payloadcms.com/docs/fields/date */
+    required: true,
+    admin: {
+      position: "sidebar",
+      date: {
+        pickerAppearance: "dayAndTime",
+      },
+    },
+    label: tl("custom:post-published-at"),
+    name: "publishedAt",
+    type: "date",
+  },
   {
     /** Text field docs: https://payloadcms.com/docs/fields/text */
     localized: true,
@@ -69,7 +31,6 @@ export const postsFields: CollectionConfig["fields"] = [
     name: "title",
     type: "text",
   },
-
   {
     /** Upload field docs: https://payloadcms.com/docs/fields/upload */
     filterOptions: {
@@ -85,30 +46,32 @@ export const postsFields: CollectionConfig["fields"] = [
 
     typescriptSchema: [() => ({ $ref: `#/definitions/media` })],
   },
-
-  postSlugField,
-  postCheckboxField,
-
-  postUseVideoCheckbox,
-  postVideoUrl,
-
-  postExcerpt,
-  postContent,
-
   {
-    filterOptions: ({ id }) => {
-      return {
-        id: {
-          not_in: [id],
-        },
-      };
-    },
+    /** Rich text field docs: https://payloadcms.com/docs/fields/rich-text */
+    localized: true,
+    required: true,
+    label: tl("custom:post-excerpt"),
+    type: "richText",
+    name: "excerpt",
+  },
+  {
+    /** Rich text field docs: https://payloadcms.com/docs/fields/rich-text */
+    localized: true,
+    required: true,
+    label: tl("custom:post-content"),
+    type: "richText",
+    name: "content",
+  },
+  {
+    /** Relationship field docs: https://payloadcms.com/docs/fields/relationship */
+    filterOptions: ({ id }) => ({ id: { not_in: [id] } }),
     relationTo: "posts",
     hasMany: true,
     type: "relationship",
     name: "relatedPosts",
   },
   {
+    /** Relationship field docs: https://payloadcms.com/docs/fields/relationship */
     relationTo: "users",
     required: true,
     hasMany: true,
@@ -118,6 +81,4 @@ export const postsFields: CollectionConfig["fields"] = [
       position: "sidebar",
     },
   },
-
-  postPublishedOnDate,
 ];

@@ -343,12 +343,11 @@ export interface Page {
  */
 export interface Post {
   id: string;
-  title: string;
-  image: Media;
   slug: string;
   slugLock?: boolean | null;
-  useVideo?: boolean | null;
-  videoUrl?: string | null;
+  publishedAt: string;
+  title: string;
+  image: Media;
   excerpt: {
     root: {
       type: string;
@@ -381,7 +380,6 @@ export interface Post {
   };
   relatedPosts?: (string | Post)[] | null;
   authors: (string | User)[];
-  publishedOn: string;
   parent?: (string | null) | Post;
   breadcrumbs?:
     | {
@@ -622,17 +620,15 @@ export interface PagesSelect<T extends boolean = true> {
  * via the `definition` "posts_select".
  */
 export interface PostsSelect<T extends boolean = true> {
-  title?: T;
-  image?: T;
   slug?: T;
   slugLock?: T;
-  useVideo?: T;
-  videoUrl?: T;
+  publishedAt?: T;
+  title?: T;
+  image?: T;
   excerpt?: T;
   content?: T;
   relatedPosts?: T;
   authors?: T;
-  publishedOn?: T;
   parent?: T;
   breadcrumbs?:
     | T
