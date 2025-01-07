@@ -74,11 +74,16 @@ export const translations: Config["i18n"]["translations"] = {
       "page-title": "Page Title",
       "page-slug": "Friendly URL",
 
-      "rich-text": "Rich-Text editor",
-
+      /**
+       * Case Studies fields
+       */
+      "case-study-singular": "Case Study",
+      "case-study-plural": "Case Studies",
       "case-study-url": "URL",
       "case-study-industry": "Industry",
       "case-study-use-case": "Use Case",
+
+      "rich-text": "Rich-Text editor",
       "post-image": "Post image",
       "post-published-on": "Published on",
       "post-use-video": "Use video",
@@ -153,11 +158,16 @@ export const translations: Config["i18n"]["translations"] = {
       "page-title": "Tytuł strony",
       "page-slug": "Adres URL",
 
-      "rich-text": "Edytor tekstu",
+      /**
+       * Case Studies fields
+       */
+      "case-study-singular": "Realizacja",
+      "case-study-plural": "Realizacje",
       "case-study-url": "URL",
       "case-study-industry": "Branża",
       "case-study-use-case": "Zastosowanie",
 
+      "rich-text": "Edytor tekstu",
       "post-image": "Zdjęcie artykułu",
       "post-published-on": "Data publikacji",
       "post-use-video": "Użyj filmu",

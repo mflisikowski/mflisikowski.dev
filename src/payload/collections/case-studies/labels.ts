@@ -1,12 +1,8 @@
 import type { CollectionConfig } from "payload";
 
+import { tl } from "@/i18n/translations";
+
 export const caseStudiesLabels: CollectionConfig["labels"] = {
-  singular: {
-    pl: "Realizacja",
-    en: "Case study",
-  },
-  plural: {
-    pl: "Realizacje",
-    en: "Case studies",
-  },
+  singular: tl("custom:case-study-singular"),
+  plural: tl("custom:case-study-plural"),
 };
