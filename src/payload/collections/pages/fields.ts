@@ -23,11 +23,6 @@ export const pagesFields: CollectionConfig["fields"] = [
     required: true,
     unique: true,
     type: "text",
-
-    admin: {
-      // TODO: Check if this is now possible in the new version of payload
-      // placeholder: tl("custom:page-title"),
-    },
   },
 
   pageSlugField,
