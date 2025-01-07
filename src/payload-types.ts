@@ -402,7 +402,7 @@ export interface User {
   firstName: string;
   lastName: string;
   roles: ('admin' | 'public')[];
-  avatar?: (string | null) | Media;
+  avatar?: Media;
   updatedAt: string;
   createdAt: string;
   email: string;
