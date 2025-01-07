@@ -27,7 +27,6 @@ export const fields: Field[] = [
     /** Text field docs: https://payloadcms.com/docs/fields/text */
     localized: true,
     required: true,
-    unique: true,
     label: tl("custom:hero-headline"),
     name: "headline",
     type: "text",
@@ -37,7 +36,6 @@ export const fields: Field[] = [
     /** Text field docs: https://payloadcms.com/docs/fields/text */
     localized: true,
     required: true,
-    unique: true,
     label: tl("custom:hero-subheadline"),
     name: "subheadline",
     type: "text",
@@ -51,11 +49,9 @@ export const fields: Field[] = [
       },
     },
     relationTo: "media",
-    required: true,
     label: tl("custom:hero-media"),
     type: "upload",
     name: "media",
-    unique: true,
 
     typescriptSchema: [() => ({ $ref: `#/definitions/media` })],
   },
