@@ -87,8 +87,11 @@ export const translations: Config["i18n"]["translations"] = {
       "case-study-plural": "Case Studies",
       "case-study-url": "URL",
       "case-study-industry": "Industry",
-      "case-study-use-case": "Use Case",
+      "case-study-uses": "Use Case",
       "case-study-title": "Title",
+      "case-study-intro-content": "Intro",
+      "case-study-image": "Image",
+
       /**
        * Posts fields
        */
@@ -189,8 +192,11 @@ export const translations: Config["i18n"]["translations"] = {
       "case-study-plural": "Realizacje",
       "case-study-url": "URL",
       "case-study-industry": "Branża",
-      "case-study-use-case": "Zastosowanie",
+      "case-study-uses": "Zastosowanie",
       "case-study-title": "Tytuł",
+      "case-study-intro-content": "Wstęp",
+      "case-study-image": "Zdjęcie",
+
       /**
        * Posts fields
        */

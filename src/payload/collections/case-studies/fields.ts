@@ -3,41 +3,8 @@ import type { CollectionConfig } from "payload";
 import { tl } from "@/i18n/translations";
 
 import { slugField } from "@/payload/custom-fields/slug";
-import { richTextField } from "@/payload/fields/rich-text";
-import { textField } from "@/payload/fields/text";
-import { uploadField } from "@/payload/fields/upload";
 
 const [caseStudySlugField, caseStudyCheckboxField] = slugField();
-
-const caseStudyFeaturedImage = uploadField({
-  required: true,
-  name: "featuredImage",
-});
-
-const caseStudyIntroContent = richTextField({
-  name: "introContent",
-});
-
-const caseStudyIndustry = textField({
-  // @ts-expect-error - TFunction type is not automatically merged with the default translations
-  label: ({ t }) => t("custom-case-study-industry"),
-  name: "industry",
-});
-
-const caseStudyUseCase = textField({
-  // @ts-expect-error - TFunction type is not automatically merged with the default translations
-  label: ({ t }) => t("custom-case-study-use-case"),
-  name: "useCase",
-});
-
-const caseStudyUrl = textField({
-  // @ts-expect-error - TFunction type is not automatically merged with the default translations
-  label: ({ t }) => t("custom-case-study-url"),
-  admin: {
-    position: "sidebar",
-  },
-  name: "url",
-});
 
 export const caseStudiesFields: CollectionConfig["fields"] = [
   {
@@ -53,17 +20,59 @@ export const caseStudiesFields: CollectionConfig["fields"] = [
   caseStudySlugField,
   caseStudyCheckboxField,
 
-  caseStudyIntroContent,
+  {
+    /** Rich text field docs: https://payloadcms.com/docs/fields/rich-text */
+    localized: true,
+    required: true,
+    label: tl("custom:case-study-intro-content"),
+    type: "richText",
+    name: "intro",
+  },
 
   {
     type: "row",
     fields: [
-      //
-      caseStudyIndustry,
-      caseStudyUseCase,
+      {
+        /** Text field docs: https://payloadcms.com/docs/fields/text */
+        localized: true,
+        required: true,
+        label: tl("custom:case-study-industry"),
+        name: "industry",
+        type: "text",
+      },
+      {
+        /** Text field docs: https://payloadcms.com/docs/fields/text */
+        localized: true,
+        required: true,
+        label: tl("custom:case-study-uses"),
+        name: "uses",
+        type: "text",
+      },
     ],
   },
 
-  caseStudyFeaturedImage,
-  caseStudyUrl,
+  {
+    /** Upload field docs: https://payloadcms.com/docs/fields/upload */
+    filterOptions: {
+      mimeType: {
+        in: ["image/jpeg", "image/webp"],
+      },
+    },
+    relationTo: "media",
+    required: true,
+    unique: true,
+    label: tl("custom:case-study-image"),
+    type: "upload",
+    name: "image",
+
+    typescriptSchema: [() => ({ $ref: `#/definitions/media` })],
+  },
+
+  {
+    /** Text field docs: https://payloadcms.com/docs/fields/text */
+    label: tl("custom:case-study-url"),
+    unique: true,
+    type: "text",
+    name: "url",
+  },
 ];

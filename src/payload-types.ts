@@ -74,7 +74,7 @@ export interface CaseStudy {
   title: string;
   slug: string;
   slugLock?: boolean | null;
-  introContent: {
+  intro: {
     root: {
       type: string;
       children: {
@@ -89,9 +89,9 @@ export interface CaseStudy {
     };
     [k: string]: unknown;
   };
-  industry?: string | null;
-  useCase?: string | null;
-  featuredImage: string | Media;
+  industry: string;
+  uses: string;
+  image: Media;
   url?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -515,10 +515,10 @@ export interface CaseStudiesSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
   slugLock?: T;
-  introContent?: T;
+  intro?: T;
   industry?: T;
-  useCase?: T;
-  featuredImage?: T;
+  uses?: T;
+  image?: T;
   url?: T;
   updatedAt?: T;
   createdAt?: T;
