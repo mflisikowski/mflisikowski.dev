@@ -83,13 +83,19 @@ export const translations: Config["i18n"]["translations"] = {
       "case-study-industry": "Industry",
       "case-study-use-case": "Use Case",
 
-      "rich-text": "Rich-Text editor",
+      /**
+       * Posts fields
+       */
+      "post-singular": "Post",
+      "post-plural": "Posts",
       "post-image": "Post image",
       "post-published-on": "Published on",
       "post-use-video": "Use video",
       "post-video-url": "Video URL",
       "post-content": "Content",
       "post-excerpt": "Excerpt",
+
+      "rich-text": "Rich-Text editor",
     },
   },
   pl: {
@@ -167,13 +173,19 @@ export const translations: Config["i18n"]["translations"] = {
       "case-study-industry": "Branża",
       "case-study-use-case": "Zastosowanie",
 
-      "rich-text": "Edytor tekstu",
+      /**
+       * Posts fields
+       */
+      "post-singular": "Artykuł",
+      "post-plural": "Artykuły",
       "post-image": "Zdjęcie artykułu",
       "post-published-on": "Data publikacji",
       "post-use-video": "Użyj filmu",
       "post-video-url": "URL filmu",
       "post-content": "Treść",
       "post-excerpt": "Podsumowanie",
+
+      "rich-text": "Edytor tekstu",
     },
   },
 };
