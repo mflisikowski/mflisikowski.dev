@@ -67,6 +67,12 @@ export const translations: Config["i18n"]["translations"] = {
       "field-seo": "SEO",
 
       /**
+       * Media fields
+       */
+      "media-singular": "Media",
+      "media-plural": "Media",
+
+      /**
        * Pages fields
        */
       "page-singular": "Page",
@@ -161,6 +167,12 @@ export const translations: Config["i18n"]["translations"] = {
       "field-published-at": "Data publikacji",
       "field-content": "Treść",
       "field-seo": "SEO",
+
+      /**
+       * Media fields
+       */
+      "media-singular": "Multimedia",
+      "media-plural": "Multimedia",
 
       /**
        * Pages fields
