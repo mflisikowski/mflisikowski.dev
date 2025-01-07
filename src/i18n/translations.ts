@@ -95,6 +95,12 @@ export const translations: Config["i18n"]["translations"] = {
       "post-content": "Content",
       "post-excerpt": "Excerpt",
 
+      /**
+       * Users fields
+       */
+      "user-singular": "User",
+      "user-plural": "Users",
+
       "rich-text": "Rich-Text editor",
     },
   },
@@ -184,6 +190,12 @@ export const translations: Config["i18n"]["translations"] = {
       "post-video-url": "URL filmu",
       "post-content": "Treść",
       "post-excerpt": "Podsumowanie",
+
+      /**
+       * Users fields
+       */
+      "user-singular": "Użytkownik",
+      "user-plural": "Użytkownicy",
 
       "rich-text": "Edytor tekstu",
     },
