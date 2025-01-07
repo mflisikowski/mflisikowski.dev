@@ -69,6 +69,8 @@ export const translations: Config["i18n"]["translations"] = {
       /**
        * Pages fields
        */
+      "page-singular": "Page",
+      "page-plural": "Pages",
       "page-title": "Page Title",
       "page-slug": "Friendly URL",
 
@@ -146,6 +148,8 @@ export const translations: Config["i18n"]["translations"] = {
       /**
        * Pages fields
        */
+      "page-singular": "Strona",
+      "page-plural": "Strony",
       "page-title": "Tytuł strony",
       "page-slug": "Adres URL",
 
