@@ -1,7 +1,9 @@
+import { revalidateTag } from "next/cache";
 import { type NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
 import { getPayload } from "@/utils/payload";
+import { NAVIGATION_TAG } from "@/utils/payload/tags";
 
 const querySchema = z.object({
   newLocale: z.string().min(1).max(2),
@@ -51,6 +53,8 @@ export async function GET(request: NextRequest) {
         { status: 404 },
       );
     }
+
+    revalidateTag(NAVIGATION_TAG);
 
     return NextResponse.json({
       // @ts-expect-error result of page.docs[0].slug is typed as string, but it's actually an object of all locales ex. { pl: "strona-glowna", en: "home" }

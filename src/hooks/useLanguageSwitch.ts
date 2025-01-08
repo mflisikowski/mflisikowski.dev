@@ -29,6 +29,7 @@ export const useLanguageSwitch = () => {
     try {
       const url = await getTranslatedUrl({ locale, newLocale, slug });
       router.replace(url ? `/${newLocale}/${url}` : `/${newLocale}`);
+      router.refresh();
     } catch (error) {
       console.error("Error checking translation:", error);
       notFound();
