@@ -191,7 +191,7 @@ export interface Page {
     type: 'home';
     headline: string;
     subheadline: string;
-    media?: Media;
+    media: Media;
   };
   layout?:
     | (

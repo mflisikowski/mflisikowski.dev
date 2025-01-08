@@ -49,6 +49,7 @@ export const fields: Field[] = [
       },
     },
     relationTo: "media",
+    required: true,
     label: tl("custom:hero-media"),
     type: "upload",
     name: "media",
