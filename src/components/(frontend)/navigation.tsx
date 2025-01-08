@@ -1,16 +1,17 @@
-import { fetchNavigationData, fetchSocialData } from "@/repositories/navigation-respository";
+import { type Navigation } from "@/payload-types";
 
 import { NavigationDesktop } from "@/components/(frontend)/navigation-desktop";
-import { NavigationMobile } from "@/components/(frontend)/navigation-mobile";
 
-export function Navigation() {
-  const { items: socials } = fetchSocialData();
-  const { items } = fetchNavigationData();
+import { getCachedNavigation } from "@/utils/payload/get-globals";
+
+export async function Navigation() {
+  const data: Navigation = await getCachedNavigation();
+  const links = data?.links ?? [];
 
   return (
     <>
-      <NavigationDesktop items={items} />
-      <NavigationMobile items={items} socials={socials} />
+      <NavigationDesktop links={links} />
+      {/* <NavigationMobile items={mappedItems} socials={socials} /> */}
     </>
   );
 }

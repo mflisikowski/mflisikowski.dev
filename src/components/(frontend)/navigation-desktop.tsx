@@ -1,59 +1,67 @@
-"use client";
-
-import { useTranslations } from "next-intl";
+import type { Navigation } from "@/payload-types";
 import Link from "next/link";
-import * as React from "react";
 
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 
-import type { NavigationItem } from "@/types/index";
+import { cn } from "@/utils/cn";
 
-export function NavigationDesktop({ items }: { items: NavigationItem[] }) {
-  const t = useTranslations("Navigation");
+type NavigationLink = NonNullable<Navigation["links"]>[number];
+
+interface NavigationItemProps {
+  item: NavigationLink;
+}
+
+const NavigationItem = ({ item }: NavigationItemProps) => {
+  if (!item.link?.url && !item.link?.reference) return null;
+
+  const commonProps = item.link.newTab
+    ? {
+        "aria-label": `${item.link.label} (opens in new tab)`,
+        rel: "noopener noreferrer",
+        target: "_blank",
+      }
+    : {};
+
+  if (item.link.url) {
+    const label = item.link.label;
+    const href = item.link.url;
+
+    return (
+      <Link href={href} legacyBehavior passHref {...commonProps}>
+        <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+          <>{label}</>
+        </NavigationMenuLink>
+      </Link>
+    );
+  }
+
+  if (item.link.reference) {
+    const title = item.link.reference.value.pageTitle;
+    const href = item.link.reference.value.slug;
+
+    return (
+      <NavigationMenuLink className={navigationMenuTriggerStyle()} href={href} {...commonProps}>
+        <>{title}</>
+      </NavigationMenuLink>
+    );
+  }
+};
+
+export function NavigationDesktop({ links }: Pick<Navigation, "links">) {
+  if (!links?.length) return null;
 
   return (
-    <NavigationMenu className="hidden lg:flex">
+    <NavigationMenu className={cn("hidden lg:flex")} aria-label="Main navigation">
       <NavigationMenuList>
-        {items.map((item) => (
-          <NavigationMenuItem key={item.title}>
-            {item.href ? (
-              <Link href={item.href} legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  {t(item.title)}
-                </NavigationMenuLink>
-              </Link>
-            ) : (
-              <>
-                <NavigationMenuTrigger>
-                  <>{item.title}</>
-                </NavigationMenuTrigger>
-
-                <NavigationMenuContent>
-                  <ul className="space-y-4">
-                    {item.subItems?.map((subItem) => (
-                      <li key={subItem.title}>
-                        <NavigationMenuLink asChild>
-                          <Link
-                            className="underline-offset-4 hover:underline"
-                            href={subItem.href as string}
-                          >
-                            {t(subItem.title)}
-                          </Link>
-                        </NavigationMenuLink>
-                      </li>
-                    ))}
-                  </ul>
-                </NavigationMenuContent>
-              </>
-            )}
+        {links.map((item) => (
+          <NavigationMenuItem key={item.id}>
+            <NavigationItem item={item} />
           </NavigationMenuItem>
         ))}
       </NavigationMenuList>

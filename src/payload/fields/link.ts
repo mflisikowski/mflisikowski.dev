@@ -1,106 +1,138 @@
-import type { CheckboxField, GroupField, RadioField, RelationshipField, TextField } from "payload";
+import type { Field, GroupField } from "payload";
 import { deepMerge } from "payload";
 
-export type LinkFieldOverrides = {
-  groupOverrides?: Partial<Omit<GroupField, "fields">>;
-  internalLinkOverrides?: Partial<RelationshipField>;
-  labelOverrides?: Partial<TextField>;
-  linkTypeOverrides?: Partial<RadioField>;
-  openInNewTabOverrides?: Partial<CheckboxField>;
-  required?: boolean;
-  urlOverrides?: Partial<TextField>;
+export type LinkAppearances = "default" | "outline";
+
+export const appearanceOptions: Record<LinkAppearances, { label: string; value: string }> = {
+  default: { label: "Default", value: "default" },
+  outline: { label: "Outline", value: "outline" },
 };
 
-type LinkField = (overrides?: LinkFieldOverrides) => GroupField;
+type LinkType = (options?: {
+  appearances?: LinkAppearances[] | false;
+  overrides?: Partial<GroupField>;
+}) => GroupField;
 
-export const linkField: LinkField = (overrides = {}) => {
-  const {
-    groupOverrides = {},
-    internalLinkOverrides = {},
-    labelOverrides = {},
-    linkTypeOverrides = {},
-    openInNewTabOverrides = {},
-    required = false,
-    urlOverrides = {},
-  } = overrides;
-
-  return deepMerge<GroupField>(
-    {
-      fields: [
-        deepMerge<TextField>(
+export const link: LinkType = ({ appearances, overrides = {} } = {}) => {
+  const linkResult: GroupField = {
+    fields: [
+      {
+        /** Row field: https://payloadcms.com/docs/fields/row */
+        type: "row",
+        fields: [
           {
-            label: "Label",
-            name: "label",
-            required,
-            type: "text",
-          },
-          labelOverrides,
-        ),
-        deepMerge<RadioField>(
-          {
-            admin: {
-              condition: (_, siblingData) => required || Boolean(siblingData.label),
-            },
-            label: "Type",
-            name: "linkType",
-            options: [
-              {
-                label: "Internal",
-                value: "internal",
-              },
-              {
-                label: "External",
-                value: "external",
-              },
-            ],
-            required: true,
+            /** Radio field: https://payloadcms.com/docs/fields/radio */
+            name: "type",
             type: "radio",
-          },
-          linkTypeOverrides,
-        ),
-        deepMerge<TextField>(
-          {
             admin: {
-              condition: (_, siblingData) =>
-                (required || Boolean(siblingData.label)) && siblingData.linkType === "external",
+              layout: "horizontal",
+              width: "50%",
             },
-            label: "URL",
-            name: "url",
-            required: true,
-            type: "text",
+            defaultValue: "reference",
+            options: [
+              { label: "Internal link", value: "reference" },
+              { label: "Custom URL", value: "custom" },
+            ],
           },
-          urlOverrides,
-        ),
-        deepMerge<RelationshipField>(
           {
+            /** Checkbox field: https://payloadcms.com/docs/fields/checkbox */
+            name: "newTab",
+            type: "checkbox",
             admin: {
-              condition: (_, siblingData) =>
-                (required || Boolean(siblingData.label)) && siblingData.linkType === "internal",
-            },
-            label: "Internal Reference",
-            name: "internalLink",
-            relationTo: ["pages", "posts", "case-studies"],
-            required: true,
-            type: "relationship",
-          },
-          internalLinkOverrides,
-        ),
-        deepMerge<CheckboxField>(
-          {
-            admin: {
-              condition: (_, siblingData) => Boolean(siblingData.label),
+              style: { alignSelf: "flex-end" },
+              width: "50%",
             },
             label: "Open in new tab",
-            name: "openInNewTab",
-            type: "checkbox",
           },
-          openInNewTabOverrides,
-        ),
-      ],
-      label: "Link",
-      name: "link",
-      type: "group",
+        ],
+      },
+    ],
+    admin: {
+      hideGutter: true,
     },
-    groupOverrides,
-  );
+    name: "link",
+    type: "group",
+  };
+
+  const linkTypes: Field[] = [
+    {
+      /** Relationship field: https://payloadcms.com/docs/fields/relationship */
+      typescriptSchema: [
+        () => ({
+          type: "object",
+          properties: {
+            relationTo: { const: "pages" },
+            value: {
+              type: "object",
+              properties: {
+                id: { type: "string" },
+                slug: { type: "string" },
+                pageTitle: { type: "string" },
+              },
+              required: ["id", "slug", "pageTitle"],
+              additionalProperties: false,
+            },
+          },
+          required: ["relationTo", "value"],
+          additionalProperties: false,
+        }),
+      ],
+      relationTo: ["pages"],
+      required: true,
+      unique: true,
+      admin: {
+        condition: (_, siblingData) => siblingData?.type === "reference",
+      },
+      label: "Document to link to",
+      name: "reference",
+      type: "relationship",
+    },
+    {
+      /** Row field: https://payloadcms.com/docs/fields/row */
+      type: "row",
+      fields: [
+        {
+          /** Text field: https://payloadcms.com/docs/fields/text */
+          required: true,
+          label: "Link Label",
+          admin: {
+            condition: (_, siblingData) => siblingData?.type === "custom",
+            width: "50%",
+          },
+          name: "label",
+          type: "text",
+        },
+        {
+          /** Text field: https://payloadcms.com/docs/fields/text */
+          required: true,
+          unique: true,
+          label: "Custom URL",
+          admin: {
+            condition: (_, siblingData) => siblingData?.type === "custom",
+            width: "50%",
+          },
+          name: "url",
+          type: "text",
+        },
+      ],
+    },
+  ];
+
+  linkResult.fields = [...linkResult.fields, ...linkTypes];
+
+  if (appearances !== false) {
+    let appearanceOptionsToUse = [appearanceOptions.default, appearanceOptions.outline];
+    if (appearances) {
+      appearanceOptionsToUse = appearances.map((appearance) => appearanceOptions[appearance]);
+    }
+
+    linkResult.fields.push({
+      defaultValue: "default",
+      options: appearanceOptionsToUse,
+      name: "appearance",
+      type: "select",
+    });
+  }
+
+  return deepMerge(linkResult, overrides);
 };

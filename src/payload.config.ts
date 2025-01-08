@@ -9,6 +9,7 @@ import { collections } from "@/payload/config-collections";
 import { db } from "@/payload/config-db";
 import { editor } from "@/payload/config-editor";
 import { email } from "@/payload/config-email";
+import { globals } from "@/payload/config-globals";
 import { plugins } from "@/payload/config-plugins";
 import { secret } from "@/payload/config-secret";
 import { typescript } from "@/payload/config-typescript";
@@ -18,6 +19,7 @@ const config: Config = {
   collections,
   typescript,
   plugins,
+  globals,
   editor,
   secret,
   email,
