@@ -20,7 +20,7 @@ export const queryPageBySlug = cache(async ({ locale, slug }: QueryPageBySlugPar
   const payload = await getPayload();
 
   const result = await payload.find({
-    // overrideAccess: draft, !!!! Setting overrideAccess: draft fails with missing _status field
+    overrideAccess: draft,
     collection: "pages",
     pagination: false,
     limit: 1,
@@ -41,6 +41,7 @@ export const queryRedirects = cache(async ({ locale }: { locale: TypedLocale }) 
   const payload = await getPayload();
 
   const redirects = await payload.find({
+    overrideAccess: draft,
     collection: "redirects",
     pagination: false,
     locale,
