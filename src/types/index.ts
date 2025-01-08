@@ -1,21 +1,5 @@
 import type { BlocksField, TypedLocale } from "payload";
 
-/**
- * Frontend related types
- */
-
-export type NavigationItem = {
-  subItems?: NavigationItem[];
-  title: string;
-  href?: string;
-};
-
-export type SocialItem = {
-  title: string;
-  href: string;
-  icon: string;
-};
-
 export interface CookieConsentButtonProps {
   consentType: "accepted" | "declined";
   className?: string;
