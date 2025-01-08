@@ -31,12 +31,7 @@
     "**/node_modules": true,
     "**/.git": true
   },
-  "spellright.language": [
-    "en",
-    "pl"
-  ],
-  "spellright.documentTypes": [
-    "latex",
-    "plaintext"
-  ]
+  "spellright.language": ["en", "pl"],
+  "spellright.documentTypes": ["latex", "plaintext"],
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
