@@ -5,6 +5,8 @@ import { NavigationDesktop } from "@/components/(frontend)/navigation-desktop";
 import { NavigationMobile } from "@/components/(frontend)/navigation-mobile";
 import { NavigationMenuLink, navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 
+import { cn } from "@/utils/cn";
+
 export type NavigationLinks = Pick<Navigation, "links">;
 export type NavigationLink = NonNullable<Navigation["links"]>[number];
 
@@ -12,7 +14,13 @@ export interface NavigationItem {
   item: NavigationLink;
 }
 
-export const NavigationItem = ({ item }: NavigationItem) => {
+interface NavigationItemProps extends NavigationItem {
+  onOpenChange?: (open: boolean) => void;
+  variant: "desktop" | "mobile";
+}
+
+// It is a fix for mobile navigation error
+export const NavigationItem = ({ item, variant, onOpenChange }: NavigationItemProps) => {
   if (!item.link?.url && !item.link?.reference) return null;
 
   const commonProps = item.link.newTab
@@ -22,42 +30,31 @@ export const NavigationItem = ({ item }: NavigationItem) => {
       }
     : {};
 
-  if (item.link.url) {
-    const label = item.link.label;
-    const href = item.link.url;
+  const label = item.link.url ? item.link.label : item.link.reference?.value.pageTitle;
+  const href = item.link.url || item.link.reference?.value.slug;
 
+  if (!href || !label) return null;
+
+  if (variant === "mobile") {
     return (
       <Link
-        aria-label={`${label} (opens in new tab)`}
         href={href}
-        legacyBehavior
-        passHref
+        className={cn(navigationMenuTriggerStyle(), "block w-full px-2 py-4 text-center text-sm")}
+        onClick={() => onOpenChange?.(false)}
         {...commonProps}
       >
-        <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-          <>{label}</>
-        </NavigationMenuLink>
+        {label}
       </Link>
     );
   }
 
-  if (item.link.reference) {
-    const title = item.link.reference.value.pageTitle;
-    const href = item.link.reference.value.slug;
-
-    return (
-      <NavigationMenuLink
-        aria-label={`${title} (opens in new tab)`}
-        className={navigationMenuTriggerStyle()}
-        href={href}
-        {...commonProps}
-      >
-        <>{title}</>
+  return (
+    <Link href={href} legacyBehavior passHref {...commonProps}>
+      <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+        <>{label}</>
       </NavigationMenuLink>
-    );
-  }
-
-  return null;
+    </Link>
+  );
 };
 
 export async function Navigation({ links }: NavigationLinks) {

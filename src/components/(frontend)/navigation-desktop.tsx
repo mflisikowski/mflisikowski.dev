@@ -14,7 +14,7 @@ export function NavigationDesktop({ links }: NavigationLinks) {
       <NavigationMenuList>
         {links?.map((item) => (
           <NavigationMenuItem key={item.id}>
-            <NavigationItem item={item} />
+            <NavigationItem item={item} variant="desktop" />
           </NavigationMenuItem>
         ))}
       </NavigationMenuList>

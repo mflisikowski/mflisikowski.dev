@@ -52,8 +52,8 @@ export function NavigationMobile({ links }: NavigationLinks) {
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger>
-        <PanelTopOpen className="h-6 w-6 cursor-pointer lg:hidden" />
+      <SheetTrigger className="lg:hidden">
+        <PanelTopOpen className="h-6 w-6 cursor-pointer" />
       </SheetTrigger>
 
       <SheetContent side="top" className="p-0 pt-2">
@@ -63,8 +63,16 @@ export function NavigationMobile({ links }: NavigationLinks) {
           <div className="grid bg-white text-zinc-950">
             {links && (
               <div className="grid grid-cols-2 divide-x-[1px] divide-y-[1px] border-b-[1px]">
-                <div className="hidden" />
-                {links?.map((item) => <NavigationItem key={item.id} item={item} />)}
+                {links?.map((item) => (
+                  <NavigationItem
+                    key={item.id}
+                    item={item}
+                    variant="mobile"
+                    onOpenChange={setOpen}
+                  />
+                ))}
+                {/* Add a hidden div to make the grid even */}
+                {links.length % 2 !== 0 && <div />}
               </div>
             )}
 
