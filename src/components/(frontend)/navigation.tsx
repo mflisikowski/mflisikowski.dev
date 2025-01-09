@@ -19,7 +19,6 @@ interface NavigationItemProps extends NavigationItem {
   variant: "desktop" | "mobile";
 }
 
-// It is a fix for mobile navigation error
 export const NavigationItem = ({ item, variant, onOpenChange }: NavigationItemProps) => {
   if (!item.link?.url && !item.link?.reference) return null;
 
